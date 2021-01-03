@@ -1,6 +1,3 @@
-
-# MashUp Android Project
-
 # Moti_AOS
 🌈 MOTI ! Make Own True Identity ⭐️ 유초코파이 안드로가다😎
 
@@ -38,6 +35,10 @@
 3. 답변을 완료한 날은 카드 그림의 한 부분이 채워집니다.
 4. 일주일 동안 꾸준한 기록을 통해 완성된 카드를 수집해보세요!
 5. 앨범을 통해서 기록된 내용을 되돌아볼 수 있습니다.
+
+
+# MashUp Android Project
+
 
 ## Commit Rule
 
