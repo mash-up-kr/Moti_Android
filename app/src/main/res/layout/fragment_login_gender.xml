@@ -9,12 +9,33 @@
             name="viewModel"
             type="com.ofu.moti.login.LoginViewModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#00F1D6D6"
-
+        android:background="@drawable/bg_gradient"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:onClick="@{() -> viewModel.onClickPopFragment()}"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nickname_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_nickname_title" />
+
+        <TextView
+            android:id="@+id/tv_nickname_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/set_gender"
+            android:textColor="@color/rosegold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignUp"

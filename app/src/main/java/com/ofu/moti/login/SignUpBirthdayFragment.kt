@@ -16,11 +16,14 @@ class SignUpBirthdayFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
-            viewLifecycleOwner,
-            Observer<LoginViewModel.SignUpFragment> {
-                viewModel.signUpFragment.postValue(LoginViewModel.SignUpFragment.EXIT)
-                (activity as LoginActivity?)?.changeFragment(SignUpCompleteFragment.newInstance())
+            viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
+                if (it == LoginViewModel.SignUpFragment.Complete) {
+                    (activity as LoginActivity?)?.changeFragment(SignUpCompleteFragment.newInstance())
+                }
             })
+        viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
+            (activity as LoginActivity?)?.popFragment()
+        })
     }
 
     companion object {
