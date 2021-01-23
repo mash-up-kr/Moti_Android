@@ -1,3 +1,6 @@
 <resources>
 	<string name="app_name">Moti</string>
+    <string name="user_agreement"><u>MOTI\'s User Agreement</u></string>
+    <string name="user_agreement_content">By creating an account you are agreeing to</string>
+    <string name="sub_title">Make Own True Identity</string>
 </resources>
