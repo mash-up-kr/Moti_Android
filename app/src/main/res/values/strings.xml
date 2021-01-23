@@ -3,4 +3,8 @@
     <string name="user_agreement"><u>MOTI\'s User Agreement</u></string>
     <string name="user_agreement_content">By creating an account you are agreeing to</string>
     <string name="sub_title">Make Own True Identity</string>
+    <string name="set_nickname">닉네임 설정</string>
+    <string name="set_gender">성별 선택</string>
+    <string name="set_birthday">생년월일 선택</string>
+    <string name="complete_signup">회원가입 완료</string>
 </resources>

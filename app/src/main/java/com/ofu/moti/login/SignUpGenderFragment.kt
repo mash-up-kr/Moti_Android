@@ -15,10 +15,14 @@ class SignUpGenderFragment : BaseFragment<FragmentLoginGenderBinding>(R.layout.f
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
-            viewLifecycleOwner,
-            Observer<LoginViewModel.SignUpFragment> {
-                (activity as LoginActivity?)?.changeFragment(SignUpBirthdayFragment.newInstance())
+            viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
+                if (it == LoginViewModel.SignUpFragment.Birthday) {
+                    (activity as LoginActivity?)?.changeFragment(SignUpBirthdayFragment.newInstance())
+                }
             })
+        viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
+            (activity as LoginActivity?)?.popFragment()
+        })
     }
 
     companion object {

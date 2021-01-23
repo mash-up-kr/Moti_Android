@@ -17,11 +17,16 @@ class SignUpNicknameFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
-            viewLifecycleOwner,
-            Observer<LoginViewModel.SignUpFragment> {
-                (activity as LoginActivity?)?.changeFragment(SignUpGenderFragment.newInstance())
+            viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
+                if (it == LoginViewModel.SignUpFragment.Gender) {
+                    (activity as LoginActivity?)?.changeFragment(SignUpGenderFragment.newInstance())
+                }
             })
+        viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
+            (activity as LoginActivity?)?.popFragment()
+        })
     }
+
 
     companion object {
         fun newInstance() = SignUpNicknameFragment()

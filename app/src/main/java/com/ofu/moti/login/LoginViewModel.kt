@@ -11,9 +11,14 @@ class LoginViewModel :BaseViewModel() {
     enum class SignUpFragment { Birthday, Complete, Gender, NickName, EXIT }
 
     val signUpFragment: MutableLiveData<SignUpFragment> = MutableLiveData()
+    val popFragment = MutableLiveData<Unit>()
 
     fun onClickNextFragment(fragment: SignUpFragment) {
         signUpFragment.postValue(fragment)
+    }
+
+    fun onClickPopFragment() {
+        popFragment.postValue(Unit)
     }
 
     fun onClickUserAgreement(context: Context) {

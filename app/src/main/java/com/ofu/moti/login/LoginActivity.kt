@@ -14,21 +14,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
     private val loginViewModel by viewModels<LoginViewModel>()
 
-    private val signUpNicknameFragment by lazy { SignUpNicknameFragment.newInstance() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMainDataBinding()
 
         loginViewModel.signUpFragment.observe(this, Observer {
             if (it == LoginViewModel.SignUpFragment.NickName) {
-                initFragment()
+                changeFragment(SignUpNicknameFragment.newInstance())
             }
         })
-        binding.btnSignIn.setOnClickListener {
-            startMainActivity()
-        }
-
     }
 
     fun startMainActivity() {
@@ -38,15 +32,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
     fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fl_container, fragment)
+            add(R.id.fl_container, fragment)
             addToBackStack(null)
         }.commit()
     }
 
-    private fun initFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fl_container, signUpNicknameFragment)
-            .commit()
+    fun popFragment() {
+        supportFragmentManager.popBackStack()
     }
 
     private fun initMainDataBinding() {
