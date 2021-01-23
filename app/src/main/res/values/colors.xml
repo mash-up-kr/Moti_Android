@@ -7,4 +7,17 @@
 	<color name="teal_700">#FF018786</color>
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
+
+	<color name="greyishBrown">#444444</color>
+	<color name="supportblack">#969696</color>
+	<color name="disableText">#adb5bd</color>
+	<color name="disableblack">#dee2e6</color>
+	<color name="goldbrown">#a37657</color>
+	<color name="pinkishTan">#d4a17d</color>
+	<color name="lightgold">#e7bc9e</color>
+	<color name="rosegold">#f1dbcd</color>
+	<color name="shadowpink">#fcdee3</color>
+	<color name="secondWhite">#f9f9f9</color>
+	<color name="cardTextinput">#f3f3f3</color>
+	<color name="placeholderblack">#8b8b8b</color>
 </resources>
