@@ -78,6 +78,7 @@
             android:text="@string/user_agreement"
             android:textColor="@color/rosegold"
             android:textSize="12sp"
+            android:onClick="@{() -> viewModel.onClickUserAgreement(context)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
