@@ -1,6 +1,8 @@
 package com.ofu.moti.login
 
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ofu.moti.BaseFragment
@@ -19,6 +21,10 @@ class SignUpNicknameFragment :
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
                 if (it == LoginViewModel.SignUpFragment.Gender) {
+                    val mInputMethodManager =
+                        context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    mInputMethodManager.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
+                    
                     (activity as LoginActivity?)?.changeFragment(SignUpGenderFragment.newInstance())
                 }
             })
