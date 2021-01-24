@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <import type="android.view.View" />
+
         <import type="com.ofu.moti.login.LoginViewModel.SignUpFragment" />
+
+        <import type="com.ofu.moti.login.LoginViewModel.Gender" />
 
         <variable
             name="viewModel"
@@ -21,32 +26,166 @@
             android:layout_marginStart="12dp"
             android:onClick="@{() -> viewModel.onClickPopFragment()}"
             android:src="@drawable/ic_arrow_left"
-            app:layout_constraintBottom_toBottomOf="@id/tv_nickname_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_gender_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_nickname_title" />
+            app:layout_constraintTop_toTopOf="@id/tv_gender_title" />
 
         <TextView
-            android:id="@+id/tv_nickname_title"
+            android:id="@+id/tv_gender_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="25dp"
             android:text="@string/set_gender"
-            android:textColor="@color/rosegold"
+            android:textColor="@color/rose_gold"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignUp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="172dp"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday)}"
-            android:text="gendet"
+
+        <TextView
+            android:id="@+id/tv_gender_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/input_gender"
+            android:textColor="@color/rose_gold"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_gender_title" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutt_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:paddingLeft="46dp"
+            android:paddingRight="46dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.993"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/iv_gender_man_shadow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/shadow_rose_gold_22"
+                app:layout_constraintBottom_toBottomOf="@id/iv_gender_man"
+                app:layout_constraintEnd_toEndOf="@id/iv_gender_man"
+                app:layout_constraintStart_toStartOf="@id/iv_gender_man"
+                app:layout_constraintTop_toTopOf="@id/iv_gender_man" />
+
+            <ImageView
+                android:id="@+id/iv_gender_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_gender_man"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_gender_woman"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/iv_gender_man_disable"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:onClick="@{() -> viewModel.onSelectGender(Gender.MAN )}"
+                android:src="@drawable/shadow_card_disable"
+                android:visibility="@{viewModel.userGender==Gender.MAN ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_gender_man"
+                app:layout_constraintEnd_toEndOf="@id/iv_gender_man"
+                app:layout_constraintStart_toStartOf="@id/iv_gender_man"
+                app:layout_constraintTop_toTopOf="@id/iv_gender_man" />
+
+            <ImageView
+                android:id="@+id/iv_gender_woman_shadow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/shadow_rose_gold_22"
+                app:layout_constraintBottom_toBottomOf="@id/iv_gender_woman"
+                app:layout_constraintEnd_toEndOf="@id/iv_gender_woman"
+                app:layout_constraintStart_toStartOf="@id/iv_gender_woman"
+                app:layout_constraintTop_toTopOf="@id/iv_gender_woman" />
+
+
+            <ImageView
+                android:id="@+id/iv_gender_woman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/ic_gender_woman"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_gender_man"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_gender_woman_disable"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:onClick="@{() -> viewModel.onSelectGender(Gender.WOMAN )}"
+                android:src="@drawable/shadow_card_disable"
+                android:visibility="@{viewModel.userGender==Gender.WOMAN ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_gender_woman"
+                app:layout_constraintEnd_toEndOf="@id/iv_gender_woman"
+                app:layout_constraintStart_toStartOf="@id/iv_gender_woman"
+                app:layout_constraintTop_toTopOf="@id/iv_gender_woman" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/btnSignUpNextShadow"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shadow_rose_gold_22"
+            android:backgroundTint="@color/rose_gold"
+            android:visibility="@{viewModel.toTheNextStep ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_gender_input"
+            app:layout_constraintStart_toStartOf="@id/tv_gender_input"
+            app:layout_constraintTop_toBottomOf="@id/tv_gender_input"
+            app:layout_constraintVertical_bias="0.72" />
+
+
+        <TextView
+            android:id="@+id/btnSignUpNext"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/radius_20"
+            android:backgroundTint="@{viewModel.toTheNextStep ? @color/white : @color/disable_black}"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday,viewModel.toTheNextStep)}"
+            android:text="@string/next"
+            android:textColor="@{viewModel.toTheNextStep ? @color/pinkish_tan : @color/disable_text}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btnSignUpNextShadow"
+            app:layout_constraintEnd_toEndOf="@id/btnSignUpNextShadow"
+            app:layout_constraintStart_toStartOf="@+id/btnSignUpNextShadow"
+            app:layout_constraintTop_toTopOf="@id/btnSignUpNextShadow" />
+
+
+        <TextView
+            android:id="@+id/tv_gender_input_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:text="@string/jump"
+            android:textColor="@color/rose_gold"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday,true)}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/btnSignUpNext"
+            app:layout_constraintStart_toStartOf="@id/btnSignUpNext"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUpNext" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
