@@ -61,8 +61,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btn_sign_up_next_shadow"
-            app:layout_constraintStart_toStartOf="@+id/btn_sign_up_next_shadow"
+            android:layout_margin="7dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_birthday_input"
+            app:layout_constraintStart_toStartOf="@+id/tv_birthday_input"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.45" />
 

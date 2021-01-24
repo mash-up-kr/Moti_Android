@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<style name="appCompatStyle" parent="Theme.AppCompat.Light">
-		<item name="colorControlNormal">@color/gold_brown</item>
+		<item name="colorControlNormal">@color/light_gold</item>
 		<item name="colorControlActivated">@color/teal_200</item>
 		<item name="android:editTextStyle">@style/editTextStyle</item>
 	</style>
