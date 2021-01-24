@@ -8,16 +8,18 @@
 	<color name="black">#FF000000</color>
 	<color name="white">#FFFFFFFF</color>
 
-	<color name="greyishBrown">#444444</color>
-	<color name="supportblack">#969696</color>
-	<color name="disableText">#adb5bd</color>
-	<color name="disableblack">#dee2e6</color>
-	<color name="goldbrown">#a37657</color>
-	<color name="pinkishTan">#d4a17d</color>
-	<color name="lightgold">#e7bc9e</color>
-	<color name="rosegold">#f1dbcd</color>
-	<color name="shadowpink">#fcdee3</color>
+	<color name="grayish_brown">#444444</color>
+	<color name="support_black">#969696</color>
+	<color name="disable_black">#dee2e6</color>
+	<color name="disable_text">#adb5bd</color>
+	<color name="gold_brown">#a37657</color>
+	<color name="pinkish_tan">#d4a17d</color>
+	<color name="light_gold">#e7bc9e</color>
+	<color name="rose_gold">#f1dbcd</color>
+	<color name="shadow_pink">#fcdee3</color>
 	<color name="secondWhite">#f9f9f9</color>
-	<color name="cardTextinput">#f3f3f3</color>
-	<color name="placeholderblack">#8b8b8b</color>
+	<color name="card_text_input">#f3f3f3</color>
+	<color name="place_holder_black">#8b8b8b</color>
+	<color name="shadow_gray">#797979</color>
+
 </resources>
