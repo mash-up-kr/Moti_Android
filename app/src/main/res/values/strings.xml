@@ -12,4 +12,5 @@
     <string name="input_nickname_hint">8글자로 만들어주세요</string>
     <string name="next">다음</string>
     <string name="jump">건너뛰기</string>
+    <string name="input_birthday">생년월일을 입력해주세요</string>
 </resources>
