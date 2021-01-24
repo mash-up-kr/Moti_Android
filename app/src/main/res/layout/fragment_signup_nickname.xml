@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View" />
         <import type="com.ofu.moti.login.LoginViewModel.SignUpFragment" />
 
         <variable
@@ -30,24 +31,88 @@
             android:id="@+id/tv_nickname_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="25dp"
             android:text="@string/set_nickname"
-            android:textColor="@color/rosegold"
+            android:textColor="@color/rose_gold"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignUp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="52dp"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Gender)}"
-            android:text="nickname"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+        <TextView
+            android:id="@+id/tv_nickname_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/input_nickname"
+            android:textColor="@color/rose_gold"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.864"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nickname_title" />
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gold_brown"
+            android:gravity="center"
+            android:hint="@string/input_nickname_hint"
+            android:maxLength="15"
+            android:textColor="@color/rose_gold"
+            android:textColorHint="@color/support_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_nickname_input"
+            app:layout_constraintStart_toStartOf="@+id/tv_nickname_input"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_nickname_input_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/input_nickname_hint"
+            android:textColor="@color/shadow_gray"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/et_nickname"
+            app:layout_constraintStart_toStartOf="@id/et_nickname"
+            app:layout_constraintTop_toBottomOf="@id/et_nickname" />
+
+        <TextView
+            android:id="@+id/btnSignUpShadow"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/shadow_rose_gold_22"
+            android:backgroundTint="@color/rose_gold"
+            android:visibility="@{viewModel.toTheNextStep ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/et_nickname"
+            app:layout_constraintStart_toStartOf="@id/et_nickname"
+            app:layout_constraintTop_toBottomOf="@id/et_nickname" />
+
+
+        <TextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/radius_20"
+            android:backgroundTint="@{viewModel.toTheNextStep ? @color/white : @color/disable_black}"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Gender)}"
+            android:text="@string/next"
+            android:textColor="@{viewModel.toTheNextStep ? @color/pinkish_tan : @color/disable_text}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btnSignUpShadow"
+            app:layout_constraintEnd_toEndOf="@id/btnSignUpShadow"
+            app:layout_constraintStart_toStartOf="@+id/btnSignUpShadow"
+            app:layout_constraintTop_toTopOf="@id/btnSignUpShadow" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
