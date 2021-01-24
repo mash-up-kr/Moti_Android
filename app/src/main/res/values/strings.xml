@@ -13,4 +13,7 @@
     <string name="next">다음</string>
     <string name="jump">건너뛰기</string>
     <string name="input_birthday">생년월일을 입력해주세요</string>
+    <string name="sign_up_complete">회원가입 완료</string>
+    <string name="sign_up_complete_content">닉네임여덟글자임님\n회원가입을\n축하합니다!</string>
+    <string name="start">시작하기</string>
 </resources>
