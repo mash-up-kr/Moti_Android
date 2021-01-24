@@ -66,18 +66,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.45" />
 
+
         <TextView
             android:id="@+id/btn_sign_up_next_shadow"
-            android:layout_width="0dp"
+            android:layout_width="220dp"
             android:layout_height="60dp"
             android:background="@drawable/shadow_stack"
             android:backgroundTint="@color/rose_gold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/tv_birthday_input"
-            app:layout_constraintStart_toStartOf="@id/tv_birthday_input"
-            app:layout_constraintTop_toBottomOf="@id/tv_birthday_input"
-            app:layout_constraintVertical_bias="0.72" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_birthday_title"
+            app:layout_constraintVertical_bias="0.75" />
 
         <TextView
             android:id="@+id/btn_sign_up_next"
@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday,true)}"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Complete,true)}"
             android:text="@string/jump"
             android:textColor="@color/rose_gold"
             android:textSize="16sp"
