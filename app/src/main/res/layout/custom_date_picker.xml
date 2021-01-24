@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<LinearLayout
 		android:id="@+id/date_picker_layout"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
 		android:weightSum="3">
@@ -32,7 +30,6 @@
 			android:layout_height="wrap_content"
 			android:layout_margin="4dp"
 			android:layout_weight="1"
-
 			android:theme="@style/appCompatStyle" />
 	</LinearLayout>
 </merge>

@@ -41,7 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <TextView
             android:id="@+id/tv_nickname_input"
             android:layout_width="wrap_content"
@@ -87,18 +86,17 @@
 
         <TextView
             android:id="@+id/btn_sign_up_next_shadow"
-            android:layout_width="0dp"
+            android:layout_width="220dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            app:layout_constraintVertical_bias="0.72"
             android:background="@drawable/shadow_stack"
             android:backgroundTint="@color/rose_gold"
             android:visibility="@{viewModel.toTheNextStep ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/et_nickname"
             app:layout_constraintStart_toStartOf="@id/et_nickname"
-            app:layout_constraintTop_toBottomOf="@id/tv_nickname_input" />
-
+            app:layout_constraintTop_toBottomOf="@id/tv_nickname_title"
+            app:layout_constraintVertical_bias="0.75" />
 
         <TextView
             android:id="@+id/btn_sign_up_next"
@@ -108,7 +106,7 @@
             android:background="@drawable/radius_20"
             android:backgroundTint="@{viewModel.toTheNextStep ? @color/white : @color/disable_black}"
             android:gravity="center"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Gender,true )}"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Gender,viewModel.toTheNextStep )}"
             android:text="@string/next"
             android:textColor="@{viewModel.toTheNextStep ? @color/pinkish_tan : @color/disable_text}"
             android:textSize="16sp"
@@ -116,7 +114,6 @@
             app:layout_constraintEnd_toEndOf="@id/btn_sign_up_next_shadow"
             app:layout_constraintStart_toStartOf="@+id/btn_sign_up_next_shadow"
             app:layout_constraintTop_toTopOf="@id/btn_sign_up_next_shadow" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
