@@ -3,6 +3,7 @@ package com.ofu.moti.login
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.ofu.moti.BaseViewModel
 
@@ -12,7 +13,13 @@ class LoginViewModel :BaseViewModel() {
 
     val signUpFragment: MutableLiveData<SignUpFragment> = MutableLiveData()
     val popFragment = MutableLiveData<Unit>()
+    val etNickname = MutableLiveData<String>()
+    val toTheNextStep = MutableLiveData<Boolean>(false)
 
+    fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+        toTheNextStep.postValue(!s.isNullOrBlank())
+    }
     fun onClickNextFragment(fragment: SignUpFragment) {
         signUpFragment.postValue(fragment)
     }
