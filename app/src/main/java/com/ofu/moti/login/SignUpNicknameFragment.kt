@@ -5,11 +5,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ofu.moti.BaseFragment
 import com.ofu.moti.R
-import com.ofu.moti.databinding.FragmentLoginNicknameBinding
+import com.ofu.moti.databinding.FragmentSignupNicknameBinding
 
 
 class SignUpNicknameFragment :
-    BaseFragment<FragmentLoginNicknameBinding>(R.layout.fragment_login_nickname) {
+    BaseFragment<FragmentSignupNicknameBinding>(R.layout.fragment_signup_nickname) {
 
     private val viewModel by viewModels<LoginViewModel>()
 

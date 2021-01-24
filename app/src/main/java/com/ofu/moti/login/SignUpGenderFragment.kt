@@ -5,9 +5,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ofu.moti.BaseFragment
 import com.ofu.moti.R
-import com.ofu.moti.databinding.FragmentLoginGenderBinding
+import com.ofu.moti.databinding.FragmentSignupGenderBinding
 
-class SignUpGenderFragment : BaseFragment<FragmentLoginGenderBinding>(R.layout.fragment_login_gender){
+class SignUpGenderFragment : BaseFragment<FragmentSignupGenderBinding>(R.layout
+    .fragment_signup_gender){
 
     private val viewModel by viewModels<LoginViewModel>()
 
