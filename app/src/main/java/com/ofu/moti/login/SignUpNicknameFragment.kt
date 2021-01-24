@@ -24,7 +24,7 @@ class SignUpNicknameFragment :
                     val mInputMethodManager =
                         context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     mInputMethodManager.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
-                    
+
                     (activity as LoginActivity?)?.changeFragment(SignUpGenderFragment.newInstance())
                 }
             })
