@@ -60,7 +60,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutt_card"
+            android:id="@+id/layout_gender_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
@@ -76,7 +76,7 @@
                 android:id="@+id/iv_gender_man_shadow"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/shadow_rose_gold_22"
+                android:src="@drawable/shadow_stack"
                 app:layout_constraintBottom_toBottomOf="@id/iv_gender_man"
                 app:layout_constraintEnd_toEndOf="@id/iv_gender_man"
                 app:layout_constraintStart_toStartOf="@id/iv_gender_man"
@@ -100,7 +100,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:onClick="@{() -> viewModel.onSelectGender(Gender.MAN )}"
-                android:src="@drawable/shadow_card_disable"
+                android:background="@drawable/shadow_stack"
+                android:backgroundTint="@color/black"
                 android:visibility="@{viewModel.userGender==Gender.MAN ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/iv_gender_man"
                 app:layout_constraintEnd_toEndOf="@id/iv_gender_man"
@@ -111,7 +112,7 @@
                 android:id="@+id/iv_gender_woman_shadow"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@drawable/shadow_rose_gold_22"
+                android:src="@drawable/shadow_stack"
                 app:layout_constraintBottom_toBottomOf="@id/iv_gender_woman"
                 app:layout_constraintEnd_toEndOf="@id/iv_gender_woman"
                 app:layout_constraintStart_toStartOf="@id/iv_gender_woman"
@@ -134,7 +135,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:onClick="@{() -> viewModel.onSelectGender(Gender.WOMAN )}"
-                android:src="@drawable/shadow_card_disable"
+                android:background="@drawable/shadow_stack"
+                android:backgroundTint="@color/black"
                 android:visibility="@{viewModel.userGender==Gender.WOMAN ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/iv_gender_woman"
                 app:layout_constraintEnd_toEndOf="@id/iv_gender_woman"
@@ -144,10 +146,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/btnSignUpNextShadow"
+            android:id="@+id/btn_sign_up_next_shadow"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:background="@drawable/shadow_rose_gold_22"
+            android:background="@drawable/shadow_stack"
             android:backgroundTint="@color/rose_gold"
             android:visibility="@{viewModel.toTheNextStep ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -158,7 +160,7 @@
 
 
         <TextView
-            android:id="@+id/btnSignUpNext"
+            android:id="@+id/btn_sign_up_next"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"
@@ -169,10 +171,10 @@
             android:text="@string/next"
             android:textColor="@{viewModel.toTheNextStep ? @color/pinkish_tan : @color/disable_text}"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/btnSignUpNextShadow"
-            app:layout_constraintEnd_toEndOf="@id/btnSignUpNextShadow"
-            app:layout_constraintStart_toStartOf="@+id/btnSignUpNextShadow"
-            app:layout_constraintTop_toTopOf="@id/btnSignUpNextShadow" />
+            app:layout_constraintBottom_toBottomOf="@id/btn_sign_up_next_shadow"
+            app:layout_constraintEnd_toEndOf="@id/btn_sign_up_next_shadow"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_up_next_shadow"
+            app:layout_constraintTop_toTopOf="@id/btn_sign_up_next_shadow" />
 
 
         <TextView
@@ -184,8 +186,8 @@
             android:textColor="@color/rose_gold"
             android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday,true)}"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@id/btnSignUpNext"
-            app:layout_constraintStart_toStartOf="@id/btnSignUpNext"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignUpNext" />
+            app:layout_constraintEnd_toEndOf="@id/btn_sign_up_next"
+            app:layout_constraintStart_toStartOf="@id/btn_sign_up_next"
+            app:layout_constraintTop_toBottomOf="@+id/btn_sign_up_next" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
