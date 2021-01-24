@@ -8,6 +8,8 @@
     <string name="set_birthday">생년월일 선택</string>
     <string name="complete_signup">회원가입 완료</string>
     <string name="input_nickname">닉네임을 입력해주세요</string>
+    <string name="input_gender">성별을 선택해주세요</string>
     <string name="input_nickname_hint">8글자로 만들어주세요</string>
     <string name="next">다음</string>
+    <string name="jump">건너뛰기</string>
 </resources>
