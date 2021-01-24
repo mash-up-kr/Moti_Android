@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/bg_gradient"
         android:layout_width="match_parent"
+        android:clickable="true"
         android:layout_height="match_parent">
 
         <ImageView
@@ -22,32 +23,69 @@
             android:layout_marginStart="12dp"
             android:onClick="@{() -> viewModel.onClickPopFragment()}"
             android:src="@drawable/ic_arrow_left"
-            app:layout_constraintBottom_toBottomOf="@id/tv_nickname_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_complete_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_nickname_title" />
+            app:layout_constraintTop_toTopOf="@id/tv_complete_title" />
 
         <TextView
-            android:id="@+id/tv_nickname_title"
+            android:id="@+id/tv_complete_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/complete_signup"
-            android:textColor="@color/rosegold"
+            android:paddingTop="28dp"
+            android:paddingBottom="25dp"
+            android:text="@string/sign_up_complete"
+            android:textColor="@color/rose_gold"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignUp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="296dp"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.EXIT)}"
-            android:text="compelete"
+
+        <TextView
+            android:id="@+id/tv_complete_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="@string/sign_up_complete_content"
+            android:textColor="@color/rose_gold"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_complete_shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_complete_title"
+            app:layout_constraintVertical_bias="0.51" />
+
+        <TextView
+            android:id="@+id/btn_complete_shadow"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:background="@drawable/shadow_stack"
+            android:backgroundTint="@color/rose_gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.948"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_complete_title"
+            app:layout_constraintVertical_bias="0.75" />
+
+        <TextView
+            android:id="@+id/btn_complete"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/radius_20"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.EXIT,true)}"
+            android:text="@string/start"
+            android:textColor="@color/pinkish_tan"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_complete_shadow"
+            app:layout_constraintEnd_toEndOf="@id/btn_complete_shadow"
+            app:layout_constraintStart_toStartOf="@+id/btn_complete_shadow"
+            app:layout_constraintTop_toTopOf="@id/btn_complete_shadow" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
