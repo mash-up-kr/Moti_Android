@@ -5,10 +5,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ofu.moti.BaseFragment
 import com.ofu.moti.R
-import com.ofu.moti.databinding.FragmentLoginCompleteBinding
+import com.ofu.moti.databinding.FragmentSignupCompleteBinding
 
 class SignUpCompleteFragment :
-    BaseFragment<FragmentLoginCompleteBinding>(R.layout.fragment_login_complete) {
+    BaseFragment<FragmentSignupCompleteBinding>(R.layout.fragment_signup_complete) {
 
     private val viewModel by viewModels<LoginViewModel>()
 
@@ -17,8 +17,8 @@ class SignUpCompleteFragment :
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
-                if (it == LoginViewModel.SignUpFragment.EXIT) {
-                    (activity as LoginActivity?)?.startMainActivity()
+            if (it == LoginViewModel.SignUpFragment.EXIT) {
+                (activity as LoginActivity?)?.startMainActivity()
                 }
             })
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
