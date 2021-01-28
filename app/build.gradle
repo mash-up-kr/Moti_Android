@@ -90,6 +90,10 @@ dependencies {
     // okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
 
+    //Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.3.0')
+    //Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
