@@ -31,7 +31,7 @@ android {
     buildToolsVersion build_tools_version
 
     defaultConfig {
-        applicationId "com.ofu.moti"
+        applicationId "com.ahobsu.moti"
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode 1

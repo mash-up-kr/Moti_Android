@@ -1,10 +1,10 @@
-package com.ofu.moti.main
+package com.ahobsu.moti.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.ofu.moti.BaseActivity
-import com.ofu.moti.R
-import com.ofu.moti.databinding.ActivityMainBinding
+import com.ahobsu.moti.BaseActivity
+import com.ahobsu.moti.R
+import com.ahobsu.moti.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 

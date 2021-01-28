@@ -1,4 +1,4 @@
-package com.ofu.moti
+package com.ahobsu.moti
 
 import org.junit.Test
 
