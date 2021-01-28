@@ -1,13 +1,13 @@
-package com.ofu.moti.login
+package com.ahobsu.moti.login
 
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.ofu.moti.BaseFragment
-import com.ofu.moti.R
-import com.ofu.moti.databinding.FragmentSignupNicknameBinding
+import com.ahobsu.moti.BaseFragment
+import com.ahobsu.moti.R
+import com.ahobsu.moti.databinding.FragmentSignupNicknameBinding
 
 
 class SignUpNicknameFragment :

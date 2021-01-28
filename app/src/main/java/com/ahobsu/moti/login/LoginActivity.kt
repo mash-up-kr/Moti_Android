@@ -1,14 +1,14 @@
-package com.ofu.moti.login
+package com.ahobsu.moti.login
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.ofu.moti.BaseActivity
-import com.ofu.moti.R
-import com.ofu.moti.databinding.ActivityLoginBinding
-import com.ofu.moti.main.MainActivity
+import com.ahobsu.moti.BaseActivity
+import com.ahobsu.moti.R
+import com.ahobsu.moti.databinding.ActivityLoginBinding
+import com.ahobsu.moti.main.MainActivity
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
