@@ -1,4 +1,4 @@
-package com.ofu.moti
+package com.ahobsu.moti
 
 import android.os.Bundle
 import android.view.LayoutInflater
