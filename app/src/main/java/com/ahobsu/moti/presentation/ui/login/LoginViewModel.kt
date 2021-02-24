@@ -1,12 +1,12 @@
-package com.ahobsu.moti.login
+package com.ahobsu.moti.presentation.ui.login
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
-import com.ahobsu.moti.BaseViewModel
+import com.ahobsu.moti.presentation.BaseViewModel
 
-class LoginViewModel :BaseViewModel() {
+class LoginViewModel : BaseViewModel() {
 
     enum class SignUpFragment { Birthday, Complete, Gender, NickName, EXIT }
     enum class Gender { MAN, WOMAN }

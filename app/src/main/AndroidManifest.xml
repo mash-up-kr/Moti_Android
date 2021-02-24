@@ -3,14 +3,15 @@
 	package="com.ahobsu.moti">
 
 	<application
+		android:name=".MotiApplication"
 		android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/Theme.Moti">
-		<activity android:name="com.ahobsu.moti.main.MainActivity"/>
-		<activity android:name="com.ahobsu.moti.login.LoginActivity">
+		<activity android:name="com.ahobsu.moti.presentation.ui.main.MainActivity"/>
+		<activity android:name="com.ahobsu.moti.presentation.ui.login.LoginActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

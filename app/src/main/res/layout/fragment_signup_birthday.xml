@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.ahobsu.moti.login.LoginViewModel.SignUpFragment" />
+        <import type="com.ahobsu.moti.presentation.ui.login.LoginViewModel.SignUpFragment" />
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.login.LoginViewModel" />
+            type="com.ahobsu.moti.presentation.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_birthday_title" />
 
-        <com.ahobsu.moti.login.DatePickerCustomView
+        <com.ahobsu.moti.presentation.ui.login.DatePickerCustomView
             android:id="@+id/data_picker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

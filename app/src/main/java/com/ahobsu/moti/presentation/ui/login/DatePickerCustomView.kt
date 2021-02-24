@@ -1,4 +1,4 @@
-package com.ahobsu.moti.login
+package com.ahobsu.moti.presentation.ui.login
 
 import android.content.Context
 import android.util.AttributeSet

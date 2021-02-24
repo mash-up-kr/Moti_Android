@@ -1,9 +1,9 @@
-package com.ahobsu.moti.login
+package com.ahobsu.moti.presentation.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.ahobsu.moti.BaseFragment
+import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.FragmentSignupCompleteBinding
 

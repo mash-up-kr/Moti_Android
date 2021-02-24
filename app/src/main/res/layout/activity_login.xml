@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.ahobsu.moti.login.LoginViewModel.SignUpFragment" />
+        <import type="com.ahobsu.moti.presentation.ui.login.LoginViewModel.SignUpFragment" />
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.login.LoginViewModel" />
+            type="com.ahobsu.moti.presentation.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,9 +17,10 @@
         android:background="@drawable/bg_gradient"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.LoginActivity">
+        tools:context=".presentation.ui.login.LoginActivity">
 
         <TextView
+            android:clickable="true"
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
