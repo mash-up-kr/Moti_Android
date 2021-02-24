@@ -1,14 +1,14 @@
-package com.ahobsu.moti.login
+package com.ahobsu.moti.presentation.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.ahobsu.moti.BaseFragment
+import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.R
-import com.ahobsu.moti.databinding.FragmentSignupBirthdayBinding
+import com.ahobsu.moti.databinding.FragmentSignupGenderBinding
 
-class SignUpBirthdayFragment :
-    BaseFragment<FragmentSignupBirthdayBinding>(R.layout.fragment_signup_birthday) {
+class SignUpGenderFragment : BaseFragment<FragmentSignupGenderBinding>(R.layout
+    .fragment_signup_gender){
 
     private val viewModel by viewModels<LoginViewModel>()
 
@@ -17,8 +17,8 @@ class SignUpBirthdayFragment :
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
-                if (it == LoginViewModel.SignUpFragment.Complete) {
-                    (activity as LoginActivity?)?.changeFragment(SignUpCompleteFragment.newInstance())
+                if (it == LoginViewModel.SignUpFragment.Birthday) {
+                    (activity as LoginActivity?)?.changeFragment(SignUpBirthdayFragment.newInstance())
                 }
             })
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
@@ -27,7 +27,7 @@ class SignUpBirthdayFragment :
     }
 
     companion object {
-        fun newInstance() = SignUpBirthdayFragment()
+        fun newInstance() = SignUpGenderFragment()
     }
 
 }

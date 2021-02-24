@@ -6,7 +6,7 @@
 
 		<variable
 			name="mainVM"
-			type="com.ahobsu.moti.main.MainViewModel" />
+			type="com.ahobsu.moti.presentation.ui.main.MainViewModel" />
 	</data>
 
 	<androidx.constraintlayout.widget.ConstraintLayout

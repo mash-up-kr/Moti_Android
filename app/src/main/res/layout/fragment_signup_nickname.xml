@@ -4,11 +4,11 @@
 
     <data>
         <import type="android.view.View" />
-        <import type="com.ahobsu.moti.login.LoginViewModel.SignUpFragment" />
+        <import type="com.ahobsu.moti.presentation.ui.login.LoginViewModel.SignUpFragment" />
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.login.LoginViewModel" />
+            type="com.ahobsu.moti.presentation.ui.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

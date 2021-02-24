@@ -1,13 +1,15 @@
-package com.ahobsu.moti.login
+package com.ahobsu.moti.presentation.ui.login
 
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.ahobsu.moti.BaseFragment
+import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.R
+import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentSignupNicknameBinding
+import com.ahobsu.moti.domain.SiginInUseCase
 
 
 class SignUpNicknameFragment :
@@ -18,6 +20,7 @@ class SignUpNicknameFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
                 if (it == LoginViewModel.SignUpFragment.Gender) {

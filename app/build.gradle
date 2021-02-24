@@ -22,6 +22,17 @@ ext{
 
     fragment_ktx_version = '1.2.5'
 
+    //gson_version
+    gson_version = '2.8.6'
+
+    //rxandoird_version
+    rxandoird_version = '3.0.0'
+
+    //rxjava_version
+    rxjava_version = '3.0.6'
+
+    logging_version = '4.9.0'
+
     // retrofit
     retrofit_version = '2.9.0'
     okhttp3_version = '4.8.0'
@@ -84,9 +95,16 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_android_x_version"
 
-    // retrofit
+    //rx android
+    implementation "io.reactivex.rxjava3:rxandroid:$rxandoird_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
+
+    //retrofit2
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_version"
 
     // okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
