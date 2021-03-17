@@ -46,8 +46,168 @@
 					android:src="@{viewModel.getCountCheck(1)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
 			</LinearLayout>
 
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
 
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="2st"
+					android:textColor="@color/rose_gold"
+					android:textSize="13dp" />
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="8dp"
+					android:src="@{viewModel.getCountCheck(2)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="3st"
+					android:textColor="@color/rose_gold"
+					android:textSize="13dp" />
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="8dp"
+					android:src="@{viewModel.getCountCheck(3)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="4st"
+					android:textColor="@color/rose_gold"
+					android:textSize="13dp" />
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="8dp"
+					android:src="@{viewModel.getCountCheck(4)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="5st"
+					android:textColor="@color/rose_gold"
+					android:textSize="13dp" />
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="8dp"
+					android:src="@{viewModel.getCountCheck(5)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="6st"
+					android:textColor="@color/rose_gold"
+					android:textSize="13dp" />
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_gravity="center"
+					android:layout_marginTop="8dp"
+					android:src="@{viewModel.getCountCheck(6)? @drawable/shadow_main_mini_on : @drawable/shadow_main_mini_off}" />
+			</LinearLayout>
 		</LinearLayout>
+
+		<ImageView
+			android:id="@+id/iv_home_card"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginStart="48dp"
+			android:layout_marginEnd="48dp"
+			android:src="@drawable/shadow_stack"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintDimensionRatio="H,1:1.6"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Motivation"
+			android:textColor="@color/rose_gold"
+			android:textSize="16dp"
+			app:layout_constraintBottom_toTopOf="@id/iv_home_card_question"
+			app:layout_constraintEnd_toEndOf="@id/iv_home_card"
+			app:layout_constraintStart_toStartOf="@id/iv_home_card"
+			app:layout_constraintTop_toTopOf="@id/iv_home_card" />
+
+		<ImageView
+			android:id="@+id/iv_home_card_question"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:layout_marginStart="40dp"
+			android:layout_marginEnd="40dp"
+			android:src="@drawable/ic_question"
+			app:layout_constraintBottom_toBottomOf="@id/iv_home_card"
+			app:layout_constraintDimensionRatio="H,1:1"
+			app:layout_constraintEnd_toEndOf="@id/iv_home_card"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toStartOf="@id/iv_home_card"
+			app:layout_constraintTop_toTopOf="@id/iv_home_card"
+			app:layout_constraintVertical_bias="0.383" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="Today’s\nyour\nQuestion"
+			android:textColor="@color/rose_gold"
+			android:textSize="16dp"
+			app:layout_constraintTop_toBottomOf="@id/iv_home_card_question"
+			app:layout_constraintEnd_toEndOf="@id/iv_home_card"
+			app:layout_constraintStart_toStartOf="@id/iv_home_card"
+			app:layout_constraintBottom_toBottomOf="@id/iv_home_card" />
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

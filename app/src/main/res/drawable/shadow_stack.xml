@@ -117,7 +117,7 @@
                 android:left="1.2dp"
                 android:right="1.2dp"
                 android:top="1.2dp" />
-            <solid android:color="#1ACCCCCC" />
+            <solid android:color="#000" />
         </shape>
     </item>
 
