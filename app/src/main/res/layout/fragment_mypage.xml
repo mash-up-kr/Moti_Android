@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,12 +14,181 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
         android:clickable="true">
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="mypage"
-            android:textColor="@color/shadow_gray"
-            android:textSize="80dp" />
+            android:id="@+id/tv_mypage_title"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/mypage_title"
+            android:gravity="center"
+            android:text="@string/mypage"
+            android:textColor="@color/rose_gold"
+            android:textSize="19dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_mypage_edit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_rewrite"
+            app:layout_constraintBottom_toBottomOf="@id/tv_mypage_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_mypage_title" />
+
+        <ImageView
+            android:id="@+id/iv_mypage_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="12dp"
+            android:src="@color/rose_gold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_title" />
+
+        <TextView
+            android:id="@+id/tv_mypage_name"
+            android:layout_width="0dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/mypage"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_mypage_image" />
+
+        <View
+            android:id="@+id/tv_mypage_view1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/light_gold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/nickname"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_view1" />
+
+        <TextView
+            android:id="@+id/tv_mypage_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="닉네임여덟글자"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_view1" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/birth"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
+
+        <TextView
+            android:id="@+id/tv_mypage_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="0000.00.00"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/gender"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
+
+        <TextView
+            android:id="@+id/tv_mypage_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="남녀"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
+
+
+        <View
+            android:id="@+id/tv_mypage_view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/light_gold"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintStart_toStartOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_gender" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/nickname"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_view2" />
+
+        <TextView
+            android:id="@+id/tv_mypage_version"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="현재 0.0.0"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_view2" />
+
+        <TextView
+            android:id="@+id/tv_mypage_qa"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/qa"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_version" />
+
+        <TextView
+            android:id="@+id/tv_mypage_user_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mypage_text_h"
+            android:gravity="center"
+            android:text="@string/user_agreement_kr"
+            android:textColor="@color/rose_gold"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mypage_view1"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_qa" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

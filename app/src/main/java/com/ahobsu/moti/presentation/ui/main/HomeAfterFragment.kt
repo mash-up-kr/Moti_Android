@@ -1,14 +1,14 @@
 package com.ahobsu.moti.presentation.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import com.ahobsu.moti.R
-import com.ahobsu.moti.databinding.FragmentDiaryBinding
+import androidx.fragment.app.viewModels
+import com.ahobsu.moti.databinding.FragmentHomeAfterBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
 
-class DiaryFragment :
-    BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
+class HomeAfterFragment :
+    BaseFragment<FragmentHomeAfterBinding>(R.layout.fragment_home_after) {
 
     private val viewModel by viewModels<MainViewModel>()
 
@@ -18,7 +18,7 @@ class DiaryFragment :
     }
 
     companion object {
-        fun newInstance() = DiaryFragment()
+        fun newInstance() = HomeAfterFragment()
     }
 
 }

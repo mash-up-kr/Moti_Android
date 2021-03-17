@@ -16,7 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initMainDataBinding()
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.main_container, HomeFragment.newInstance())
+            replace(R.id.main_container, HomeBeforeFragment.newInstance())
         }.commit()
 
         binding.bottomNavi.setOnNavigationItemSelectedListener {
@@ -34,7 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.home -> {
-                    changeFragment(HomeFragment.newInstance())
+                    changeFragment(HomeAfterFragment.newInstance())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else ->  {
