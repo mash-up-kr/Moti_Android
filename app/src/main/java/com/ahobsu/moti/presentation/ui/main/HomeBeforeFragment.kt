@@ -1,14 +1,14 @@
 package com.ahobsu.moti.presentation.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import com.ahobsu.moti.R
-import com.ahobsu.moti.databinding.FragmentHomeBinding
+import androidx.fragment.app.viewModels
+import com.ahobsu.moti.databinding.FragmentHomeBeforeBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
 
-class HomeFragment :
-    BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeBeforeFragment :
+    BaseFragment<FragmentHomeBeforeBinding>(R.layout.fragment_home_before) {
 
     private val viewModel by viewModels<MainViewModel>()
 
@@ -18,7 +18,7 @@ class HomeFragment :
     }
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = HomeBeforeFragment()
     }
 
 }

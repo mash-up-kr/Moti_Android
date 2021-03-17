@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.FragmentAlbumBinding
-import com.ahobsu.moti.databinding.FragmentHomeBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
 

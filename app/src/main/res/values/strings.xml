@@ -16,4 +16,13 @@
     <string name="sign_up_complete">회원가입 완료</string>
     <string name="sign_up_complete_content">닉네임여덟글자임님\n회원가입을\n축하합니다!</string>
     <string name="start">시작하기</string>
+    <string name="mypage">마이페이지</string>
+    <string name="album">앨범</string>
+    <string name="diary">다이어리</string>
+    <string name="nickname">닉네임</string>
+    <string name="birth">생년월일</string>
+    <string name="gender">성별</string>
+    <string name="version_info">버전 정보</string>
+    <string name="qa">문의하기</string>
+    <string name="user_agreement_kr">개인정보취급방침 및 이용약관</string>
 </resources>
