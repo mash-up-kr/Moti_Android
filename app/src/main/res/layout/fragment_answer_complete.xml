@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ahobsu.moti.presentation.ui.question.QuestionViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/complete_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:gravity="center"
+            android:text="오늘 비가와요. 비를 주제로\n한줄 시를 써볼까요?"
+            android:textColor="@color/rose_gold"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/complete_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="월요일의 파츠를 얻었어요. 확인해볼까요?"
+            android:textColor="@color/rose_gold"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_answer"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:src="@drawable/ic_question" />
+
+        <TextView
+            android:id="@+id/btn_complete"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/shadow_stack_white"
+            android:gravity="center"
+            android:text="@string/answer_complete"
+            android:textColor="@color/pinkish_tan"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</layout>

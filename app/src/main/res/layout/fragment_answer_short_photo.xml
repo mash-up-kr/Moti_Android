@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ahobsu.moti.presentation.ui.question.QuestionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient">
+
+        <View
+            android:id="@+id/view_answer_camera"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_answer_camera"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:src="@drawable/ic__camera_incircle"
+            app:layout_constraintBottom_toBottomOf="@id/view_answer_camera"
+            app:layout_constraintEnd_toEndOf="@id/view_answer_camera"
+            app:layout_constraintStart_toStartOf="@id/view_answer_camera"
+            app:layout_constraintTop_toTopOf="@id/view_answer_camera" />
+
+        <View
+            android:id="@+id/view1_answer_camera"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/gold_brown"
+            app:layout_constraintEnd_toEndOf="@id/view_answer_camera"
+            app:layout_constraintStart_toStartOf="@id/view_answer_camera"
+            app:layout_constraintTop_toBottomOf="@id/view_answer_camera" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_answer_camera">
+
+            <TextView
+                android:id="@+id/tv_answer_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mypage_title"
+                android:text="오늘 비가와요. 비를 주제로\n한줄 시를 써볼까요?"
+                android:textColor="@color/rose_gold"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/iv_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_answer_decobar" />
+
+            <EditText
+                android:id="@+id/et_answer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="@string/answer_text"
+                android:textColorHint="@color/place_holder_black"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

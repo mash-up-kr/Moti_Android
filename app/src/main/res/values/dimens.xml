@@ -2,4 +2,6 @@
 <resources>
     <dimen name="mypage_title">72dp</dimen>
     <dimen name="mypage_text_h">52dp</dimen>
+    <dimen name="pageMargin">16dp</dimen>
+    <dimen name="pagerWidth">277dp</dimen>
 </resources>
