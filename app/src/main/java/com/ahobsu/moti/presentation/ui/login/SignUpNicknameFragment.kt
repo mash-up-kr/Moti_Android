@@ -7,9 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.R
-import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentSignupNicknameBinding
-import com.ahobsu.moti.domain.SiginInUseCase
 
 
 class SignUpNicknameFragment :
@@ -35,7 +33,6 @@ class SignUpNicknameFragment :
             (activity as LoginActivity?)?.popFragment()
         })
     }
-
 
     companion object {
         fun newInstance() = SignUpNicknameFragment()

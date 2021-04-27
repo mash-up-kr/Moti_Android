@@ -9,23 +9,19 @@ import com.ahobsu.moti.domain.repository.UserRepository
 
 object Injection {
 
-//    fun provideSignInRepository():SignInDataSource{
-//        return RemoteUserDataSource(
-//            ApiProvider.provideSignInApi()
-//        )
-//    }
-
-
-
     fun provideUserRepository(): UserRepository {
-        Log.e("123123", "provideUserRepository")
-
         return UserRepositoryImpl(provideUserRemoteDataSource())
     }
 
     private fun provideUserRemoteDataSource(): UserDataSource {
-        Log.e("123123", "provideUserRemoteDataSource")
-
         return RemoteUserDataSource(ApiProvider.provideSignInApi())
+    }
+
+    fun provideSignUpRepository(): UserRepository {
+        return UserRepositoryImpl(provideSignUpRemoteDataSource())
+    }
+
+    private fun provideSignUpRemoteDataSource(): UserDataSource {
+        return RemoteUserDataSource(ApiProvider.provideSignUpApi())
     }
 }

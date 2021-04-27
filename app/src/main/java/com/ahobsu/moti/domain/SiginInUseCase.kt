@@ -1,13 +1,18 @@
 package com.ahobsu.moti.domain
 
-import android.util.Log
+import com.ahobsu.moti.data.dto.BaseData
+import com.ahobsu.moti.data.dto.SignInResponse
 import com.ahobsu.moti.domain.repository.UserRepository
+import io.reactivex.rxjava3.core.Single
 
-class SiginInUseCase(
-    private val userRepository: UserRepository,
-    private val snsType: String
+class SigInInUseCase(
+    private val userRepository: UserRepository
 ) {
-    operator fun invoke(): Result<Unit> {
+    operator fun invoke(snsType: String): Single<BaseData<SignInResponse>> {
         return userRepository.signIn(snsType)
+    }
+
+    fun refreshLogin(): Single<BaseData<SignInResponse>> {
+        return userRepository.refreshSignIn()
     }
 }

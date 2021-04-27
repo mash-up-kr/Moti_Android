@@ -27,5 +27,6 @@
 	<string name="user_agreement_kr">개인정보취급방침 및 이용약관</string>
 	<string name="answer_text">이곳에 질문에 대한 답을 적어주세요.</string>
 	<string name="answer_complete">확인하러 가기</string>
+	<string name="again_question">질문 다시 받기</string>
 
 </resources>
