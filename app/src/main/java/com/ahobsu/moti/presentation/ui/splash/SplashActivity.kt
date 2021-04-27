@@ -67,8 +67,8 @@ class SplashActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
                 Log.e("getUserMy", "success  $it")
-                Unit.putAccessToken(it.data?.accessToken)
-                Unit.putRefreshToken(it.data?.refreshToken)
+                Unit.putAccessToken(it.accessToken)
+                Unit.putRefreshToken(it.refreshToken)
                 startActivity(Intent(this, MainActivity::class.java))
             }, { e ->
                 startActivity(Intent(this, LoginActivity::class.java))

@@ -2,6 +2,7 @@ package com.ahobsu.moti.data.api
 
 import android.util.Log
 import com.ahobsu.moti.Unit
+import com.ahobsu.moti.domain.entity.Mission
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiProvider {
     private const val baseUrl = "https://moti.company/api/v1/"
 
+    fun provideMissionApi(): MissionService = getRetrofitBuild.create(MissionService::class.java)
     fun provideSignInApi(): UserService = getRetrofitBuild.create(UserService::class.java)
     fun provideSignUpApi(): UserService = getSignUpRetrofitBuild.create(UserService::class.java)
 
