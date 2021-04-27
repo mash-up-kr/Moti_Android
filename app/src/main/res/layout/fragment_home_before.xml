@@ -163,6 +163,7 @@
 			android:layout_height="0dp"
 			android:layout_marginStart="48dp"
 			android:layout_marginEnd="48dp"
+			android:onClick="@{() -> viewModel.startQuestionActivity(context)}"
 			android:src="@drawable/shadow_stack"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintDimensionRatio="H,1:1.6"

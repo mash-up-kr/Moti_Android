@@ -88,9 +88,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ it ->
-                        Log.e("accessToken Success ", it.data.toString())
-                        Unit.putAccessToken(it.data?.accessToken)
-                        Unit.putRefreshToken(it.data?.refreshToken)
+                        Log.e("accessToken Success ", it.toString())
+                        Unit.putAccessToken(it.accessToken)
+                        Unit.putRefreshToken(it.refreshToken)
                     }, { e ->
                         Log.e("postSignIn e", e.toString())
                     })

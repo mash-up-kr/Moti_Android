@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Single
 class UserUseCase (
     private val userRepository: UserRepository
 ) {
-    fun getUser(): Single<BaseData<UserMyResponse>>  {
+    fun getUser(): Single<User>  {
         return userRepository.getUser()
 
     }
