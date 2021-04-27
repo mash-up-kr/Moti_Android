@@ -56,7 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_birthday_title" />
 
-        <com.ahobsu.moti.presentation.ui.login.DatePickerCustomView
+        <com.ahobsu.moti.presentation.cuscomview.DatePickerCustomView
             android:id="@+id/data_picker"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
