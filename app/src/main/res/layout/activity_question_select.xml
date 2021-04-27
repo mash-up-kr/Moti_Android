@@ -9,10 +9,35 @@
             type="com.ahobsu.moti.presentation.ui.question.QuestionViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_gradient">
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_gradient"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/tv_question_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_question_title" />
+
+        <TextView
+            android:id="@+id/tv_question_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="28dp"
+            android:paddingBottom="25dp"
+            android:text="@string/sign_up_complete"
+            android:textColor="@color/rose_gold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.viewpager2.widget.ViewPager2
@@ -27,5 +52,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/btn_complete"
+            android:layout_width="220dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="32dp"
+            android:layout_gravity="center"
+            android:background="@drawable/radius_borderline_22"
+            android:gravity="center"
+            android:text="@string/again_question"
+            android:textColor="@color/pinkish_tan"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

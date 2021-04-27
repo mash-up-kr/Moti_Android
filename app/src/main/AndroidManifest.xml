@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ahobsu.moti">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MotiApplication"
@@ -10,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moti">
+        <activity android:name=".presentation.ui.question.QuestionSelectActivity" />
+        <activity android:name=".presentation.ui.main.MainActivity" />
         <activity android:name=".presentation.ui.login.LoginActivity" />
-        <activity android:name=".presentation.ui.main.MainActivity"/>
-        <activity android:name=".presentation.ui.question.QuestionSelectActivity" >
+        <activity android:name=".presentation.ui.login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

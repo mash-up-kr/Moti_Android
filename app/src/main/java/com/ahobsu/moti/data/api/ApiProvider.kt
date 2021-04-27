@@ -1,7 +1,7 @@
 package com.ahobsu.moti.data.api
 
 import android.util.Log
-import com.ahobsu.moti.MotiApplication
+import com.ahobsu.moti.Unit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,16 +11,35 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiProvider {
     private const val baseUrl = "https://moti.company/api/v1/"
 
-    private val authToken: String?
-        get() = MotiApplication.INSTANCE.sharedPreferences.getString("jwt", null)
+    fun provideSignInApi(): UserService = getRetrofitBuild.create(UserService::class.java)
+    fun provideSignUpApi(): UserService = getSignUpRetrofitBuild.create(UserService::class.java)
 
-    fun provideSignInApi(): SignInService = getRetrofitBuild.create(SignInService::class.java)
-
-    private var client = OkHttpClient.Builder()
+    private var clientSignUp = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
         .addInterceptor { chain ->
             val newRequest = chain.request().newBuilder().apply {
-                authToken?.let {
+                Unit.jwt?.let {
+                    Log.e("Authorization", it)
+                    addHeader("Authorization", it)
+                }
+            }.build()
+            chain.proceed(newRequest)
+        }.build()
+
+    private val getSignUpRetrofitBuild =
+        Retrofit
+            .Builder()
+            .baseUrl(baseUrl)
+            .client(clientSignUp)
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    private var clientSignIn = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+        .addInterceptor { chain ->
+            val newRequest = chain.request().newBuilder().apply {
+                Unit.accessToken?.let {
                     Log.e("Authorization", it)
                     addHeader("Authorization", it)
                 }
@@ -32,8 +51,7 @@ object ApiProvider {
         Retrofit
             .Builder()
             .baseUrl(baseUrl)
-            .client(client)
-            // 받은 응답을 옵서버블 형태로 변환해 줍니다.
+            .client(clientSignIn)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

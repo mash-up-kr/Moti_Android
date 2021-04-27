@@ -1,58 +1,49 @@
 package com.ahobsu.moti.presentation.ui.login
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import com.ahobsu.moti.MotiApplication
-import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.R
+import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityLoginBinding
-import com.ahobsu.moti.domain.Result
-import com.ahobsu.moti.domain.SiginInUseCase
+import com.ahobsu.moti.domain.SigInInUseCase
+import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
     private val loginViewModel by viewModels<LoginViewModel>()
     private lateinit var googleSignInClient: GoogleSignInClient
-
     private lateinit var auth: FirebaseAuth
 
-    private   val jwt = "jwt"
-    private lateinit var mPreferences: SharedPreferences
-    private   val sharedPrefFile = "app_preferences"
-
-    val authToken: String?
-        get() = MotiApplication.INSTANCE.sharedPreferences.getString("jwt", null)
+    private val sharedPrefFile = "app_preferences"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMainDataBinding()
 
-        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        Unit.mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
         binding.tvTitle.setOnClickListener {
             Log.e("setOnClickListener", "click")
-
-            authToken?.let {
+            Unit.jwt?.let {
                 Log.e("Authorization", it)
             }
-            SiginInUseCase(Injection.provideUserRepository(),"apple")()
-
         }
         binding.btnLogin.setOnClickListener {
             signIn()
@@ -84,22 +75,26 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        Log.d(TAG, "requestCode:" + requestCode)
-        Log.d(TAG, "resultCode:" + resultCode)
-        Log.d(TAG, "data:" + data)
-
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)!!
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-                Log.d(TAG, "firebaseAuthWith  idToken :" + account.idToken)
-                firebaseAuthWithGoogle(account.idToken!!)
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account!!)
+                Unit.putJWT(account.idToken)
 
+                SigInInUseCase(Injection.provideSignUpRepository())("apple")
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ it ->
+                        Log.e("accessToken Success ", it.data.toString())
+                        Unit.putAccessToken(it.data?.accessToken)
+                        Unit.putRefreshToken(it.data?.refreshToken)
+                    }, { e ->
+                        Log.e("postSignIn e", e.toString())
+                    })
+                startActivity(intent)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
@@ -128,23 +123,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
-        preferencesEditor.putString(jwt, idToken)
-
-        preferencesEditor.apply()
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    val view = binding.login
-                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
                 }
             }
     }
