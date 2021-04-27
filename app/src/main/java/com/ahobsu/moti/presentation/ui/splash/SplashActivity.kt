@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.login
+package com.ahobsu.moti.presentation.ui.splash
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,6 +10,7 @@ import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.domain.SigInInUseCase
 import com.ahobsu.moti.domain.UserUseCase
+import com.ahobsu.moti.presentation.ui.login.LoginActivity
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
