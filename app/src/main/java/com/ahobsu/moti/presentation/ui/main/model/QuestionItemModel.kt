@@ -1,7 +1,7 @@
-package com.ahobsu.moti.presentation.ui.question
+package com.ahobsu.moti.presentation.ui.main.model
 
 
-data class QuestionItemViewModel(
+data class QuestionItemModel(
     val id: Int? = 0,
     val title: String? = "",
     val isContent: Boolean? = true,

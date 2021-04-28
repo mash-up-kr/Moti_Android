@@ -5,12 +5,12 @@ import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.main.model.HomeData
-import com.ahobsu.moti.presentation.ui.question.QuestionSelectActivity
+import com.ahobsu.moti.presentation.ui.question.QuestionActivity
 
 
 class MainViewModel : BaseViewModel() {
 
-    val homeData = MutableLiveData<HomeData>(HomeData(4))
+    private val homeData = MutableLiveData<HomeData>(HomeData(4))
 
     fun getCountCheck(int: Int): Boolean {
         homeData.value?.let {
@@ -21,6 +21,6 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun startQuestionActivity(context: Context) {
-        context.startActivity(Intent(context, QuestionSelectActivity::class.java))
+        context.startActivity(Intent(context, QuestionActivity::class.java))
     }
 }
