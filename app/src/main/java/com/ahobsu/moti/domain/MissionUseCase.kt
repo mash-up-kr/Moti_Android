@@ -8,4 +8,7 @@ class MissionUseCase(private val missionRepository: MissionRepository) {
     fun getMissions(): Single<List<Mission>> {
         return missionRepository.getMissions()
     }
+    fun getRefreshMissions(): Single<List<Mission>> {
+        return missionRepository.getRefreshMissions()
+    }
 }

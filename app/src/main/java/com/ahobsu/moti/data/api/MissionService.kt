@@ -9,4 +9,7 @@ import retrofit2.http.POST
 interface MissionService {
     @GET("missions")
     fun getMissions(): Single<BaseData<MissionResponse>>
+
+    @GET("missions/refresh")
+    fun getRefreshMissions(): Single<BaseData<MissionResponse>>
 }

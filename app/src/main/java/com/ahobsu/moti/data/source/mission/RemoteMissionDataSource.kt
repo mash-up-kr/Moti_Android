@@ -13,4 +13,8 @@ class RemoteMissionDataSource(
     override fun getMissions(): Single<BaseData<MissionResponse>> {
         return missionApi.getMissions()
     }
+
+    override fun getRefreshMissions(): Single<BaseData<MissionResponse>> {
+        return missionApi.getRefreshMissions()
+    }
 }
