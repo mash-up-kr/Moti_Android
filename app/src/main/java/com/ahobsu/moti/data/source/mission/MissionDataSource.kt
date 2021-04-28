@@ -8,4 +8,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface MissionDataSource {
     fun getMissions(): Single<BaseData<MissionResponse>>
+    fun getRefreshMissions(): Single<BaseData<MissionResponse>>
 }

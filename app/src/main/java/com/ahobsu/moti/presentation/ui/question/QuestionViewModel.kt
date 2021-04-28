@@ -16,12 +16,29 @@ class QuestionViewModel(private val missionRepository: MissionRepository) : Base
     private val _questionList = MutableLiveData<List<QuestionItemModel>>()
     val questionList: LiveData<List<QuestionItemModel>> = _questionList
 
+
     init {
         initQuestion()
     }
 
     fun onClickReset(){
-        initQuestion()
+        MissionUseCase(missionRepository).getRefreshMissions()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ it ->
+                Log.e("getMissions ", it.toString())
+                val items = it.map {
+                    QuestionItemModel(
+                        id = it.id,
+                        title = it.title,
+                        isContent = it.isContent,
+                        isImage = it.isImage
+                    )
+                }
+                _questionList.postValue(items)
+            }, { e ->
+                Log.e("e", e.toString())
+            })
     }
 
     fun initQuestion() {

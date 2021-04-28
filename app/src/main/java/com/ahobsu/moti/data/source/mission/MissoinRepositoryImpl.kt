@@ -21,4 +21,18 @@ class MissionRepositoryImpl(
             }
         }
     }
+
+    override fun getRefreshMissions(): Single<List<Mission>> {
+        return missionDataSource.getRefreshMissions().map { res ->
+            res.data?.missions?.map {
+                Mission(
+                    id = it.id,
+                    title = it.title,
+                    isContent = it.isContent,
+                    isImage = it.isImage,
+                    cycle = it.cycle
+                )
+            }
+        }
+    }
 }

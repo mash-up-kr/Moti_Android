@@ -5,4 +5,5 @@ import io.reactivex.rxjava3.core.Single
 
 interface MissionRepository {
     fun getMissions(): Single<List<Mission>>
+    fun getRefreshMissions(): Single<List<Mission>>
 }
