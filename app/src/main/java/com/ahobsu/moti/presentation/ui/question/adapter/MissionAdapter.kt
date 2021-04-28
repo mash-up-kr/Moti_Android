@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.ItemQuestionBinding
 import com.ahobsu.moti.presentation.BaseViewHolder
-import com.ahobsu.moti.presentation.ui.main.model.QuestionItemModel
+import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
 
-class QuestionAdapter :
-    RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, QuestionItemModel>>() {
+class MissionAdapter :
+    RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, MissionItemModel>>() {
 
-    private val items = mutableListOf<QuestionItemModel>()
+    private val items = mutableListOf<MissionItemModel>()
 
     private var onClickItemListener: OnClickItemListener? = null
 
@@ -22,8 +22,8 @@ class QuestionAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseViewHolder<ViewDataBinding, QuestionItemModel> {
-        return QuestionViewHolder(
+    ): BaseViewHolder<ViewDataBinding, MissionItemModel> {
+        return MissionViewHolder(
             parent,
             onClickItemListener
         )
@@ -31,32 +31,32 @@ class QuestionAdapter :
 
     override fun getItemCount(): Int = items.size
     override fun onBindViewHolder(
-        holder: BaseViewHolder<ViewDataBinding, QuestionItemModel>,
+        holder: BaseViewHolder<ViewDataBinding, MissionItemModel>,
         position: Int
     ) {
         holder.bind(items[position])
     }
 
-    fun replaceAll(items: List<QuestionItemModel>) {
+    fun replaceAll(items: List<MissionItemModel>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
     }
 
-    class QuestionViewHolder(
+    class MissionViewHolder(
         parent: ViewGroup,
         private val onClickItemListener: OnClickItemListener?
     ) :
-        BaseViewHolder<ItemQuestionBinding, QuestionItemModel>(parent, R.layout.item_question) {
-        override fun bind(data: QuestionItemModel) {
+        BaseViewHolder<ItemQuestionBinding, MissionItemModel>(parent, R.layout.item_question) {
+        override fun bind(data: MissionItemModel) {
             binding.model = data
             binding.btnComplete.setOnClickListener {
-                onClickItemListener?.onClickQuestion(it.id)
+                onClickItemListener?.onClickMission(data)
             }
         }
     }
 
     interface OnClickItemListener {
-        fun onClickQuestion(id: Int)
+        fun onClickMission(data: MissionItemModel)
     }
 }

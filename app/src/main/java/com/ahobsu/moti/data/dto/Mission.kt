@@ -2,7 +2,7 @@ package com.ahobsu.moti.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Missions(
+data class Mission(
     @SerializedName("id")
     val id: Int?,
     @SerializedName("title")

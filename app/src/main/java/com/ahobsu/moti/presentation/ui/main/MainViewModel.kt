@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.main.model.HomeData
-import com.ahobsu.moti.presentation.ui.question.QuestionActivity
+import com.ahobsu.moti.presentation.ui.question.MissionActivity
 
 
 class MainViewModel : BaseViewModel() {
@@ -21,6 +21,6 @@ class MainViewModel : BaseViewModel() {
     }
 
     fun startQuestionActivity(context: Context) {
-        context.startActivity(Intent(context, QuestionActivity::class.java))
+        context.startActivity(Intent(context, MissionActivity::class.java))
     }
 }
