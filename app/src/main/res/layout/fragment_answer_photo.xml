@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.presentation.ui.question.QuestionViewModel" />
+            type="com.ahobsu.moti.presentation.ui.question.MissionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,15 +44,15 @@
             app:layout_constraintStart_toStartOf="@id/view_answer_camera"
             app:layout_constraintTop_toBottomOf="@id/view_answer_camera" />
 
+
         <TextView
             android:id="@+id/tv_answer_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:padding="20dp"
-            android:text="오늘 비가와요. 비를 주제로\n한줄 시를 써볼까요?"
-            android:textColor="@color/rose_gold"
             android:textSize="20dp"
+            android:text="@{viewModel.selectMission.title}"
+            android:textColor="@color/rose_gold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

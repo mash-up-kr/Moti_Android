@@ -1,12 +1,12 @@
 package com.ahobsu.moti.data.source.mission
 
 import com.ahobsu.moti.data.dto.BaseData
-import com.ahobsu.moti.data.dto.MissionResponse
-import com.ahobsu.moti.data.dto.SignInResponse
-import com.ahobsu.moti.data.dto.UserMyResponse
+import com.ahobsu.moti.data.dto.Mission
+import com.ahobsu.moti.data.dto.MissionsResponse
 import io.reactivex.rxjava3.core.Single
 
 interface MissionDataSource {
-    fun getMissions(): Single<BaseData<MissionResponse>>
-    fun getRefreshMissions(): Single<BaseData<MissionResponse>>
+    fun getMissionId(id:Int): Single<BaseData<Mission>>
+    fun getMissions(): Single<BaseData<MissionsResponse>>
+    fun getRefreshMissions(): Single<BaseData<MissionsResponse>>
 }

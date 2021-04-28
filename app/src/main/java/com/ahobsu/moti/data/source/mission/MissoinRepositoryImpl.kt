@@ -7,6 +7,19 @@ import io.reactivex.rxjava3.core.Single
 class MissionRepositoryImpl(
     private val missionDataSource: MissionDataSource
 ) : MissionRepository {
+    override fun getMissionId(id: Int): Single<Mission> {
+        return missionDataSource.getMissionId(id).map { res ->
+            res.data?.let {
+                Mission(
+                    id = it.id,
+                    title = it.title,
+                    isContent = it.isContent,
+                    isImage = it.isImage,
+                    cycle = it.cycle
+                )
+            }
+        }
+    }
 
     override fun getMissions(): Single<List<Mission>> {
         return missionDataSource.getMissions().map { res ->

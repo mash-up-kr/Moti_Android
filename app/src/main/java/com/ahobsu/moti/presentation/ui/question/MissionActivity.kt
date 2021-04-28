@@ -1,53 +1,51 @@
 package com.ahobsu.moti.presentation.ui.question
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.ActivityQuestionSelectBinding
-import com.ahobsu.moti.domain.MissionUseCase
+import com.ahobsu.moti.databinding.ActivityMissionSelectBinding
 import com.ahobsu.moti.presentation.BaseActivity
-import com.ahobsu.moti.presentation.ui.question.adapter.QuestionAdapter
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
+import com.ahobsu.moti.presentation.ui.question.adapter.MissionAdapter
 
-class QuestionActivity :
-    BaseActivity<ActivityQuestionSelectBinding>(R.layout.activity_question_select) {
+class MissionActivity :
+    BaseActivity<ActivityMissionSelectBinding>(R.layout.activity_mission_select) {
 
-    private val viewModel by lazy{
+    private val viewModel by lazy {
         ViewModelProvider(
-            viewModelStore,QuestionViewModelFactory(
+            viewModelStore, MissionViewModelFactory(
                 Injection.provideMissionRepository()
             )
-        ).get(QuestionViewModel::class.java)
+        ).get(MissionViewModel::class.java)
     }
 
-    private val questionAdapter by lazy { QuestionAdapter() }
+    private val missionAdapter by lazy { MissionAdapter() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
         initRecyclerView()
-        viewModel.initQuestion()
+        viewModel.initMission()
 
-        questionAdapter.setOnClickItemListener(object : QuestionAdapter.OnClickItemListener {
-            override fun onClickQuestion(id: Int) {
+        missionAdapter.setOnClickItemListener(object : MissionAdapter.OnClickItemListener {
+            override fun onClickMission(data: MissionItemModel) {
                 supportFragmentManager.beginTransaction().apply {
-                    add(R.id.question_container, AnswerShortFragment.newInstance())
+                    if (data.isImage && !data.isContent) {
+                        add(R.id.question_container, AnswerPhotoFragment.newInstance(data.id))
+                    } else {
+                        add(R.id.question_container, AnswerShortFragment.newInstance(data.id))
+                    }
                     addToBackStack(null)
-
                 }.commit()
             }
         })
 
-        viewModel.questionList.observe(this){it->
-            questionAdapter.replaceAll(it)
+        viewModel.missionList.observe(this) { it ->
+            missionAdapter.replaceAll(it)
         }
-
-
     }
 
     private fun initRecyclerView() {
@@ -61,8 +59,7 @@ class QuestionActivity :
             setPageTransformer { page, position ->
                 page.translationX = position * -offsetPx
             }
-            adapter = questionAdapter
-
+            adapter = missionAdapter
         }
     }
 

@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.domain.repository.MissionRepository
 
-class QuestionViewModelFactory(
+class MissionViewModelFactory(
     private val missionRepository: MissionRepository
 ):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return QuestionViewModel(missionRepository) as T
+        return MissionViewModel(missionRepository) as T
     }
 
 }
