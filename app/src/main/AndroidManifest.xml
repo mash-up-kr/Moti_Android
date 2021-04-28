@@ -14,7 +14,7 @@
         <activity android:name=".presentation.ui.main.MainActivity" />
         <activity android:name=".presentation.ui.login.LoginActivity" />
         <activity android:name=".presentation.ui.splash.SplashActivity"/>
-        <activity android:name=".presentation.ui.question.QuestionSelectActivity" >
+        <activity android:name=".presentation.ui.question.QuestionActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

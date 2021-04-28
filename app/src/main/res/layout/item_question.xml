@@ -5,8 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.ahobsu.moti.presentation.ui.question.QuestionItemViewModel" />
-
+            type="com.ahobsu.moti.presentation.ui.main.model.QuestionItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +45,7 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/shadow_stack_white"
             android:gravity="center"
-            android:text="@string/answer_complete"
+            android:text="@string/reply"
             android:textColor="@color/pinkish_tan"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/iv_home_card"
