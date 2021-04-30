@@ -31,6 +31,9 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
         //answer 보내기
         complete.postValue(Unit)
     }
+    fun onClickBack() {
+        //TODO:: back
+    }
     fun onClickReset() {
         missionsRequest(MissionUseCase(missionRepository).getRefreshMissions())
     }

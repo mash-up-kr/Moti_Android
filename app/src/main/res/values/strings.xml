@@ -30,5 +30,7 @@
 	<string name="again_question">질문 다시 받기</string>
 	<string name="reply">답변하기</string>
     <string name="complete">완료</string>
+    <string name="select_mission">질문 선택</string>
+    <string name="mission_complete">미션 완료</string>
 
 </resources>

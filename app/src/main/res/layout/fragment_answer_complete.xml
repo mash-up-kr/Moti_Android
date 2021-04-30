@@ -15,6 +15,15 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_question_title"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:gravity="center"
+            android:text="@string/mission_complete"
+            android:textColor="@color/rose_gold"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/complete_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
