@@ -2,25 +2,15 @@ package com.ahobsu.moti.presentation.ui.question
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.FragmentAnswerPhotoBindingImpl
+import com.ahobsu.moti.databinding.FragmentAnswerCompleteBindingImpl
 import com.ahobsu.moti.presentation.BaseFragment
+import com.ahobsu.moti.presentation.ui.main.HomeAfterFragment
 
 
-class AnswerPhotoFragment :
-    BaseFragment<FragmentAnswerPhotoBindingImpl>(R.layout.fragment_answer_photo) {
-
-    companion object {
-        const val ID = "id"
-        fun newInstance(id: Int) = AnswerPhotoFragment().apply {
-            arguments = Bundle().apply {
-                putInt(ID, id)
-            }
-        }
-    }
-    private val missionId by lazy { requireArguments().getInt(AnswerShortFragment.ID) }
+class AnswerCompleteFragment :
+    BaseFragment<FragmentAnswerCompleteBindingImpl>(R.layout.fragment_answer_complete) {
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -33,11 +23,9 @@ class AnswerPhotoFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.getMission(missionId)
-        viewModel.complete.observe(viewLifecycleOwner) {
-        }
     }
 
-
-
+    companion object {
+        fun newInstance() = AnswerCompleteFragment()
+    }
 }

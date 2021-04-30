@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             android:gravity="center"
-            android:text="오늘 비가와요. 비를 주제로\n한줄 시를 써볼까요?"
+            android:text="오늘의 질문에 답변을\n완료했습니다."
             android:textColor="@color/rose_gold"
             android:textSize="24dp" />
 
