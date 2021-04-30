@@ -11,7 +11,7 @@ import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
 import com.ahobsu.moti.presentation.ui.question.adapter.MissionAdapter
 
 class MissionActivity :
-    BaseActivity<ActivityMissionSelectBinding>(R.layout.activity_mission_select) {
+    BaseActivity<ActivityMissionSelectBinding>(R.layout.activity_mission) {
 
     private val viewModel by lazy {
         ViewModelProvider(
