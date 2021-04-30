@@ -21,10 +21,16 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
     private val _selectMission = MutableLiveData<MissionItemModel>()
     val selectMission: LiveData<MissionItemModel> = _selectMission
 
+    val complete = MutableLiveData<Unit>()
+
     fun initMission() {
         getMissions()
     }
 
+    fun onClickComplete() {
+        //answer 보내기
+        complete.postValue(Unit)
+    }
     fun onClickReset() {
         missionsRequest(MissionUseCase(missionRepository).getRefreshMissions())
     }

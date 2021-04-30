@@ -23,7 +23,6 @@ class MissionActivity :
 
     private val missionAdapter by lazy { MissionAdapter() }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
@@ -42,6 +41,12 @@ class MissionActivity :
                 }.commit()
             }
         })
+
+        viewModel.complete.observe(this) {
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.question_container, AnswerCompleteFragment.newInstance())
+            }.commit()
+        }
 
         viewModel.missionList.observe(this) { it ->
             missionAdapter.replaceAll(it)
@@ -62,5 +67,4 @@ class MissionActivity :
             adapter = missionAdapter
         }
     }
-
 }
