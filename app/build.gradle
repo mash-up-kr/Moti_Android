@@ -36,6 +36,8 @@ ext{
     // retrofit
     retrofit_version = '2.9.0'
     okhttp3_version = '4.8.0'
+
+    ted_version = '2.0.1'
 }
 
 android {
@@ -109,6 +111,9 @@ dependencies {
     // okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
 
+    //tedbottompicker
+    implementation "gun0912.ted:tedbottompicker:$ted_version"
+
     //Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.3.0')
 
@@ -119,6 +124,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     //Google Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
