@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="20dp"
+                android:paddingEnd="20dp"
                 android:gravity="center"
                 android:onClick="@{() -> viewModel.onClickComplete()}"
                 android:text="@string/complete"
@@ -55,8 +56,8 @@
                 android:textSize="16dp" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/view_answer_camera"
+        <ImageView
+            android:id="@+id/iv_answer_camera"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/black"
@@ -66,14 +67,15 @@
             app:layout_constraintTop_toBottomOf="@id/layout_title" />
 
         <ImageView
-            android:id="@+id/iv_answer_camera"
+            android:id="@+id/btn_answer_camera"
             android:layout_width="46dp"
             android:layout_height="46dp"
+            android:onClick="@{() -> viewModel.onClickAnswerImage()}"
             android:src="@drawable/ic__camera_incircle"
-            app:layout_constraintBottom_toBottomOf="@id/view_answer_camera"
-            app:layout_constraintEnd_toEndOf="@id/view_answer_camera"
-            app:layout_constraintStart_toStartOf="@id/view_answer_camera"
-            app:layout_constraintTop_toTopOf="@id/view_answer_camera" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_answer_camera"
+            app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
+            app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
+            app:layout_constraintTop_toTopOf="@id/iv_answer_camera" />
 
         <View
             android:id="@+id/view1_answer_camera"
@@ -81,9 +83,9 @@
             android:layout_height="1dp"
             android:layout_marginTop="2dp"
             android:background="@color/gold_brown"
-            app:layout_constraintEnd_toEndOf="@id/view_answer_camera"
-            app:layout_constraintStart_toStartOf="@id/view_answer_camera"
-            app:layout_constraintTop_toBottomOf="@id/view_answer_camera" />
+            app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
+            app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
+            app:layout_constraintTop_toBottomOf="@id/iv_answer_camera" />
 
 
         <TextView
@@ -92,6 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:textSize="20dp"
+            tools:text= "오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?"
             android:text="@{viewModel.selectMission.title}"
             android:textColor="@color/rose_gold"
             app:layout_constraintBottom_toBottomOf="parent"

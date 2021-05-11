@@ -22,9 +22,14 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
     val selectMission: LiveData<MissionItemModel> = _selectMission
 
     val complete = MutableLiveData<Unit>()
+    val getImage = MutableLiveData<Unit>()
 
     fun initMission() {
         getMissions()
+    }
+
+    fun onClickAnswerImage() {
+        getImage.postValue(Unit)
     }
 
     fun onClickComplete() {
