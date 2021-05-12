@@ -41,9 +41,7 @@ class AnswerPhotoFragment :
         viewModel.getImage.observe(viewLifecycleOwner) {
             TedBottomPicker.with(mContext as FragmentActivity?)
                 .show {
-
-                    Log.e("inag", it.toString())
-                    // here is selected image uri
+                    viewModel.setAnswerImage(it.toString())
                 }
         }
     }
