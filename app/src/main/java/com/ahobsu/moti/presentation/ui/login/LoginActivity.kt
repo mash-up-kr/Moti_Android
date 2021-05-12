@@ -91,6 +91,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                         Log.e("accessToken Success ", it.toString())
                         Unit.putAccessToken(it.accessToken)
                         Unit.putRefreshToken(it.refreshToken)
+                        startMainActivity()
                     }, { e ->
                         Log.e("postSignIn e", e.toString())
                     })

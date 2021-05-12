@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.ActivityMissionSelectBinding
+import com.ahobsu.moti.databinding.ActivityMissionBinding
 import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
 import com.ahobsu.moti.presentation.ui.question.adapter.MissionAdapter
 
 class MissionActivity :
-    BaseActivity<ActivityMissionSelectBinding>(R.layout.activity_mission) {
+    BaseActivity<ActivityMissionBinding>(R.layout.activity_mission) {
 
     private val viewModel by lazy {
         ViewModelProvider(

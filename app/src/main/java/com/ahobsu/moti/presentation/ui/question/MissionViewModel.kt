@@ -15,11 +15,17 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MissionViewModel(private val missionRepository: MissionRepository) : BaseViewModel() {
 
-    private val _questionList = MutableLiveData<List<MissionItemModel>>()
-    val missionList: LiveData<List<MissionItemModel>> = _questionList
+    private val _missionList = MutableLiveData<List<MissionItemModel>>()
+    val missionList: LiveData<List<MissionItemModel>> = _missionList
 
     private val _selectMission = MutableLiveData<MissionItemModel>()
     val selectMission: LiveData<MissionItemModel> = _selectMission
+
+
+    private val _missionAnswer = MutableLiveData<AnswerModel>()
+    val missionAnswer: LiveData<AnswerModel> = _missionAnswer
+
+    val answerContent = MutableLiveData<String>()
 
     val complete = MutableLiveData<Unit>()
     val getImage = MutableLiveData<Unit>()
@@ -43,6 +49,29 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
         missionsRequest(MissionUseCase(missionRepository).getRefreshMissions())
     }
 
+    fun setAnswerImage(img:String){
+        selectMission.value?.id?.let {
+            val base =AnswerModel(
+                content = _missionAnswer.value?.content,
+                missionId = it,
+                file = img
+            )
+            _missionAnswer.postValue(base)
+        }
+    }
+    fun setAnswerContent(){
+        answerContent.value?:return
+        selectMission.value?.id?.let {
+            val base =AnswerModel(
+                answerContent.value!!,
+                it,
+                _missionAnswer.value?.file
+            )
+            _missionAnswer.postValue(base)
+        }
+
+    }
+
     fun getMission(missionId: Int) {
         MissionUseCase(missionRepository).getMissionId(missionId)
             .subscribeOn(Schedulers.io())
@@ -62,6 +91,10 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
             })
     }
 
+    fun postAnswer(){
+
+    }
+
     private fun getMissions() {
         missionsRequest((MissionUseCase(missionRepository).getMissions()))
     }
@@ -71,7 +104,7 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
                 Log.e("getMissions ", it.toString())
-                _questionList.postValue(mapMissionItem(it))
+                _missionList.postValue(mapMissionItem(it))
             }, { e ->
                 Log.e("e", e.toString())
             })

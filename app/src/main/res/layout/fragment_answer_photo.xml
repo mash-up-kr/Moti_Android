@@ -61,6 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/black"
+            app:setImageUrl="@{viewModel.missionAnswer.file}"
             app:layout_constraintBottom_toTopOf="@id/tv_answer_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
