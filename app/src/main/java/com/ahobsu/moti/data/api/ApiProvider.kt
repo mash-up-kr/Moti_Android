@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiProvider {
     private const val baseUrl = "https://moti.company/api/v1/"
 
+    fun provideAnswerApi(): AnswerService = getRetrofitBuild.create(AnswerService::class.java)
     fun provideMissionApi(): MissionService = getRetrofitBuild.create(MissionService::class.java)
     fun provideSignInApi(): UserService = getRetrofitBuild.create(UserService::class.java)
     fun provideSignUpApi(): UserService = getSignUpRetrofitBuild.create(UserService::class.java)
