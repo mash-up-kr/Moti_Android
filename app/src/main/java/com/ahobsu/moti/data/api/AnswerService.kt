@@ -2,12 +2,14 @@ package com.ahobsu.moti.data.api
 
 import com.ahobsu.moti.data.dto.*
 import io.reactivex.rxjava3.core.Single
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AnswerService {
+    @Multipart
     @POST("answers")
-    fun postAnswer(@Body answer: AnswerRequest): Single<BaseData<Unit>>
+    fun postAnswer(
+        @Part("content")  content: String?,
+        @Part("missionId") missionId: Int,
+        @Part("file") file: String?
+    ): Single<BaseData<Unit>>
 }

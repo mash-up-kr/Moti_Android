@@ -1,5 +1,6 @@
 package com.ahobsu.moti.data.source.answer
 
+import android.util.Log
 import com.ahobsu.moti.data.api.AnswerService
 import com.ahobsu.moti.data.dto.AnswerRequest
 import com.ahobsu.moti.data.dto.BaseData
@@ -16,6 +17,7 @@ class RemoteAnswerDataSource(
             missionId = answer.missionId,
             file = answer.file
         )
-        return answerService.postAnswer(answerRequest)
+        Log.e("postAnswer",answerRequest.toString())
+        return answerService.postAnswer(answerRequest.content,answerRequest.missionId, answerRequest.file)
     }
 }
