@@ -16,7 +16,8 @@ class MissionActivity :
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore, MissionViewModelFactory(
-                Injection.provideMissionRepository()
+                Injection.provideMissionRepository(),
+                Injection.provideAnswerRepository()
             )
         ).get(MissionViewModel::class.java)
     }

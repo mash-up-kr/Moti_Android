@@ -3,8 +3,11 @@ package com.ahobsu.moti.presentation.ui.question
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ahobsu.moti.domain.AnswerUseCase
 import com.ahobsu.moti.domain.MissionUseCase
+import com.ahobsu.moti.domain.entity.Answer
 import com.ahobsu.moti.domain.entity.Mission
+import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.domain.repository.MissionRepository
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
@@ -13,7 +16,10 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 
-class MissionViewModel(private val missionRepository: MissionRepository) : BaseViewModel() {
+class MissionViewModel(
+    private val missionRepository: MissionRepository,
+    private val answerRepository: AnswerRepository
+) : BaseViewModel() {
 
     private val _missionList = MutableLiveData<List<MissionItemModel>>()
     val missionList: LiveData<List<MissionItemModel>> = _missionList
@@ -39,8 +45,8 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
     }
 
     fun onClickComplete() {
-        //answer 보내기
-        complete.postValue(Unit)
+        Log.e("123","onClickComplete")
+        postAnswer()
     }
     fun onClickBack() {
         //TODO:: back
@@ -60,6 +66,7 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
         }
     }
     fun setAnswerContent(){
+        Log.e("answerContent ",answerContent.value?:"")
         answerContent.value?:return
         selectMission.value?.id?.let {
             val base =AnswerModel(
@@ -69,7 +76,6 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
             )
             _missionAnswer.postValue(base)
         }
-
     }
 
     fun getMission(missionId: Int) {
@@ -91,8 +97,25 @@ class MissionViewModel(private val missionRepository: MissionRepository) : BaseV
             })
     }
 
-    fun postAnswer(){
+    fun postAnswer() {
+        selectMission.value?.id?.let {
+            AnswerUseCase(answerRepository).postAnswer(
+                Answer(
+                    content = missionAnswer.value?.content,
+                    file = missionAnswer.value?.file,
+                    missionId = it
+                )
+            ).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ it ->
+                    Log.e("postAnswer ", it.toString())
+                    if (it)
+                        complete.postValue(Unit)
 
+                }, { e ->
+                    Log.e("e", e.toString())
+                })
+        }
     }
 
     private fun getMissions() {
