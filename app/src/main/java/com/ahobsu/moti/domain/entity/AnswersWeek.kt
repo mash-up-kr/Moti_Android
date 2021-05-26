@@ -6,6 +6,7 @@ data class AnswersWeek(
 )
 
 data class MissionCard(
+    val answerId: Int?,
     val missionId: Int?,
     val cardPart: Int?,
     val cardPngUrl: String?

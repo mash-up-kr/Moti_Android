@@ -22,9 +22,10 @@ class AnswerRepositoryImpl(
                 AnswersWeek(
                     it.answers?.map { answer ->
                         MissionCard(
-                            answer.missionId,
-                            answer.file?.part,
-                            answer.file?.cardPngUrl
+                            answerId = answer.id,
+                            missionId = answer.missionId,
+                            cardPart = answer.file?.part,
+                            cardPngUrl = answer.file?.cardPngUrl
                         )
                     })
             }
