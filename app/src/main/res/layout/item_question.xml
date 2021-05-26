@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.ahobsu.moti.presentation.ui.main.model.MissionItemModel" />
+            type="com.ahobsu.moti.presentation.ui.question.model.MissionItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

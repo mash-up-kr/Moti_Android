@@ -7,7 +7,6 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentHomeAfterBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
-
 class HomeAfterFragment :
     BaseFragment<FragmentHomeAfterBinding>(R.layout.fragment_home_after) {
 
@@ -21,6 +20,7 @@ class HomeAfterFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+        viewModel.getHomeAnswer()
     }
 
     companion object {

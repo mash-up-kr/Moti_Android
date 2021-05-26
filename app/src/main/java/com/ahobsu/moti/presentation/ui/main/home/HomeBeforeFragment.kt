@@ -7,7 +7,6 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentHomeBeforeBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
-
 class HomeBeforeFragment :
     BaseFragment<FragmentHomeBeforeBinding>(R.layout.fragment_home_before) {
 
