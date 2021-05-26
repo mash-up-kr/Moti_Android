@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.AnswerUseCase
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
-import com.ahobsu.moti.presentation.ui.main.model.HomeData
+import com.ahobsu.moti.presentation.ui.main.home.model.HomeData
 import com.ahobsu.moti.presentation.ui.question.MissionActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

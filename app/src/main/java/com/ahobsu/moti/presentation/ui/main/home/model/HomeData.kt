@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.model
+package com.ahobsu.moti.presentation.ui.main.home.model
 
 import com.ahobsu.moti.domain.entity.MissionCard
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.ItemQuestionBinding
 import com.ahobsu.moti.presentation.BaseViewHolder
-import com.ahobsu.moti.presentation.ui.main.model.MissionItemModel
+import com.ahobsu.moti.presentation.ui.question.model.MissionItemModel
 
 class MissionAdapter :
     RecyclerView.Adapter<BaseViewHolder<ViewDataBinding, MissionItemModel>>() {

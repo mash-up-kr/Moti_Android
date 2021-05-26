@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.model
+package com.ahobsu.moti.presentation.ui.question.model
 
 
 data class MissionItemModel(
