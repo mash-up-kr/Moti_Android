@@ -1,15 +1,20 @@
 package com.ahobsu.moti.presentation.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
+import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMainBinding
 import com.ahobsu.moti.presentation.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private val mainViewModel by viewModels<MainViewModel>()
+    private val mainViewModel by lazy {
+        ViewModelProvider(
+            viewModelStore, MainViewModelFactory(Injection.provideAnswerRepository())
+        ).get(MainViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

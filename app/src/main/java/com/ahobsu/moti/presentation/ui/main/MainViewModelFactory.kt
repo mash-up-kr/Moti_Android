@@ -1,15 +1,13 @@
-package com.ahobsu.moti.presentation.ui.question
+package com.ahobsu.moti.presentation.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.domain.repository.AnswerRepository
-import com.ahobsu.moti.domain.repository.MissionRepository
 
-class MissionViewModelFactory(
-    private val missionRepository: MissionRepository,
+class MainViewModelFactory(
     private val answerRepository: AnswerRepository
 ):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MissionViewModel(missionRepository,answerRepository) as T
+        return MainViewModel(answerRepository) as T
     }
 }
