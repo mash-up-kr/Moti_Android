@@ -18,15 +18,16 @@
 		<LinearLayout
 			android:id="@+id/lv_count_text"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="72dp"
 			android:paddingLeft="3dp"
-			android:paddingTop="16dp"
 			android:paddingRight="3dp"
 			android:weightSum="6"
 			android:background="@drawable/bg_top_gradient"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<LinearLayout
+				ayout_gravity="center"
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -41,14 +42,15 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(1)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -63,14 +65,15 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(2)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -85,14 +88,15 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(3)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -107,14 +111,15 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(4)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -129,14 +134,15 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(5)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_gravity="center"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -151,8 +157,8 @@
 					android:textSize="13dp" />
 
 				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
 					android:src="@{viewModel.homeData.getCountCheck(6)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />

@@ -1,6 +1,9 @@
 package com.ahobsu.moti.presentation.ui.main.home
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.FrameLayout
+import androidx.core.view.marginBottom
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
@@ -21,6 +24,7 @@ class HomeAfterFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         viewModel.getHomeAnswer()
+
     }
 
     companion object {

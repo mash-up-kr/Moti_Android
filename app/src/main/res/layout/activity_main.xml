@@ -33,8 +33,9 @@
 		<com.google.android.material.bottomnavigation.BottomNavigationView
 			android:id="@+id/bottom_navi"
 			android:layout_width="match_parent"
-			android:layout_height="80dp"
+			android:layout_height="110dp"
 			app:labelVisibilityMode="labeled"
+			android:paddingTop="30dp"
 			android:background="@drawable/bg_bottom_navi_gradient"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"

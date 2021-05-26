@@ -1,7 +1,6 @@
 package com.ahobsu.moti
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 
 object Unit {
     private val access_token = "accessToken"
@@ -10,13 +9,16 @@ object Unit {
     lateinit var mPreferences: SharedPreferences
 
     val accessToken: String?
-        get() = MotiApplication.INSTANCE.sharedPreferences.getString(access_token, null)
+        get() = MotiApplication.INSTANCE.sharedPreferences.getString(
+            access_token, null)
 
     val refreshToken: String?
-        get() = MotiApplication.INSTANCE.sharedPreferences.getString(refresh_token, null)
+        get() = MotiApplication.INSTANCE.sharedPreferences.getString(
+            refresh_token, null)
 
     val jwt: String?
-        get() = MotiApplication.INSTANCE.sharedPreferences.getString(jwt_token, null)
+        get() = MotiApplication.INSTANCE.sharedPreferences.getString(
+            jwt_token, null)
 
 
     fun putAccessToken(accessToken: String?) {
