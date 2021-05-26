@@ -9,9 +9,14 @@ class AnswerUseCase(
     private val answerRepository: AnswerRepository
 ) {
     fun postAnswer(answer: Answer): Single<Boolean> {
-            return answerRepository.postAnswer(answer)
+        return answerRepository.postAnswer(answer)
     }
+
     fun getAnswersWeek(): Single<AnswersWeek> {
         return answerRepository.getAnswersWeek()
+    }
+
+    fun getAnswerToday(): Single<Boolean> {
+        return answerRepository.getAnswerToday()
     }
 }

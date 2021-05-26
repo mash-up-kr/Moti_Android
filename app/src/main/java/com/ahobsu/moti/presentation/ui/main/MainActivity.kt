@@ -27,11 +27,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         initMainDataBinding()
         mainViewModel.getHomeAnswer()
 
-        mainViewModel.homeData.observe(this) {
+        mainViewModel.todayAnswer.observe(this) {
             supportFragmentManager.beginTransaction().apply {
                 replace(
                     R.id.main_container,
-                    if (!it.today) HomeBeforeFragment.newInstance() else HomeAfterFragment.newInstance()
+                    if (it) HomeAfterFragment.newInstance() else HomeBeforeFragment.newInstance()
                 )
             }.commit()
         }

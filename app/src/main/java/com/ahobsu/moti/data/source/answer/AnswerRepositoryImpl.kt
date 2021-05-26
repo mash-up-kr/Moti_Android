@@ -19,18 +19,24 @@ class AnswerRepositoryImpl(
     override fun getAnswersWeek(): Single<AnswersWeek> {
         return answerDataSource.getAnswersWeek().map { res ->
             res.data?.let {
-                var today = false
                 AnswersWeek(
-                    today, it.answers?.map { answer ->
-                    if (answer.date == it.today) {
-                        today = true
-                    }
-                    MissionCard(
-                        answer.missionId,
-                        answer.file?.part,
-                        answer.file?.cardPngUrl
-                    )
-                })
+                    it.answers?.map { answer ->
+                        MissionCard(
+                            answer.missionId,
+                            answer.file?.part,
+                            answer.file?.cardPngUrl
+                        )
+                    })
+            }
+        }
+    }
+
+    override fun getAnswerToday(): Single<Boolean> {
+        return answerDataSource.getAnswersWeek().map { res ->
+            res.data?.let { it ->
+                !it.answers?.filter { answer ->
+                    answer.date == it.today
+                }.isNullOrEmpty()
             }
         }
     }

@@ -3,7 +3,6 @@ package com.ahobsu.moti.presentation.ui.main.home.model
 import com.ahobsu.moti.domain.entity.MissionCard
 
 data class HomeData(
-    val today: Boolean,
     val answers: List<MissionCard>?
 ) {
     fun getCountCheck(int: Int): Boolean {

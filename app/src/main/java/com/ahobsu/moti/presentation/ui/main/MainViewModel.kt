@@ -18,22 +18,18 @@ class MainViewModel(
     private val answerRepository: AnswerRepository
 ) : BaseViewModel() {
 
-    private val _homeData = MutableLiveData<HomeData>()
-    val homeData: LiveData<HomeData> = _homeData
+    private val _todayAnswer = MutableLiveData<Boolean>()
+    val todayAnswer: LiveData<Boolean> = _todayAnswer
 
     fun getHomeAnswer() {
-        AnswerUseCase(answerRepository).getAnswersWeek()
+        AnswerUseCase(answerRepository).getAnswerToday()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ answerWeek ->
-                Log.e("getAnswersWeek ", answerWeek.toString())
-                _homeData.postValue(HomeData(answerWeek.today, answerWeek.answers))
+            .subscribe({ it ->
+                Log.e("getHomeAnswer ", it.toString())
+                _todayAnswer.postValue(it)
             }, { e ->
                 Log.e("e", e.toString())
             })
-    }
-
-    fun startQuestionActivity(context: Context) {
-        context.startActivity(Intent(context, MissionActivity::class.java))
     }
 }

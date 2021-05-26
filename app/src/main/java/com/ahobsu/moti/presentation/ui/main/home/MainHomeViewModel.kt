@@ -25,9 +25,9 @@ class MainHomeViewModel(
         AnswerUseCase(answerRepository).getAnswersWeek()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ answerWeek ->
-                Log.e("getAnswersWeek ", answerWeek.toString())
-                _homeData.postValue(HomeData(answerWeek.today, answerWeek.answers))
+            .subscribe({ it ->
+                Log.e("getAnswersWeek ", it.toString())
+                _homeData.postValue(HomeData(it.answers))
             }, { e ->
                 Log.e("e", e.toString())
             })
