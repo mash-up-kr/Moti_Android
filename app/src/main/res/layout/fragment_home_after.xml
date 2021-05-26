@@ -20,24 +20,66 @@
             android:id="@+id/iv_home_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/img_main_frame_autumn"
+            android:src="@drawable/img_main_frame_spring"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginBottom="80dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_home_card"
+            app:layout_constraintEnd_toEndOf="@id/iv_home_card"
+            app:layout_constraintStart_toStartOf="@id/iv_home_card"
+            app:layout_constraintTop_toTopOf="@id/iv_home_card">
+
+            <ImageView
+                android:id="@+id/test1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test1" />
+
+            <ImageView
+                android:id="@+id/test2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test2" />
+
+            <ImageView
+                android:id="@+id/test3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test3" />
+
+            <ImageView
+                android:id="@+id/test4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test4" />
+
+            <ImageView
+                android:id="@+id/test5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test5" />
+        </FrameLayout>
+
 
         <LinearLayout
             android:id="@+id/lv_count_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
             android:paddingLeft="3dp"
-            android:paddingTop="16dp"
             android:paddingRight="3dp"
             android:weightSum="6"
+            android:background="@drawable/bg_top_gradient"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                ayout_gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -60,6 +102,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -82,6 +125,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -104,6 +148,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -126,6 +171,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -148,6 +194,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

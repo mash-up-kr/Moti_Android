@@ -23,6 +23,7 @@
 			android:paddingTop="16dp"
 			android:paddingRight="3dp"
 			android:weightSum="6"
+			android:background="@drawable/bg_top_gradient"
 			app:layout_constraintTop_toTopOf="parent">
 
 			<LinearLayout
