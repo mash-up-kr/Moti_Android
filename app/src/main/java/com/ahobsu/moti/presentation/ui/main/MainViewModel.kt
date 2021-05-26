@@ -3,6 +3,7 @@ package com.ahobsu.moti.presentation.ui.main
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.AnswerUseCase
 import com.ahobsu.moti.domain.repository.AnswerRepository
@@ -17,31 +18,19 @@ class MainViewModel(
     private val answerRepository: AnswerRepository
 ) : BaseViewModel() {
 
-    private val homeData = MutableLiveData<HomeData>(HomeData(4))
+    private val _homeData = MutableLiveData<HomeData>()
+    val homeData: LiveData<HomeData> = _homeData
 
-    init {
+    fun getHomeAnswer() {
         AnswerUseCase(answerRepository).getAnswersWeek()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ it ->
-                Log.e("getAnswersWeek ", it.toString())
-                it.answers?.let {
-                    homeData.postValue(HomeData(it.size))
-                }
-//                it.answers.map {
-//                    it.cardPngUrl
-//                }
+            .subscribe({ answerWeek ->
+                Log.e("getAnswersWeek ", answerWeek.toString())
+                _homeData.postValue(HomeData(answerWeek.today, answerWeek.answers))
             }, { e ->
                 Log.e("e", e.toString())
             })
-    }
-
-    fun getCountCheck(int: Int): Boolean {
-        homeData.value?.let {
-            if (it.daysCount >= int)
-                return true
-        }
-        return false
     }
 
     fun startQuestionActivity(context: Context) {

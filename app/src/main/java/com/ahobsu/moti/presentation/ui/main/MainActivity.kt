@@ -3,6 +3,7 @@ package com.ahobsu.moti.presentation.ui.main
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMainBinding
@@ -19,10 +20,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMainDataBinding()
+        mainViewModel.getHomeAnswer()
 
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.main_container, HomeBeforeFragment.newInstance())
-        }.commit()
+        mainViewModel.homeData.observe(this) {
+            supportFragmentManager.beginTransaction().apply {
+                replace(
+                    R.id.main_container,
+                    if (!it.today) HomeBeforeFragment.newInstance() else HomeAfterFragment.newInstance()
+                )
+            }.commit()
+        }
 
         binding.bottomNavi.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -49,7 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
-    fun changeFragment(fragment: Fragment) {
+    private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.main_container, fragment)
         }.commit()

@@ -23,6 +23,7 @@ class RemoteAnswerDataSource(
     }
 
     override fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>> {
-        return answerService.getAnswersWeek()    }
+        return  answerService.getAnswersWeek()
+    }
 
 }

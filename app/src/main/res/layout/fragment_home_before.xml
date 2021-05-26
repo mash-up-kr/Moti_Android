@@ -43,7 +43,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(1)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(1)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
@@ -65,7 +65,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(2)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(2)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
@@ -87,7 +87,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(3)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(3)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
@@ -109,7 +109,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(4)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(4)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
@@ -131,7 +131,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(5)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(5)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 
 			<LinearLayout
@@ -153,7 +153,7 @@
 					android:layout_height="20dp"
 					android:layout_gravity="center"
 					android:layout_marginTop="8dp"
-					android:src="@{viewModel.getCountCheck(6)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
+					android:src="@{viewModel.homeData.getCountCheck(6)? @drawable/shadow_circle_on : @drawable/shadow_circle_off}" />
 			</LinearLayout>
 		</LinearLayout>
 

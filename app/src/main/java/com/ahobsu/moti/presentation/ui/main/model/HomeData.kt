@@ -1,5 +1,12 @@
 package com.ahobsu.moti.presentation.ui.main.model
 
+import com.ahobsu.moti.domain.entity.MissionCard
+
 data class HomeData(
-    var daysCount: Int = 3
-)
+    val today: Boolean,
+    val answers: List<MissionCard>?
+) {
+    fun getCountCheck(int: Int): Boolean {
+        return answers?.size?:0 >= int
+    }
+}

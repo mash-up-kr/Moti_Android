@@ -19,8 +19,7 @@ class AnswerRepositoryImpl(
     override fun getAnswersWeek(): Single<AnswersWeek> {
         return answerDataSource.getAnswersWeek().map { res ->
             res.data?.let {
-                var today: Boolean = false
-
+                var today = false
                 AnswersWeek(
                     today, it.answers?.map { answer ->
                     if (answer.date == it.today) {

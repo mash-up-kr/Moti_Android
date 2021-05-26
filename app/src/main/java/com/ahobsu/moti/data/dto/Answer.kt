@@ -11,13 +11,19 @@ data class Answer(
     val content: String?,
     @SerializedName("date")
     val date: String?,
+    @SerializedName("no")
+    val no: Int?,
+    @SerializedName("createdAt")
+    val createdAt: String?,
     @SerializedName("missionId")
     val missionId: Int?,
+    @SerializedName("userId")
+    val userId: String?,
     @SerializedName("fileId")
     val fileId: Int?,
     @SerializedName("file")
     val file: AnswerFile?,
-    @SerializedName("file")
+    @SerializedName("mission")
     val mission: AnswerMission?
 )
 
