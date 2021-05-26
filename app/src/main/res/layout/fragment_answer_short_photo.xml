@@ -74,7 +74,7 @@
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:visibility="@{viewModel.selectMission.image ? View.VISIBLE : View.GONE}"
-            android:src="@drawable/ic__camera_incircle"
+            android:src="@drawable/ic_camera_circle"
             android:onClick="@{() -> viewModel.onClickAnswerImage()}"
             app:layout_constraintBottom_toBottomOf="@id/iv_answer_camera"
             app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
