@@ -134,9 +134,10 @@ class MissionViewModel(
     }
 
     private fun mapMissionItem(items: List<Mission>): List<MissionItemModel> {
-        return items.map {
+        return items.mapIndexed { index, it ->
             MissionItemModel(
                 id = it.id ?: 0,
+                missionNum = (index + 1),
                 title = it.title ?: "",
                 isContent = it.isContent ?: true,
                 isImage = it.isImage ?: true
