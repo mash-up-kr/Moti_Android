@@ -10,7 +10,7 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityLoginBinding
-import com.ahobsu.moti.domain.SigInInUseCase
+import com.ahobsu.moti.domain.SignInUseCase
 import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -84,7 +84,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 firebaseAuthWithGoogle(account!!)
                 Unit.putJWT(account.idToken)
 
-                SigInInUseCase(Injection.provideSignUpRepository())("apple")
+                SignInUseCase(Injection.provideSignUpRepository())("apple")
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ it ->

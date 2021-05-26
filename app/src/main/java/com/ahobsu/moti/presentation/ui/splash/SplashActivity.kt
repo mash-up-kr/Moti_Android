@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ahobsu.moti.R
 import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.domain.SigInInUseCase
+import com.ahobsu.moti.domain.SignInUseCase
 import com.ahobsu.moti.domain.UserUseCase
 import com.ahobsu.moti.presentation.ui.login.LoginActivity
 import com.ahobsu.moti.presentation.ui.main.MainActivity
@@ -63,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun refreshLogin() {
-        SigInInUseCase(Injection.provideUserRepository()).refreshLogin()
+        SignInUseCase(Injection.provideUserRepository()).refreshLogin()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
                 Log.e("getUserMy", "success  $it")

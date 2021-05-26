@@ -4,7 +4,7 @@ import com.ahobsu.moti.domain.entity.SignIn
 import com.ahobsu.moti.domain.repository.UserRepository
 import io.reactivex.rxjava3.core.Single
 
-class SigInInUseCase(
+class SignInUseCase(
     private val userRepository: UserRepository
 ) {
     operator fun invoke(snsType: String): Single<SignIn> {
