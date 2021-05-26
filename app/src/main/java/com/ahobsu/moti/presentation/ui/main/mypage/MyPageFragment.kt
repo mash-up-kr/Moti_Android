@@ -1,21 +1,21 @@
-package com.ahobsu.moti.presentation.ui.main
+package com.ahobsu.moti.presentation.ui.main.mypage
 
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.FragmentDiaryBinding
+import com.ahobsu.moti.databinding.FragmentMypageBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
 
-class DiaryFragment :
-    BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
+class MyPageFragment :
+    BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
     private val viewModel by lazy {
         ViewModelProvider(
-            viewModelStore, MainViewModelFactory(Injection.provideAnswerRepository())
-        ).get(MainViewModel::class.java)
+            viewModelStore,
+            MyPageViewModelFactory(Injection.provideAnswerRepository())
+        ).get(MyPageViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -24,7 +24,8 @@ class DiaryFragment :
     }
 
     companion object {
-        fun newInstance() = DiaryFragment()
+        fun newInstance() =
+            MyPageFragment()
     }
 
 }

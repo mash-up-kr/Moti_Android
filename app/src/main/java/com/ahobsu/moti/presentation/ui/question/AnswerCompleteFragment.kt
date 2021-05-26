@@ -6,7 +6,6 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentAnswerCompleteBindingImpl
 import com.ahobsu.moti.presentation.BaseFragment
-import com.ahobsu.moti.presentation.ui.main.HomeAfterFragment
 
 
 class AnswerCompleteFragment :

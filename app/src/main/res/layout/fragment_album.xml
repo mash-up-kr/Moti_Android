@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.presentation.ui.main.MainViewModel" />
+            type="com.ahobsu.moti.presentation.ui.main.album.AlbumViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

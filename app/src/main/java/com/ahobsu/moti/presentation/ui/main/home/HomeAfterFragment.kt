@@ -1,9 +1,8 @@
-package com.ahobsu.moti.presentation.ui.main
+package com.ahobsu.moti.presentation.ui.main.home
 
 import android.os.Bundle
-import com.ahobsu.moti.R
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentHomeAfterBinding
 import com.ahobsu.moti.presentation.BaseFragment
@@ -14,8 +13,9 @@ class HomeAfterFragment :
 
     private val viewModel by lazy {
         ViewModelProvider(
-            viewModelStore, MainViewModelFactory(Injection.provideAnswerRepository())
-        ).get(MainViewModel::class.java)
+            viewModelStore,
+            MainHomeViewModelFactory(Injection.provideAnswerRepository())
+        ).get(MainHomeViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -24,7 +24,8 @@ class HomeAfterFragment :
     }
 
     companion object {
-        fun newInstance() = HomeAfterFragment()
+        fun newInstance() =
+            HomeAfterFragment()
     }
 
 }
