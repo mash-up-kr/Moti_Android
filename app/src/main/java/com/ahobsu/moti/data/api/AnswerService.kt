@@ -12,4 +12,8 @@ interface AnswerService {
         @Part("missionId") missionId: Int,
         @Part("file") file: String?
     ): Single<BaseData<Unit>>
+
+    @GET("answers/week")
+    fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>>
+
 }
