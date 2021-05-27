@@ -1,13 +1,13 @@
-package com.ahobsu.moti.presentation.ui.main.album
+package com.ahobsu.moti.presentation.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.domain.repository.AnswerRepository
 
-class AlbumViewModelFactory(
+class MainHomeViewModelFactory(
     private val answerRepository: AnswerRepository
-) : ViewModelProvider.Factory {
+):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return AlbumViewModel(answerRepository) as T
+        return MainHomeViewModel(answerRepository) as T
     }
 }

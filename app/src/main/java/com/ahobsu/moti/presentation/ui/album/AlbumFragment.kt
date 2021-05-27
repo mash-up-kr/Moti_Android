@@ -1,21 +1,21 @@
-package com.ahobsu.moti.presentation.ui.main.mypage
+package com.ahobsu.moti.presentation.ui.album
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.FragmentMypageBinding
+import com.ahobsu.moti.databinding.FragmentAlbumBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
 
-class MyPageFragment :
-    BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
+class AlbumFragment :
+    BaseFragment<FragmentAlbumBinding>(R.layout.fragment_album) {
 
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore,
-            MyPageViewModelFactory(Injection.provideAnswerRepository())
-        ).get(MyPageViewModel::class.java)
+            AlbumViewModelFactory(Injection.provideAnswerRepository())
+        ).get(AlbumViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class MyPageFragment :
 
     companion object {
         fun newInstance() =
-            MyPageFragment()
+            AlbumFragment()
     }
 
 }

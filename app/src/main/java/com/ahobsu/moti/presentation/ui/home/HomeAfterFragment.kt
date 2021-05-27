@@ -1,31 +1,32 @@
-package com.ahobsu.moti.presentation.ui.main.album
+package com.ahobsu.moti.presentation.ui.home
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.FragmentAlbumBinding
+import com.ahobsu.moti.databinding.FragmentHomeAfterBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
-
-class AlbumFragment :
-    BaseFragment<FragmentAlbumBinding>(R.layout.fragment_album) {
+class HomeAfterFragment :
+    BaseFragment<FragmentHomeAfterBinding>(R.layout.fragment_home_after) {
 
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore,
-            AlbumViewModelFactory(Injection.provideAnswerRepository())
-        ).get(AlbumViewModel::class.java)
+            MainHomeViewModelFactory(Injection.provideAnswerRepository())
+        ).get(MainHomeViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+        viewModel.getHomeAnswer()
+
     }
 
     companion object {
         fun newInstance() =
-            AlbumFragment()
+            HomeAfterFragment()
     }
 
 }

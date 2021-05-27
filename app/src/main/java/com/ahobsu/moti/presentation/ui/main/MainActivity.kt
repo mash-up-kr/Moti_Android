@@ -8,11 +8,11 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMainBinding
 import com.ahobsu.moti.presentation.BaseActivity
-import com.ahobsu.moti.presentation.ui.main.album.AlbumFragment
-import com.ahobsu.moti.presentation.ui.main.diary.DiaryFragment
-import com.ahobsu.moti.presentation.ui.main.home.HomeAfterFragment
-import com.ahobsu.moti.presentation.ui.main.home.HomeBeforeFragment
-import com.ahobsu.moti.presentation.ui.main.mypage.MyPageFragment
+import com.ahobsu.moti.presentation.ui.album.AlbumFragment
+import com.ahobsu.moti.presentation.ui.diary.DiaryFragment
+import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
+import com.ahobsu.moti.presentation.ui.home.HomeBeforeFragment
+import com.ahobsu.moti.presentation.ui.mypage.MyPageFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 

@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.mypage
+package com.ahobsu.moti.presentation.ui.mypage
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

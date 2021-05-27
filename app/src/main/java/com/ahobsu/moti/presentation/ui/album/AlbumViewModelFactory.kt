@@ -1,13 +1,13 @@
-package com.ahobsu.moti.presentation.ui.main.diary
+package com.ahobsu.moti.presentation.ui.album
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.domain.repository.AnswerRepository
 
-class DiaryViewModelFactory(
+class AlbumViewModelFactory(
     private val answerRepository: AnswerRepository
-):ViewModelProvider.Factory{
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return DiaryViewModel(answerRepository) as T
+        return AlbumViewModel(answerRepository) as T
     }
 }

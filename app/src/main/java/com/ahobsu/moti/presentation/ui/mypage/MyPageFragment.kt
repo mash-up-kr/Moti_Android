@@ -1,35 +1,31 @@
-package com.ahobsu.moti.presentation.ui.main.home
+package com.ahobsu.moti.presentation.ui.mypage
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.FrameLayout
-import androidx.core.view.marginBottom
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
-import com.ahobsu.moti.databinding.FragmentHomeAfterBinding
+import com.ahobsu.moti.databinding.FragmentMypageBinding
 import com.ahobsu.moti.presentation.BaseFragment
 
-class HomeAfterFragment :
-    BaseFragment<FragmentHomeAfterBinding>(R.layout.fragment_home_after) {
+
+class MyPageFragment :
+    BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore,
-            MainHomeViewModelFactory(Injection.provideAnswerRepository())
-        ).get(MainHomeViewModel::class.java)
+            MyPageViewModelFactory(Injection.provideAnswerRepository())
+        ).get(MyPageViewModel::class.java)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.getHomeAnswer()
-
     }
 
     companion object {
         fun newInstance() =
-            HomeAfterFragment()
+            MyPageFragment()
     }
 
 }

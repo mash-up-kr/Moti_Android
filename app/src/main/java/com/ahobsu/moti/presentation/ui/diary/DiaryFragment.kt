@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.diary
+package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -7,7 +7,6 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
-
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {

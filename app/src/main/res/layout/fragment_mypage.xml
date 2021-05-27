@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ahobsu.moti.presentation.ui.main.mypage.MyPageViewModel" />
+            type="com.ahobsu.moti.presentation.ui.mypage.MyPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

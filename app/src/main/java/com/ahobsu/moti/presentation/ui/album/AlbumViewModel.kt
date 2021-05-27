@@ -1,10 +1,10 @@
-package com.ahobsu.moti.presentation.ui.main.mypage
+package com.ahobsu.moti.presentation.ui.album
 
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
 
 
-class MyPageViewModel(
+class AlbumViewModel(
     private val answerRepository: AnswerRepository
 ) : BaseViewModel() {
 

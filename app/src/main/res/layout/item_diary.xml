@@ -9,7 +9,7 @@
 
         <variable
             name="model"
-            type="com.ahobsu.moti.presentation.ui.main.diary.DiaryItemModel" />
+            type="com.ahobsu.moti.presentation.ui.diary.DiaryItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

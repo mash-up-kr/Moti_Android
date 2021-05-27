@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.home
+package com.ahobsu.moti.presentation.ui.home
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider

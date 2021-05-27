@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.main.diary
+package com.ahobsu.moti.presentation.ui.diary
 
 import android.view.LayoutInflater
 import android.view.View
