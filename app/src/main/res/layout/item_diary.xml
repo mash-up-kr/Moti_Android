@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="128dp"
         android:layout_marginBottom="20dp"
+        android:padding="1dp"
         android:background="@drawable/radius_borderline_12">
-
 
         <TextView
             android:id="@+id/tv_diary_item_days"
@@ -81,8 +81,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_diary_item_days"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setImageUrl="@{model.imageUrl}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="0dp"
