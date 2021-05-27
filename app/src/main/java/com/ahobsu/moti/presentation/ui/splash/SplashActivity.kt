@@ -1,7 +1,6 @@
 package com.ahobsu.moti.presentation.ui.splash
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -16,16 +15,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var mPreferences: SharedPreferences
-
-    //    private val access_token = "accessToken"
     private val sharedPrefFile = "app_preferences"
-
-//    private val accessToken: String?
-//        get() = MotiApplication.INSTANCE.sharedPreferences.getString("≈", null)
-//
-//    private val refreshToken: String?
-//        get() = MotiApplication.INSTANCE.sharedPreferences.getString("refreshToken", null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +30,8 @@ class SplashActivity : AppCompatActivity() {
             login()
         }
 
-
         Log.e("accessToken", "  ${Unit.accessToken}")
         Log.e("refreshToken", "  ${Unit.refreshToken}")
-
 
         //TODO:: 1. accessToken 조회,, 없으면 로그인화면, 있으면 그대로 유저정보 조회   0
         //TODO:: 2. 1에서 유저정보 조회 실패할 경우 refreshToken있는지 조회 없으면 로그인화 있으면 accessToken 값을
@@ -57,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
             .subscribe({ it ->
                 Log.e("getUserMy", "success  $it")
                 startActivity(Intent(this, MainActivity::class.java))
-            }, { e ->
+            }, { _ ->
                 refreshLogin()
             })
     }
@@ -70,9 +58,8 @@ class SplashActivity : AppCompatActivity() {
                 Unit.putAccessToken(it.accessToken)
                 Unit.putRefreshToken(it.refreshToken)
                 startActivity(Intent(this, MainActivity::class.java))
-            }, { e ->
+            }, { _ ->
                 startActivity(Intent(this, LoginActivity::class.java))
-
             })
     }
 }

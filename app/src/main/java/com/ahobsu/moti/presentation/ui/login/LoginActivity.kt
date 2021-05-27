@@ -63,11 +63,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         })
     }
 
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-    }
-
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -130,12 +125,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
-
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
