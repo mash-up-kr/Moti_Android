@@ -23,6 +23,9 @@ class DiaryViewModel(
         )
         val aa = listOf<DiaryItemModel>() + a + a + a + a
         _diaryList.postValue(aa)
+    }
+
+    fun onSelectCalender() {
 
     }
 }
