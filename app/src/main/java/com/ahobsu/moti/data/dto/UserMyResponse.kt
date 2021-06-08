@@ -4,27 +4,27 @@ import com.google.gson.annotations.SerializedName
 
 data class UserMyResponse(
     @SerializedName("id")
-    val id: Int ,
+    val id: Int?,
     @SerializedName("birthday")
-    val birthday: String = "",
+    val birthday: String?,
     @SerializedName("email")
-    val email: String = "",
+    val email: String?,
     @SerializedName("name")
-    val name: String = "",
+    val name: String?,
     @SerializedName("gender")
-    val gender: String = "",
+    val gender: String?,
     @SerializedName("refreshDate")
-    val refreshDate: String = "",
+    val refreshDate: String?,
     @SerializedName("refreshToken")
-    val refreshToken: String = "",
+    val refreshToken: String?,
     @SerializedName("mission")
-    val mission: String = "",
+    val mission: String?,
     @SerializedName("snsId")
-    val snsId: String = "",
+    val snsId: String?,
     @SerializedName("snsType")
-    val snsType: String = "",
+    val snsType: String?,
     @SerializedName("createdAt")
-    val createdAt: String = "",
+    val createdAt: String?,
     @SerializedName("updatedAt")
-    val updatedAt: String = ""
+    val updatedAt: String?
 )

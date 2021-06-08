@@ -6,7 +6,7 @@ data class AnswerRequest(
     @SerializedName("content")
     val content: String?,
     @SerializedName("missionId")
-    val missionId: Int,
+    val missionId: Int?,
     @SerializedName("file")
     val file: String?
 )

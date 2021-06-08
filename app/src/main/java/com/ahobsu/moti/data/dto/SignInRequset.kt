@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class SignInRequset(
     @SerializedName("snsType")
-    val snsType: String = ""
+    val snsType: String?
 )

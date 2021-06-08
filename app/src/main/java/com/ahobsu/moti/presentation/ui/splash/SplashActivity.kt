@@ -15,23 +15,18 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
 class SplashActivity : AppCompatActivity() {
 
-    private val sharedPrefFile = "app_preferences"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
-        Unit.mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+        Log.e("accessToken", "  ${Unit.accessToken}")
+        Log.e("refreshToken", "  ${Unit.refreshToken}")
 
         if (Unit.accessToken.isNullOrEmpty()) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
             login()
         }
-
-        Log.e("accessToken", "  ${Unit.accessToken}")
-        Log.e("refreshToken", "  ${Unit.refreshToken}")
 
         //TODO:: 1. accessToken 조회,, 없으면 로그인화면, 있으면 그대로 유저정보 조회   0
         //TODO:: 2. 1에서 유저정보 조회 실패할 경우 refreshToken있는지 조회 없으면 로그인화 있으면 accessToken 값을
@@ -43,7 +38,6 @@ class SplashActivity : AppCompatActivity() {
         UserUseCase(Injection.provideUserRepository()).getUser()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
-                Log.e("getUserMy", "success  $it")
                 startActivity(Intent(this, MainActivity::class.java))
             }, { _ ->
                 refreshLogin()
@@ -54,7 +48,6 @@ class SplashActivity : AppCompatActivity() {
         SignInUseCase(Injection.provideUserRepository()).refreshLogin()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
-                Log.e("getUserMy", "success  $it")
                 Unit.putAccessToken(it.accessToken)
                 Unit.putRefreshToken(it.refreshToken)
                 startActivity(Intent(this, MainActivity::class.java))

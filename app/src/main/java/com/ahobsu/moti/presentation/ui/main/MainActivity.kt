@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }.commit()
         }
 
-        binding.bottomNavi.setOnNavigationItemSelectedListener {
+        binding.bottomNavi.setOnNavigationItemSelectedListener { it ->
             when (it.itemId) {
                 R.id.mypage -> {
                     changeFragment(MyPageFragment.newInstance())
@@ -51,8 +51,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.home -> {
-                    changeFragment(HomeAfterFragment.newInstance())
+                    mainViewModel.todayAnswer.value?.let { boolean ->
+                        changeFragment(
+                            if (boolean) HomeAfterFragment.newInstance()
+                            else HomeBeforeFragment.newInstance()
+                        )
+                    }
                     return@setOnNavigationItemSelectedListener true
+
                 }
                 else ->  {
                    false

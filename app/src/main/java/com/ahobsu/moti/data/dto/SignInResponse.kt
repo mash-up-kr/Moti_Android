@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class SignInResponse(
     @SerializedName("accessToken")
-    val accessToken: String = "",
+    val accessToken: String?,
     @SerializedName("refreshToken")
-    val refreshToken: String = "",
+    val refreshToken: String?,
     @SerializedName("signUp")
-    val signUp: Boolean = false
+    val signUp: Boolean?
 )

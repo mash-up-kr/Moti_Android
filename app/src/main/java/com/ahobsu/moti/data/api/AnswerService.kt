@@ -9,7 +9,7 @@ interface AnswerService {
     @POST("answers")
     fun postAnswer(
         @Part("content")  content: String?,
-        @Part("missionId") missionId: Int,
+        @Part("missionId") missionId: Int?,
         @Part("file") file: String?
     ): Single<BaseData<Unit>>
 
