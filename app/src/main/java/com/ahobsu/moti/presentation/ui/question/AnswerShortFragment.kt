@@ -2,7 +2,6 @@ package com.ahobsu.moti.presentation.ui.question
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -47,8 +46,17 @@ class AnswerShortFragment :
                     viewModel.setAnswerImage(it.toString())
                 }
         }
+
         viewModel.answerContent.observe(viewLifecycleOwner) {
             viewModel.setAnswerContent()
+        }
+
+        viewModel.backPressed.observe(viewLifecycleOwner) {
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+        }
+
+        viewModel.complete.observe(viewLifecycleOwner) {
+            (activity as MissionActivity).replaceFragment(AnswerCompleteFragment.newInstance())
         }
     }
 

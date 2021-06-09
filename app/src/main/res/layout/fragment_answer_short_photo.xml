@@ -31,6 +31,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="12dp"
                 android:foregroundGravity="left"
+                android:onClick="@{() -> viewModel.onClickBack()}"
                 android:padding="12dp"
                 android:src="@drawable/ic_arrow_left" />
 
@@ -51,10 +52,12 @@
                 android:layout_gravity="center_vertical"
                 android:paddingEnd="20dp"
                 android:gravity="center"
+                android:clickable="true"
                 android:onClick="@{() -> viewModel.onClickComplete()}"
                 android:text="@string/complete"
                 android:textColor="@color/rose_gold"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:focusable="true" />
         </LinearLayout>
 
         <ImageView

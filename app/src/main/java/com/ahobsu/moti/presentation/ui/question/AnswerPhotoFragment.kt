@@ -1,7 +1,6 @@
 package com.ahobsu.moti.presentation.ui.question
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -23,6 +22,7 @@ class AnswerPhotoFragment :
             }
         }
     }
+
     private val missionId by lazy { requireArguments().getInt(AnswerShortFragment.ID) }
 
     private val viewModel by lazy {
@@ -44,6 +44,13 @@ class AnswerPhotoFragment :
                 .show {
                     viewModel.setAnswerImage(it.toString())
                 }
+        }
+        viewModel.backPressed.observe(viewLifecycleOwner) {
+            activity?.supportFragmentManager?.beginTransaction()?.remove(this)?.commit()
+        }
+
+        viewModel.complete.observe(viewLifecycleOwner) {
+            (activity as MissionActivity).replaceFragment(AnswerCompleteFragment.newInstance())
         }
     }
 }

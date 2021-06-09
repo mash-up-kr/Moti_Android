@@ -51,12 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.home -> {
-                    mainViewModel.todayAnswer.value?.let { boolean ->
-                        changeFragment(
-                            if (boolean) HomeAfterFragment.newInstance()
-                            else HomeBeforeFragment.newInstance()
-                        )
-                    }
+                    checkTodayAnswer()
                     return@setOnNavigationItemSelectedListener true
 
                 }
@@ -67,6 +62,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
+    fun checkTodayAnswer(){
+        mainViewModel.todayAnswer.value?.let { boolean ->
+            changeFragment(
+                if (boolean) HomeAfterFragment.newInstance()
+                else HomeBeforeFragment.newInstance()
+            )
+        }
+    }
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.main_container, fragment)

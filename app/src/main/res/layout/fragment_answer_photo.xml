@@ -50,10 +50,12 @@
                 android:layout_gravity="center_vertical"
                 android:paddingEnd="20dp"
                 android:gravity="center"
+                android:clickable="true"
                 android:onClick="@{() -> viewModel.onClickComplete()}"
                 android:text="@string/complete"
                 android:textColor="@color/rose_gold"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:focusable="true" />
         </LinearLayout>
 
         <ImageView

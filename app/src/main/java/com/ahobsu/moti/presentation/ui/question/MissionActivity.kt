@@ -1,14 +1,16 @@
 package com.ahobsu.moti.presentation.ui.question
 
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMissionBinding
 import com.ahobsu.moti.presentation.BaseActivity
-import com.ahobsu.moti.presentation.ui.question.model.MissionItemModel
 import com.ahobsu.moti.presentation.ui.question.adapter.MissionAdapter
+import com.ahobsu.moti.presentation.ui.question.model.MissionItemModel
 
 class MissionActivity :
     BaseActivity<ActivityMissionBinding>(R.layout.activity_mission) {
@@ -43,15 +45,19 @@ class MissionActivity :
             }
         })
 
-        viewModel.complete.observe(this) {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.question_container, AnswerCompleteFragment.newInstance())
-            }.commit()
+        viewModel.backPressed.observe(this) {
+            onBackPressed()
         }
 
         viewModel.missionList.observe(this) { it ->
             missionAdapter.replaceAll(it)
         }
+    }
+
+    fun replaceFragment(fragment:Fragment){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.question_container, fragment)
+        }.commit()
     }
 
     private fun initRecyclerView() {

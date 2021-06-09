@@ -9,6 +9,7 @@
     </data>
 
     <LinearLayout
+        android:weightSum="3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
@@ -22,6 +23,12 @@
             android:text="@string/mission_complete"
             android:textColor="@color/rose_gold"
             android:textSize="16sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
 
         <TextView
             android:id="@+id/complete_title"
@@ -39,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="월요일의 파츠를 얻었어요. 확인해볼까요?"
+            android:text="새로 파츠를 얻었어요. 확인해볼까요?"
             android:textColor="@color/rose_gold"
             android:textSize="14dp" />
 
@@ -52,6 +59,11 @@
             android:gravity="center"
             android:src="@drawable/ic_question" />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_weight="0.8" />
+
         <TextView
             android:id="@+id/btn_complete"
             android:layout_width="220dp"
@@ -60,6 +72,8 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/shadow_stack_white"
             android:gravity="center"
+            android:clickable="true"
+            android:onClick="@{() -> viewModel.onClickBack()}"
             android:text="@string/answer_complete"
             android:textColor="@color/pinkish_tan"
             android:textSize="16sp" />

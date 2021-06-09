@@ -33,31 +33,39 @@ class MissionViewModel(
 
     val answerContent = MutableLiveData<String>()
 
-    val complete = MutableLiveData<Unit>()
-    val getImage = MutableLiveData<Unit>()
+    private val _backPressed = MutableLiveData<Unit>()
+    val backPressed: LiveData<Unit> = _backPressed
+
+    private val _complete = MutableLiveData<Unit>()
+    val complete: LiveData<Unit> = _complete
+
+    private val _getImage = MutableLiveData<Unit>()
+    val getImage: LiveData<Unit>  =_getImage
 
     fun initMission() {
         getMissions()
     }
 
     fun onClickAnswerImage() {
-        getImage.postValue(Unit)
+        _getImage.value = Unit
     }
 
     fun onClickComplete() {
-        Log.e("123","onClickComplete")
-        postAnswer()
+//        postAnswer()
+        _complete.value = Unit
     }
+
     fun onClickBack() {
-        //TODO:: back
+        _backPressed.value = Unit
     }
+
     fun onClickReset() {
         missionsRequest(MissionUseCase(missionRepository).getRefreshMissions())
     }
 
-    fun setAnswerImage(img:String){
+    fun setAnswerImage(img: String) {
         selectMission.value?.id?.let {
-            val base =AnswerModel(
+            val base = AnswerModel(
                 content = _missionAnswer.value?.content,
                 missionId = it,
                 file = img
@@ -65,11 +73,12 @@ class MissionViewModel(
             _missionAnswer.postValue(base)
         }
     }
-    fun setAnswerContent(){
-        Log.e("answerContent ",answerContent.value?:"")
-        answerContent.value?:return
+
+    fun setAnswerContent() {
+        Log.e("answerContent ", answerContent.value ?: "")
+        answerContent.value ?: return
         selectMission.value?.id?.let {
-            val base =AnswerModel(
+            val base = AnswerModel(
                 answerContent.value!!,
                 it,
                 _missionAnswer.value?.file
@@ -97,7 +106,7 @@ class MissionViewModel(
             })
     }
 
-    fun postAnswer() {
+    private fun postAnswer() {
         selectMission.value?.id?.let {
             AnswerUseCase(answerRepository).postAnswer(
                 Answer(
@@ -108,10 +117,7 @@ class MissionViewModel(
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ it ->
-                    Log.e("postAnswer ", it.toString())
-                    if (it)
-                        complete.postValue(Unit)
-
+                    _complete.postValue(Unit)
                 }, { e ->
                     Log.e("e", e.toString())
                 })
