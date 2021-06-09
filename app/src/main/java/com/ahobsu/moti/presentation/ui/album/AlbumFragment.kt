@@ -1,6 +1,8 @@
 package com.ahobsu.moti.presentation.ui.album
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
@@ -18,9 +20,18 @@ class AlbumFragment :
         ).get(AlbumViewModel::class.java)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+
+        binding.scrollViewAlbumTop.setOnTouchListener { v, event ->
+            true
+        }
+
+        binding.tvAlvum.setOnClickListener {
+            binding.scrollViewAlbumTop.scrollTo((Math.random() * 1800).toInt(), 0)
+        }
     }
 
     companion object {
