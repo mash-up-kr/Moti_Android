@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.ahobsu.moti.presentation.ui.album.AlbumItemModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/frame_cards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_card_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(1)}"
+            tools:src="@drawable/test1" />
+
+        <ImageView
+            android:id="@+id/iv_card_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(2)}"
+            tools:src="@drawable/test2" />
+
+        <ImageView
+            android:id="@+id/iv_card_part3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(3)}"
+            tools:src="@drawable/test3" />
+
+        <ImageView
+            android:id="@+id/iv_card_part4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(4)}"
+            tools:src="@drawable/test4" />
+
+        <ImageView
+            android:id="@+id/iv_card_part5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(5)}"
+            tools:src="@drawable/test5" />
+
+        <ImageView
+            android:id="@+id/iv_card_part6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:setImageUrl="@{model.getCardPart(6)}" />
+    </FrameLayout>
+
+</layout>
