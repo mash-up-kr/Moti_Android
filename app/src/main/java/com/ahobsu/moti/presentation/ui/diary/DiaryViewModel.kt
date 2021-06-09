@@ -3,6 +3,7 @@ package com.ahobsu.moti.presentation.ui.diary
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
+import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
 
 class DiaryViewModel(
     private val answerRepository: AnswerRepository
@@ -29,14 +30,3 @@ class DiaryViewModel(
 
     }
 }
-
-data class DiaryItemModel(
-    val id: Int,
-    val days: String,
-    val month: String,
-    val title: String = "",
-    val content: String = "",
-    val imageUrl: String? ,
-    val isContent: Boolean = true,
-    val isImage: Boolean = false
-)

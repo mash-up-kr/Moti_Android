@@ -7,6 +7,7 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
+import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {

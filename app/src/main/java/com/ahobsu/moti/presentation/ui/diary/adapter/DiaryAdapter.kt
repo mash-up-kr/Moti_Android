@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.diary
+package com.ahobsu.moti.presentation.ui.diary.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.ItemDiaryBinding
+import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
 
 class DiaryAdapter :
-    ListAdapter<DiaryItemModel, DiaryAdapter.DiaryViewHolder>(DiaryImageComparator) {
+    ListAdapter<DiaryItemModel, DiaryAdapter.DiaryViewHolder>(
+        DiaryImageComparator
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
         return DiaryViewHolder(
