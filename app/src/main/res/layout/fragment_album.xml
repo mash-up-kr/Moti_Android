@@ -37,16 +37,23 @@
             </LinearLayout>
         </HorizontalScrollView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/album_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_album"
+            tools:itemCount="10"/>
 
         <TextView
             android:id="@+id/tv_alvum"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="album"
             android:textColor="@color/shadow_gray"
             android:textSize="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="-79dp" />
+
     </LinearLayout>
 </layout>

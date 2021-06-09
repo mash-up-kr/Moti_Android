@@ -1,23 +1,32 @@
 package com.ahobsu.moti.presentation.ui.album
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.entity.MissionCard
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
+import com.ahobsu.moti.presentation.ui.album.model.AlbumItemModel
 
 
 class AlbumViewModel(
     private val answerRepository: AnswerRepository
 ) : BaseViewModel() {
 
-}
+    private val _albumList = MutableLiveData<List<AlbumItemModel>>()
+    val albumList: LiveData<List<AlbumItemModel>> = _albumList
 
-data class AlbumItemModel(
-    val answers: List<MissionCard>?
-) {
-    fun getCardPart(int: Int): String? {
-        val missionCards = answers?.filter {
-            it.cardPart == int
-        }
-        return if (!missionCards.isNullOrEmpty()) missionCards[0].cardPngUrl else null
+    init {
+        val a= AlbumItemModel(0, listOf(
+            MissionCard(answerId=0, missionId=0, cardPart=1, cardPngUrl="https://cdn.moti.company/parts/1_1.png"),
+            MissionCard(answerId=0, missionId=0, cardPart=2, cardPngUrl="https://cdn.moti.company/parts/2_2.png"),
+            MissionCard(answerId=0, missionId=0, cardPart=3, cardPngUrl="https://cdn.moti.company/parts/3_3.png"),
+            MissionCard(answerId=0, missionId=0, cardPart=4, cardPngUrl="https://cdn.moti.company/parts/4_1.png"),
+            MissionCard(answerId=0, missionId=0, cardPart=5, cardPngUrl="https://cdn.moti.company/parts/5_2.png"),
+            MissionCard(answerId=0, missionId=0, cardPart=6, cardPngUrl="https://cdn.moti.company/parts/6_3.png")
+        ))
+
+        _albumList.value= listOf(a,a,a,a,a,a,a)
+//        _albumList.postValue(listOf(a,a,a,a,a,a,a))
     }
 }
+
