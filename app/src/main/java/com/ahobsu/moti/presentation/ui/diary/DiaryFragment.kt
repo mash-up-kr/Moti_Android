@@ -23,7 +23,7 @@ class DiaryFragment :
         DiaryAdapter().apply {
             setOnItemClickListener(object : DiaryAdapter.OnItemClickListener {
                 override fun onItemClick(id: Int) {
-                    TODO("Not yet implemented")
+                    //TODO("Not yet implemented")
                 }
             })
         }
