@@ -21,5 +21,6 @@
 	<color name="card_text_input">#f3f3f3</color>
 	<color name="place_holder_black">#8b8b8b</color>
 	<color name="shadow_gray">#797979</color>
+	<color name="date_picker_background">#0d0b0b</color>
 
 </resources>
