@@ -21,6 +21,9 @@ class MainHomeViewModel(
     private val _homeData = MutableLiveData<HomeData>()
     val homeData: LiveData<HomeData> = _homeData
 
+    private val _todayAnswer = MutableLiveData<Boolean>()
+    val todayAnswer: LiveData<Boolean> = _todayAnswer
+
     fun getHomeAnswer() {
         AnswerUseCase(answerRepository).getAnswersWeek()
             .subscribeOn(Schedulers.io())
@@ -34,6 +37,17 @@ class MainHomeViewModel(
     }
 
     fun startQuestionActivity(context: Context) {
-        context.startActivity(Intent(context, MissionActivity::class.java))
+        AnswerUseCase(answerRepository).getAnswerToday()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ it ->
+                if (it) {
+                    _todayAnswer.postValue(it)
+                } else {
+                    context.startActivity(Intent(context, MissionActivity::class.java))
+                }
+            }, { e ->
+                Log.e("e", e.toString())
+            })
     }
 }

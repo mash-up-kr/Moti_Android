@@ -25,15 +25,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initMainDataBinding()
+
         mainViewModel.getHomeAnswer()
 
         mainViewModel.todayAnswer.observe(this) {
-            supportFragmentManager.beginTransaction().apply {
-                replace(
-                    R.id.main_container,
-                    if (it) HomeAfterFragment.newInstance() else HomeBeforeFragment.newInstance()
-                )
-            }.commit()
+            changeFragment(
+                if (it) HomeAfterFragment.newInstance()
+                else HomeBeforeFragment.newInstance())
         }
 
         binding.bottomNavi.setOnNavigationItemSelectedListener { it ->
@@ -51,9 +49,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.home -> {
-                    checkTodayAnswer()
+                    mainViewModel.getHomeAnswer()
                     return@setOnNavigationItemSelectedListener true
-
                 }
                 else ->  {
                    false
@@ -62,15 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
-    fun checkTodayAnswer(){
-        mainViewModel.todayAnswer.value?.let { boolean ->
-            changeFragment(
-                if (boolean) HomeAfterFragment.newInstance()
-                else HomeBeforeFragment.newInstance()
-            )
-        }
-    }
-    private fun changeFragment(fragment: Fragment) {
+    fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.main_container, fragment)
         }.commit()

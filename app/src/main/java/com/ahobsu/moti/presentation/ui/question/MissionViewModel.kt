@@ -51,8 +51,7 @@ class MissionViewModel(
     }
 
     fun onClickComplete() {
-//        postAnswer()
-        _complete.value = Unit
+        postAnswer()
     }
 
     fun onClickBack() {

@@ -25,6 +25,7 @@ class MainViewModel(
                 Log.e("getHomeAnswer ", it.toString())
                 _todayAnswer.postValue(it)
             }, { e ->
+                Log.e("getHomeAnswer e", e.toString())
                 Log.e("e", e.toString())
             })
     }
