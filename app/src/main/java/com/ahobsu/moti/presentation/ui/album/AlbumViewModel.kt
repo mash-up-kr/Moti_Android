@@ -16,6 +16,7 @@ class AlbumViewModel(
     val albumList: LiveData<List<AlbumItemModel>> = _albumList
 
     init {
+        TODO("api 정리해서 어떻게 사용할지 확정하기")
         val a= AlbumItemModel(0, listOf(
             MissionCard(answerId=0, missionId=0, cardPart=1, cardPngUrl="https://cdn.moti.company/parts/1_1.png"),
             MissionCard(answerId=0, missionId=0, cardPart=2, cardPngUrl="https://cdn.moti.company/parts/2_2.png"),
@@ -26,7 +27,6 @@ class AlbumViewModel(
         ))
 
         _albumList.value= listOf(a,a,a,a,a,a,a)
-//        _albumList.postValue(listOf(a,a,a,a,a,a,a))
     }
 }
 

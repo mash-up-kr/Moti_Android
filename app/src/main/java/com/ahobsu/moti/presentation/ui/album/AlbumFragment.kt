@@ -2,7 +2,6 @@ package com.ahobsu.moti.presentation.ui.album
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +26,7 @@ class AlbumFragment :
         AlbumAdapter().apply {
             setOnItemClickListener(object : AlbumAdapter.OnItemClickListener {
                 override fun onItemClick(id: Int) {
-                    TODO("Not yet implemented")
+                    TODO("앨범화면_답변완료화면_페이지인디케이터 .. 뷰페이저...로 이동.... wow")
                 }
             })
         }
@@ -44,6 +43,7 @@ class AlbumFragment :
         }
 
         binding.tvAlvum.setOnClickListener {
+            TODO("화면 구성 후 스크롤 위치 변경하도록 수정")
             binding.scrollViewAlbumTop.scrollTo((Math.random() * 1800).toInt(), 0)
         }
 
