@@ -1,6 +1,7 @@
 package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
@@ -8,10 +9,12 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentCalendarBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.CalendarAdapter
+import com.ahobsu.moti.presentation.ui.main.MainActivity
+import com.ahobsu.moti.presentation.ui.main.onBackPressedListener
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar), onBackPressedListener {
 
     private val TAG = javaClass.simpleName
 
@@ -44,27 +47,37 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         initRecyclerView()
         date = Calendar.getInstance()
         initView()
-
         viewModel.selectedCalenderMonth.observe(viewLifecycleOwner) {
             when (it) {
                 DiaryViewModel.CalenderMonth.NEXT -> {
                     date.run {
                         add(Calendar.MONTH, +1)
                     }
+                    initView()
                 }
                 DiaryViewModel.CalenderMonth.PREVIOUS -> {
                     date.run {
                         add(Calendar.MONTH, -1)
                     }
+                    initView()
                 }
                 DiaryViewModel.CalenderMonth.SELECT -> {
-                    date.set(2020, 3, 1)
+                    viewModel.selectMonth()
+                    val datetime = SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time)
+                    binding.monthSpinner.setMonthPicker(datetime)
                 }
             }
-            initView()
-
         }
 
+        viewModel.selectedMonthBtn.observe(viewLifecycleOwner) {
+            val month = binding.monthSpinner.getMonthPicker()
+            date.set(month[0], month[1] - 1, 1)
+            initView()
+        }
+
+        binding.viewCalenderEmpty.setOnClickListener {
+            closeFragment()
+        }
 
     }
 
@@ -76,5 +89,18 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
     private fun initRecyclerView() {
         binding.calendarRecyclerView.adapter = calendarAdapter
+    }
+
+    private fun closeFragment() {
+        val fragmentManager = activity?.supportFragmentManager
+        fragmentManager?.let {
+            it.beginTransaction().remove(this@CalendarFragment).commit()
+            it.popBackStack()
+        }
+        (activity as MainActivity).deleteSelectedCalenderFragment()
+    }
+
+    override fun onBackPressed() {
+        closeFragment()
     }
 }

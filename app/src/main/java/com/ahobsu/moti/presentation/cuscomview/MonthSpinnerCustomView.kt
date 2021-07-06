@@ -35,13 +35,15 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         viewBinding.pickerYear.value = 2000
     }
 
-    private fun setMonthPicker(year: Int, math: Int) {
-        viewBinding.pickerYear.value = year
-        viewBinding.pickerMonth.value = math
+    fun setMonthPicker(date: String) {
+        //"yyyy.MM"
+        val dateYYMM = date.split(".")
+        viewBinding.pickerYear.value = dateYYMM[0].toInt()
+        viewBinding.pickerMonth.value = dateYYMM[1].toInt()
 
     }
 
-    fun getMonthPicker(): String {
-        return "${viewBinding.pickerYear.value}-${viewBinding.pickerMonth.value}"
+    fun getMonthPicker(): List<Int> {
+        return listOf<Int>(viewBinding.pickerYear.value, viewBinding.pickerMonth.value)
     }
 }

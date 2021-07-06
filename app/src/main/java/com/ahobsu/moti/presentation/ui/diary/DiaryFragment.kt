@@ -8,6 +8,8 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
+import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
+import com.ahobsu.moti.presentation.ui.main.MainActivity
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
@@ -34,8 +36,12 @@ class DiaryFragment :
         binding.viewModel = viewModel
         initRecyclerView()
 
+
         viewModel.diaryList.observe(viewLifecycleOwner){
             diaryAdapter.submitList(it)
+        }
+        viewModel.selectedCalender.observe(viewLifecycleOwner){
+            (activity as MainActivity).addSelectedCalenderFragment()
         }
     }
 
@@ -47,5 +53,4 @@ class DiaryFragment :
         fun newInstance() =
             DiaryFragment()
     }
-
 }

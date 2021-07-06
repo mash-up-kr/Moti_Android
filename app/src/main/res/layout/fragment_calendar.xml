@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.ahobsu.moti.presentation.ui.diary.DiaryViewModel" />
@@ -14,127 +16,187 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/date_picker_background"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="28dp"
         android:weightSum="1">
 
         <View
+            android:id="@+id/view_calender_empty"
             android:background="#61000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_margin="20dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageView
-                android:id="@+id/btn_calender_month_left"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.PREVIOUS)}"
-                android:src="@drawable/ic_arrow_left" />
-
-            <TextView
-                android:id="@+id/tv_month"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.SELECT)}"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="2020.12"
-                android:textColor="@color/rose_gold" />
-
-            <ImageView
-                android:id="@+id/btn_calender_month_right"
-                android:layout_width="wrap_content"
-                android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.NEXT)}"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_arrow_right" />
-        </LinearLayout>
+            android:layout_weight="1" />
 
         <LinearLayout
-            android:id="@+id/calendar_header"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="2dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:weightSum="7">
+            android:layout_height="300dp"
+            android:background="@color/date_picker_background"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/btn_calender_month_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.PREVIOUS)}"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_arrow_left" />
+
+                <TextView
+                    android:id="@+id/tv_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.SELECT)}"
+                    android:text="2020.12"
+                    android:textColor="@color/rose_gold" />
+
+                <ImageView
+                    android:id="@+id/btn_calender_month_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.onClickCalenderMonth(CalenderMonth.NEXT)}"
+                    android:src="@drawable/ic_arrow_right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.selectMonthSpinner ? View.VISIBLE : View.GONE}"
+                android:weightSum="1">
+
+                <com.ahobsu.moti.presentation.cuscomview.MonthSpinnerCustomView
+                    android:id="@+id/month_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:onClick="@{() -> viewModel.selectedMonth(false)}"
+                        android:text="취소"
+                        android:textColor="@color/paleRose"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:onClick="@{() -> viewModel.selectedMonth(true)}"
+                        android:text="확인"
+                        android:textColor="@color/paleRose"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/calendar_header"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.selectMonthSpinner ? View.GONE : View.VISIBLE}"
+                android:weightSum="7">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="일"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="월"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="화"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="수"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="목"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="금"
+                    android:textColor="@color/rose_gold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="토"
+                    android:textColor="@color/rose_gold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/calendarRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="일"
-                android:textColor="@color/rose_gold" />
+                android:layout_margin="16dp"
+                android:visibility="@{viewModel.selectMonthSpinner ? View.GONE : View.VISIBLE}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="7"
+                tools:itemCount="30"
+                tools:listitem="@layout/item_calendar" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="월"
-                android:textColor="@color/rose_gold" />
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="화"
-            android:textColor="@color/rose_gold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="수"
-            android:textColor="@color/rose_gold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="목"
-                android:textColor="@color/rose_gold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="금"
-                android:textColor="@color/rose_gold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="토"
-                android:textColor="@color/rose_gold" />
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendarRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="7"
-            tools:itemCount="30"
-            tools:listitem="@layout/item_calendar" />
-
     </LinearLayout>
+
 </layout>

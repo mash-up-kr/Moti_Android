@@ -1,5 +1,6 @@
 package com.ahobsu.moti.presentation.ui.diary
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
@@ -9,11 +10,21 @@ class DiaryViewModel(
     private val answerRepository: AnswerRepository
 ) : BaseViewModel() {
     private val _diaryList = MutableLiveData<List<DiaryItemModel>>()
-    val diaryList = _diaryList
+    val diaryList: LiveData<List<DiaryItemModel>> = _diaryList
 
-    private val _selectedCalenderMonth = MutableLiveData<CalenderMonth>()
-    val selectedCalenderMonth = _selectedCalenderMonth
-    enum class  CalenderMonth {PREVIOUS,NEXT,SELECT }
+    private val _selectedCalender = MutableLiveData<Unit>()
+    val selectedCalender: LiveData<Unit> = _selectedCalender
+
+    private val _selectMonthSpinner = MutableLiveData<Boolean>(false)
+    val selectMonthSpinner: LiveData<Boolean> = _selectMonthSpinner
+
+    private val _selectedMonthBtn = MutableLiveData<Unit>()
+    val selectedMonthBtn: LiveData<Unit> = _selectedMonthBtn
+
+    private val _clickCalenderMonth = MutableLiveData<CalenderMonth>()
+    val selectedCalenderMonth: LiveData<CalenderMonth> = _clickCalenderMonth
+    enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
+
     init {
         val a = DiaryItemModel(
             id = 0,
@@ -28,11 +39,21 @@ class DiaryViewModel(
         val aa = listOf<DiaryItemModel>() + a + a + a + a
         _diaryList.postValue(aa)
     }
+    fun selectMonth(){
+        _selectMonthSpinner.value = true
+    }
+
+    fun selectedMonth(boolean: Boolean){
+        _selectMonthSpinner.value = false
+        if (boolean){
+            _selectedMonthBtn.value = Unit
+        }
+    }
 
     fun onClickCalenderMonth(select: CalenderMonth){
-        _selectedCalenderMonth.value = select
+        _clickCalenderMonth.value = select
     }
     fun onSelectCalender() {
-
+        _selectedCalender.value = Unit
     }
 }

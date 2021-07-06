@@ -1,6 +1,9 @@
 package com.ahobsu.moti.presentation.ui.main
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -15,7 +18,10 @@ import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
 import com.ahobsu.moti.presentation.ui.home.HomeBeforeFragment
 import com.ahobsu.moti.presentation.ui.mypage.MyPageFragment
 
+
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+
+    private var lastTimeBackPressed: Long = 0
 
     private val mainViewModel by lazy {
         ViewModelProvider(
@@ -42,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.diary -> {
-                    changeFragment(CalendarFragment.newInstance())
+                    changeFragment(DiaryFragment.newInstance())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.album -> {
@@ -53,11 +59,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     mainViewModel.getHomeAnswer()
                     return@setOnNavigationItemSelectedListener true
                 }
-                else ->  {
-                   false
+                else -> {
+                    false
                 }
             }
         }
+    }
+
+    fun addSelectedCalenderFragment() {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.dialog_container, CalendarFragment.newInstance())
+        }.commit()
+        binding.bottomNavi.visibility = View.GONE
+    }
+
+    fun deleteSelectedCalenderFragment() {
+        binding.bottomNavi.visibility = View.VISIBLE
     }
 
     fun changeFragment(fragment: Fragment) {
@@ -68,5 +85,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private fun initMainDataBinding() {
         binding.mainVM = mainViewModel
+    }
+
+    override fun onBackPressed() {
+        //프래그먼트 onBackPressedListener사용
+        val fragmentList = supportFragmentManager.fragments
+        for (fragment in fragmentList) {
+            if (fragment is onBackPressedListener) {
+                (fragment as onBackPressedListener).onBackPressed()
+                return
+            }
+        }
+
+        //두 번 클릭시 어플 종료
+        if (System.currentTimeMillis() - lastTimeBackPressed < 1500) {
+            finish()
+            return
+        }
+        lastTimeBackPressed = System.currentTimeMillis()
+        Toast.makeText(this, "'뒤로' 버튼을 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
     }
 }
