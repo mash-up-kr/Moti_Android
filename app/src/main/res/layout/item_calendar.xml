@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="model"
-            type="com.ahobsu.moti.presentation.ui.album.model.AlbumItemModel" />
+            type="String" />
     </data>
 
     <LinearLayout
@@ -13,13 +14,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/tv_calender_days"
+            android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:text="3"
+            android:textStyle="normal"
+            android:text="@{model}"
             android:textColor="@color/rose_gold"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            tools:text = "3"/>
     </LinearLayout>
 
 </layout>

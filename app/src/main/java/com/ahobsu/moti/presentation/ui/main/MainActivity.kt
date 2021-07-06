@@ -9,6 +9,7 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMainBinding
 import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.presentation.ui.album.AlbumFragment
+import com.ahobsu.moti.presentation.ui.diary.CalendarFragment
 import com.ahobsu.moti.presentation.ui.diary.DiaryFragment
 import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
 import com.ahobsu.moti.presentation.ui.home.HomeBeforeFragment
@@ -41,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.diary -> {
-                    changeFragment(DiaryFragment.newInstance())
+                    changeFragment(CalendarFragment.newInstance())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.album -> {

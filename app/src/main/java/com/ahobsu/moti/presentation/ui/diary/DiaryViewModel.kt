@@ -11,6 +11,9 @@ class DiaryViewModel(
     private val _diaryList = MutableLiveData<List<DiaryItemModel>>()
     val diaryList = _diaryList
 
+    private val _selectedCalenderMonth = MutableLiveData<CalenderMonth>()
+    val selectedCalenderMonth = _selectedCalenderMonth
+    enum class  CalenderMonth {PREVIOUS,NEXT,SELECT }
     init {
         val a = DiaryItemModel(
             id = 0,
@@ -26,6 +29,9 @@ class DiaryViewModel(
         _diaryList.postValue(aa)
     }
 
+    fun onClickCalenderMonth(select: CalenderMonth){
+        _selectedCalenderMonth.value = select
+    }
     fun onSelectCalender() {
 
     }
