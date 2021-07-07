@@ -14,7 +14,7 @@ class MyPageFragment :
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore,
-            MyPageViewModelFactory(Injection.provideAnswerRepository())
+            MyPageViewModelFactory(Injection.provideUserRepository())
         ).get(MyPageViewModel::class.java)
     }
 

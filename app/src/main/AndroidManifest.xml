@@ -15,8 +15,8 @@
         android:theme="@style/Theme.Moti">
         <activity android:name=".presentation.ui.question.MissionActivity" />
         <activity android:name=".presentation.ui.main.MainActivity" />
-        <activity android:name=".presentation.ui.splash.SplashActivity" />
-        <activity android:name=".presentation.ui.login.LoginActivity">
+        <activity android:name=".presentation.ui.login.LoginActivity" />
+        <activity android:name=".presentation.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
