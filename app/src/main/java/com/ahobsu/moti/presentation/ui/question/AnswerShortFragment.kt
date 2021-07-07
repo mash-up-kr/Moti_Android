@@ -42,9 +42,7 @@ class AnswerShortFragment :
         checkCameraPermission()
         viewModel.getImage.observe(viewLifecycleOwner) {
             TedBottomPicker.with(mContext as FragmentActivity?)
-                .show {
-                    viewModel.setAnswerImage(it.toString())
-                }
+                .show { viewModel.setAnswerImage(it) }
         }
 
         viewModel.answerContent.observe(viewLifecycleOwner) {

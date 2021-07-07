@@ -1,5 +1,7 @@
 package com.ahobsu.moti.presentation.ui.question
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +11,17 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentAnswerPhotoBindingImpl
 import com.ahobsu.moti.presentation.BaseFragment
 import gun0912.tedbottompicker.TedBottomPicker
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.create
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.IOException
+import java.io.InputStream
+import javax.inject.Singleton
 
 
 class AnswerPhotoFragment :
@@ -42,7 +55,7 @@ class AnswerPhotoFragment :
         viewModel.getImage.observe(viewLifecycleOwner) {
             TedBottomPicker.with(mContext as FragmentActivity?)
                 .show {
-                    viewModel.setAnswerImage(it.toString())
+                    viewModel.setAnswerImage(it)
                 }
         }
         viewModel.backPressed.observe(viewLifecycleOwner) {

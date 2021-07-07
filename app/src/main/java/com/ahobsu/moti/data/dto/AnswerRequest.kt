@@ -1,6 +1,7 @@
 package com.ahobsu.moti.data.dto
 
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 
 data class AnswerRequest(
     @SerializedName("content")
@@ -8,5 +9,5 @@ data class AnswerRequest(
     @SerializedName("missionId")
     val missionId: Int?,
     @SerializedName("file")
-    val file: String?
+    val file: MultipartBody.Part?
 )

@@ -1,5 +1,6 @@
 package com.ahobsu.moti.presentation.ui.question
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -62,7 +63,7 @@ class MissionViewModel(
         missionsRequest(MissionUseCase(missionRepository).getRefreshMissions())
     }
 
-    fun setAnswerImage(img: String) {
+    fun setAnswerImage(img: Uri) {
         selectMission.value?.id?.let {
             val base = AnswerModel(
                 content = _missionAnswer.value?.content,
