@@ -38,28 +38,14 @@
             android:text="@string/sub_title"
             android:textColor="@color/rose_gold"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_sign_in"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/btn_login"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="23dp"
-            android:background="@drawable/radius_22"
-            android:gravity="center"
-            android:text="btn_login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_sign_in"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/btn_sign_in"
+            android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginStart="15dp"
@@ -67,7 +53,6 @@
             android:layout_marginBottom="23dp"
             android:background="@drawable/radius_22"
             android:gravity="center"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.NickName,true)}"
             android:text="SignIn"
             app:layout_constraintBottom_toTopOf="@id/user_agreement_content"
             app:layout_constraintEnd_toEndOf="parent"

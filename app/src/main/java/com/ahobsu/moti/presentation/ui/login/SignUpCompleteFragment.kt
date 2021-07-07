@@ -28,7 +28,7 @@ class SignUpCompleteFragment :
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
                 if (it == LoginViewModel.SignUpFragment.EXIT) {
-                    (activity as LoginActivity?)?.startMainActivity()
+                    (activity as LoginActivity?)?.putUserInfo()
                 }
             })
 

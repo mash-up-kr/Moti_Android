@@ -89,6 +89,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                         Unit.putRefreshToken(it.refreshToken)
                         startMainActivity()
                     }, { e ->
+                        loginViewModel.onClickNextFragment(
+                            LoginViewModel.SignUpFragment.NickName,
+                            true
+                        )
                         Log.e("postSignIn e", e.toString())
                     })
                 startActivity(intent)
@@ -99,20 +103,23 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         }
     }
 
-    fun startMainActivity() {
+    private fun startMainActivity() {
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
+    }
+
+    fun putUserInfo() {
         loginViewModel.user.value?.let {
             UserUseCase(Injection.provideUserRepository()).putUserInfo(it)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     Log.e(" Success ", it.toString())
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                    finish()
+                    startMainActivity()
                 }, { e ->
                     Log.e("postSignIn e", e.toString())
                 })
         }
-
     }
 
     fun changeFragment(fragment: LoginViewModel.SignUpFragment) {
