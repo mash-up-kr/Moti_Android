@@ -25,8 +25,8 @@ class SignUpNicknameFragment :
                     val mInputMethodManager =
                         context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     mInputMethodManager.hideSoftInputFromWindow(binding.etNickname.windowToken, 0)
-
-                    (activity as LoginActivity?)?.changeFragment(SignUpGenderFragment.newInstance())
+                    (activity as LoginActivity?)?.setUserInfo(name=viewModel.etNickname.value?:"",gender=null,birthday=null)
+                    (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Gender)
                 }
             })
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {

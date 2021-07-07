@@ -8,4 +8,5 @@ interface UserRepository {
      fun signIn(snsType: String): Single<SignIn>
      fun refreshSignIn(): Single<SignIn>
      fun getUser(): Single<User>
+     fun putUserInfo(user:User): Single<User>
 }

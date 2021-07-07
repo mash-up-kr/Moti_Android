@@ -40,6 +40,11 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun getDatePicker(): String {
-        return "${viewBinding.pickerYear.value}-${viewBinding.pickerMonth.value}-${viewBinding.pickerDay.value}"
+        return String.format(
+            "%04d-%02d-%02d",
+            viewBinding.pickerYear.value,
+            viewBinding.pickerMonth.value,
+            viewBinding.pickerDay.value
+        )
     }
 }

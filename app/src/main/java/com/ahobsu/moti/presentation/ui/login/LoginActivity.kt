@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.ahobsu.moti.R
 import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityLoginBinding
 import com.ahobsu.moti.domain.SignInUseCase
+import com.ahobsu.moti.domain.UserUseCase
 import com.ahobsu.moti.presentation.BaseActivity
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -45,6 +45,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 Log.e("Authorization", it)
             }
         }
+
         binding.btnLogin.setOnClickListener {
             signIn()
         }
@@ -58,7 +59,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
         loginViewModel.signUpFragment.observe(this, Observer {
             if (it == LoginViewModel.SignUpFragment.NickName) {
-                changeFragment(SignUpNicknameFragment.newInstance())
+                changeFragment(LoginViewModel.SignUpFragment.NickName)
             }
         })
     }
@@ -99,13 +100,41 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     fun startMainActivity() {
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        finish()
+        loginViewModel.user.value?.let {
+            UserUseCase(Injection.provideUserRepository()).putUserInfo(it)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    Log.e(" Success ", it.toString())
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    finish()
+                }, { e ->
+                    Log.e("postSignIn e", e.toString())
+                })
+        }
+
     }
 
-    fun changeFragment(fragment: Fragment) {
+    fun changeFragment(fragment: LoginViewModel.SignUpFragment) {
         supportFragmentManager.beginTransaction().apply {
-            add(R.id.fl_container, fragment)
+            add(
+                R.id.fl_container,
+                when (fragment) {
+                    LoginViewModel.SignUpFragment.NickName -> {
+                        SignUpNicknameFragment.newInstance()
+                    }
+                    LoginViewModel.SignUpFragment.Birthday -> {
+                        SignUpBirthdayFragment.newInstance()
+                    }
+                    LoginViewModel.SignUpFragment.Gender -> {
+                        SignUpGenderFragment.newInstance()
+                    }
+                    LoginViewModel.SignUpFragment.Complete -> {
+                        SignUpCompleteFragment.newInstance(loginViewModel.user.value?.name ?: "")
+                    }
+                    else ->  SignUpNicknameFragment.newInstance()
+                }
+            )
             addToBackStack(null)
         }.commit()
     }
@@ -130,6 +159,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
+    }
+
+    fun setUserInfo(name: String?, gender: String?, birthday: String?) {
+        loginViewModel.setUserInfo(name, gender, birthday)
     }
 
     companion object {

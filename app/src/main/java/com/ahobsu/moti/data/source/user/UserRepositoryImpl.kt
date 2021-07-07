@@ -54,4 +54,26 @@ class UserRepositoryImpl(
 
         }
     }
+
+    override fun putUserInfo(user: User): Single<User> {
+        return userDataSource.putUserInfo(user).map { base ->
+            base.data?.let {
+                User(
+                    id = it.id,
+                    birthday = it.birthday,
+                    email = it.email,
+                    name = it.name,
+                    gender = it.gender,
+                    refreshDate = it.refreshDate,
+                    refreshToken = it.refreshToken,
+                    mission = it.mission,
+                    snsId = it.snsId,
+                    snsType = it.snsType,
+                    createdAt = it.createdAt,
+                    updatedAt = it.updatedAt
+                )
+            }
+
+        }
+    }
 }
