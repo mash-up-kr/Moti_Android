@@ -32,4 +32,8 @@ class MyPageViewModel(
                 Log.e("postSignIn e", e.toString())
             })
     }
+
+    fun onClickSavedMyPage(){
+
+    }
 }

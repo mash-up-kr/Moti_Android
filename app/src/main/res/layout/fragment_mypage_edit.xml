@@ -17,50 +17,15 @@
 
         <TextView
             android:id="@+id/tv_mypage_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_title"
             android:gravity="center"
-            android:text="@string/mypage"
+            android:text="@string/edit"
             android:textColor="@color/rose_gold"
             android:textSize="19dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/btn_mypage_edit"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_rewrite"
-            app:layout_constraintBottom_toBottomOf="@id/tv_mypage_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_mypage_title" />
-
-        <ImageView
-            android:id="@+id/iv_mypage_image"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/radius_borderline_circle"
-            android:padding="5dp"
-            app:filterImageUrl="@{viewModel.profileUrl}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_mypage_title" />
-
-        <TextView
-            android:id="@+id/tv_mypage_name"
-            android:layout_width="0dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/mypage"
-            android:textColor="@color/rose_gold"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_mypage_image" />
 
         <View
             android:id="@+id/view_tv_mypage"
@@ -72,7 +37,7 @@
             android:background="@color/light_gold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_mypage_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_title" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,7 +58,18 @@
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
+            app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
             app:layout_constraintTop_toBottomOf="@id/view_tv_mypage" />
+
+
+        <View
+            android:id="@+id/view_mypage_nickname"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/light_gold"
+            app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
+            app:layout_constraintStart_toStartOf="@id/view_tv_mypage"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
 
 
         <TextView
@@ -115,7 +91,19 @@
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
+            app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
+
+
+        <View
+            android:id="@+id/viewmypage_birth"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/light_gold"
+            app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
+            app:layout_constraintStart_toStartOf="@id/view_tv_mypage"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -136,6 +124,7 @@
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
+            app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
 
 
@@ -150,21 +139,11 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_gender" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
-            android:text="@string/nickname"
-            android:textColor="@color/rose_gold"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="@id/view_tv_mypage"
-            app:layout_constraintTop_toBottomOf="@id/tv_mypage_view2" />
-
-        <TextView
             android:id="@+id/tv_mypage_version"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
-            android:text="현재 0.0.0"
+            android:text="@string/sign_out"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
@@ -175,22 +154,40 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
-            android:text="@string/qa"
+            android:text="@string/resign"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_version" />
 
+
         <TextView
-            android:id="@+id/tv_mypage_user_agreement"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/mypage_text_h"
+            android:id="@+id/btn_sign_up_next_shadow"
+            android:layout_width="220dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="126dp"
+            android:background="@drawable/shadow_stack"
+            android:backgroundTint="@color/rose_gold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_sign_up_next"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/radius_20"
+            android:backgroundTint="@color/white"
             android:gravity="center"
-            android:text="@string/user_agreement_kr"
-            android:textColor="@color/rose_gold"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"
-            app:layout_constraintTop_toBottomOf="@id/tv_mypage_qa" />
+            android:onClick="@{() -> viewModel.onClickSavedMyPage()}"
+            android:text="@string/saved"
+            android:textColor="@color/pinkish_tan"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_sign_up_next_shadow"
+            app:layout_constraintEnd_toEndOf="@id/btn_sign_up_next_shadow"
+            app:layout_constraintStart_toStartOf="@+id/btn_sign_up_next_shadow"
+            app:layout_constraintTop_toTopOf="@id/btn_sign_up_next_shadow" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

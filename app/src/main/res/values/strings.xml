@@ -32,7 +32,10 @@
     <string name="select_mission">질문 선택</string>
     <string name="mission_complete">미션 완료</string>
 	<string formatted="false" name="sign_up_complete_content">%s님\n회원가입을\n축하합니다.</string>
-
+    <string name="edit">수정하기</string>
+	<string name="resign">탈퇴하기</string>
+	<string name="sign_out">로그아웃</string>
+	<string name="saved">저장하기</string>
 
 
 	출처: https://gogorchg.tistory.com/entry/AndroidDataBinding-String-Format-적용하기 [항상 초심으로]
