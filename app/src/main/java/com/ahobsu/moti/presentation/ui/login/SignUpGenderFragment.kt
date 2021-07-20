@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.FragmentSignupGenderBinding
 import com.ahobsu.moti.presentation.BaseFragment
+import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 class SignUpGenderFragment : BaseFragment<FragmentSignupGenderBinding>(R.layout
     .fragment_signup_gender){
@@ -20,7 +21,7 @@ class SignUpGenderFragment : BaseFragment<FragmentSignupGenderBinding>(R.layout
                 if (it == LoginViewModel.SignUpFragment.Birthday) {
                     (activity as LoginActivity?)?.setUserInfo(
                         name = null,
-                        gender = if (viewModel.userGender.value == LoginViewModel.Gender.MAN) "남" else "여",
+                        gender = if (viewModel.userGender.value == EnumClass.Gender.MAN) "남" else "여",
                         birthday = null
                     )
                     (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Birthday)

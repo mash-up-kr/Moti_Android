@@ -7,11 +7,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.entity.User
 import com.ahobsu.moti.presentation.BaseViewModel
+import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 class LoginViewModel : BaseViewModel() {
 
     enum class SignUpFragment { Birthday, Complete, Gender, NickName, EXIT }
-    enum class Gender { MAN, WOMAN }
 
     private val _signUpFragment: MutableLiveData<SignUpFragment> = MutableLiveData()
     val signUpFragment: LiveData<SignUpFragment> = _signUpFragment
@@ -21,8 +21,8 @@ class LoginViewModel : BaseViewModel() {
 
     val etNickname = MutableLiveData<String>()
 
-    private val _userGender = MutableLiveData<Gender>()
-    val userGender: LiveData<Gender> = _userGender
+    private val _userGender = MutableLiveData<EnumClass.Gender>()
+    val userGender: LiveData<EnumClass.Gender> = _userGender
 
     private val _toTheNextStep = MutableLiveData<Boolean>(false)
     val toTheNextStep: LiveData<Boolean> = _toTheNextStep
@@ -45,7 +45,7 @@ class LoginViewModel : BaseViewModel() {
     )
     val user: LiveData<User> = _user
 
-    fun onSelectGender(gender: Gender) {
+    fun onSelectGender(gender: EnumClass.Gender) {
         _toTheNextStep.value = true
         _userGender.value = gender
     }
