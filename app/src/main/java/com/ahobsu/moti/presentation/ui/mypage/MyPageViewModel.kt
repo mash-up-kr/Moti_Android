@@ -94,7 +94,22 @@ class MyPageViewModel(
 
     fun onClickSavedMyPage() {
         user.value?.let {
-            userRepository.putUserInfo(user = it)
+            userRepository.putUserInfo(
+                user = User(
+                    id = it.id,
+                    birthday = it.birthday,
+                    email = it.email,
+                    name = userNickName.value,
+                    gender = it.gender,
+                    refreshDate = it.refreshDate,
+                    refreshToken = it.refreshToken,
+                    mission = it.mission,
+                    snsId = it.snsId,
+                    snsType = it.snsType,
+                    createdAt = it.createdAt,
+                    updatedAt = it.updatedAt
+                )
+            )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
