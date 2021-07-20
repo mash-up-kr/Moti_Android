@@ -33,6 +33,7 @@
 
         <TextView
             android:id="@+id/tv_gender_title"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="28dp"
@@ -46,6 +47,7 @@
 
         <TextView
             android:id="@+id/tv_gender_input"
+            android:fontFamily="@font/iropke_batang_otfm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -160,6 +162,7 @@
 
         <TextView
             android:id="@+id/btn_sign_up_next"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"
@@ -177,6 +180,7 @@
 
         <TextView
             android:id="@+id/tv_gender_input_hint"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
