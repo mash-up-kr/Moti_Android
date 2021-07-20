@@ -33,6 +33,7 @@
 
                 <TextView
                     android:id="@+id/tv_diary_item_days"
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginStart="16dp"
@@ -48,6 +49,7 @@
 
                 <TextView
                     android:id="@+id/tv_diary_item_month"
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="16dp"
                     android:layout_marginTop="2dp"
@@ -107,6 +109,7 @@
 
                 <TextView
                     android:id="@+id/tv_diary_item_title"
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -121,6 +124,7 @@
 
                 <TextView
                     android:id="@+id/tv_diary_item_content"
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"

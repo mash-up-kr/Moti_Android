@@ -10,6 +10,7 @@
 	<!-- changes the default text colour for the EditTexts -->
 	<style name="editTextStyle" parent="android:style/Widget.EditText">
 		<item name="android:textColor">@color/rose_gold</item>
+		<item name="android:fontFamily">@font/iropke_batang_otfm</item>
 		<item name="android:textSize">24dp</item>
 	</style>
 </resources>

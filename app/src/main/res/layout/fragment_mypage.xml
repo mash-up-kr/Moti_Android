@@ -16,6 +16,7 @@
         android:clickable="true">
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:id="@+id/tv_mypage_title"
             android:layout_width="0dp"
             android:layout_height="@dimen/mypage_title"
@@ -51,6 +52,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_name"
+            android:fontFamily="@font/iropke_batang_otfm"
             android:layout_width="0dp"
             android:layout_height="31dp"
             android:layout_marginTop="20dp"
@@ -75,6 +77,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_name" />
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -86,6 +89,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_nickname"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -97,6 +101,7 @@
 
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -108,6 +113,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_birth"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -118,6 +124,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -129,6 +136,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_gender"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -141,6 +149,7 @@
 
         <View
             android:id="@+id/tv_mypage_view2"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="2dp"
@@ -150,6 +159,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_gender" />
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -161,6 +171,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_version"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -172,6 +183,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_qa"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -183,6 +195,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_user_agreement"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"

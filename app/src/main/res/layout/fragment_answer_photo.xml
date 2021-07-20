@@ -35,6 +35,7 @@
 
             <TextView
                 android:id="@+id/tv_question_title"
+                android:fontFamily="@font/apple_sd_r"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_weight="1"
@@ -45,6 +46,7 @@
 
             <TextView
                 android:id="@+id/btn_question_complete"
+                android:fontFamily="@font/apple_sd_r"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
@@ -93,6 +95,7 @@
 
         <TextView
             android:id="@+id/tv_answer_title"
+            android:fontFamily="@font/iropke_batang_otfm"
             android:layout_width="0dp"
             android:layout_height="120dp"
             android:lineHeight="36dp"

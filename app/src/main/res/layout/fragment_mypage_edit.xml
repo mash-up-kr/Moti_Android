@@ -17,6 +17,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_title"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_title"
             android:gravity="center"
@@ -40,6 +41,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_title" />
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -51,6 +53,7 @@
 
         <EditText
             android:id="@+id/tv_mypage_nickname"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -73,6 +76,7 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
             android:text="@string/birth"
@@ -83,6 +87,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_birth"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -96,6 +101,7 @@
 
         <View
             android:id="@+id/viewmypage_birth"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="0dp"
             android:layout_height="0.5dp"
             android:background="@color/light_gold"
@@ -105,6 +111,7 @@
 
 
         <TextView
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -116,6 +123,7 @@
 
         <TextView
             android:id="@+id/tv_mypage_gender"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -139,6 +147,7 @@
 
         <TextView
             android:id="@+id/btn_sign_out"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -150,6 +159,7 @@
 
         <TextView
             android:id="@+id/btn_out"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
@@ -162,6 +172,7 @@
 
         <TextView
             android:id="@+id/btn_saved_mypage_shadow"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="220dp"
             android:layout_height="60dp"
             android:layout_marginBottom="126dp"
@@ -173,6 +184,7 @@
 
         <TextView
             android:id="@+id/btn_saved_mypage"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"

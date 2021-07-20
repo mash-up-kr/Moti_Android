@@ -17,6 +17,7 @@
 
         <TextView
             android:id="@+id/tv_question_title"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:gravity="center"
@@ -32,6 +33,7 @@
 
         <TextView
             android:id="@+id/complete_title"
+            android:fontFamily="@font/iropke_batang_otfm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
@@ -42,6 +44,7 @@
 
         <TextView
             android:id="@+id/complete_subtitle"
+            android:fontFamily="@font/iropke_batang_otfm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -66,6 +69,7 @@
 
         <TextView
             android:id="@+id/btn_complete"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="220dp"
             android:layout_height="60dp"
             android:layout_gravity="center"

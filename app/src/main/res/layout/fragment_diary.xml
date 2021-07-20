@@ -17,6 +17,7 @@
 
         <TextView
             android:id="@+id/tv_diary_date"
+            android:fontFamily="@font/apple_sd_r"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:gravity="center"

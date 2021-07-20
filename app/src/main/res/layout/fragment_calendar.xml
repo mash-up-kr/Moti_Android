@@ -53,6 +53,7 @@
 
                 <TextView
                     android:id="@+id/tv_month"
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -129,6 +130,7 @@
                 android:weightSum="7">
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -137,6 +139,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,6 +148,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -153,6 +157,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -161,6 +166,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -169,6 +175,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -177,6 +184,7 @@
                     android:textColor="@color/rose_gold" />
 
                 <TextView
+                    android:fontFamily="@font/iropke_batang_otfm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
