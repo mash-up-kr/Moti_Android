@@ -42,10 +42,10 @@ class AlbumFragment :
             true
         }
 
-        binding.tvAlvum.setOnClickListener {
-            //TODO("화면 구성 후 스크롤 위치 변경하도록 수정")
-            binding.scrollViewAlbumTop.scrollTo((Math.random() * 1800).toInt(), 0)
-        }
+//        binding.tvAlvum.setOnClickListener {
+//            //TODO("화면 구성 후 스크롤 위치 변경하도록 수정")
+//            binding.scrollViewAlbumTop.scrollTo((Math.random() * 1800).toInt(), 0)
+//        }
 
         viewModel.albumList.observe(viewLifecycleOwner) { it ->
             albumAdapter.submitList(it)

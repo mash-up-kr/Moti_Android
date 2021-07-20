@@ -15,8 +15,8 @@ interface AnswerService {
     @Multipart
     @POST("answers")
     fun postAnswer(
-        @Part("content") content: String?,
-        @Part("missionId") missionId: Int?,
+        @Part content: MultipartBody.Part?,
+        @Part missionId: MultipartBody.Part?,
         @Part file: MultipartBody.Part?
     ): Single<BaseData<Unit>>
 
