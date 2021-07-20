@@ -31,7 +31,7 @@ class MissionActivity :
         binding.viewModel = viewModel
         initRecyclerView()
         viewModel.initMission()
-
+ 
         missionAdapter.setOnClickItemListener(object : MissionAdapter.OnClickItemListener {
             override fun onClickMission(data: MissionItemModel) {
                 supportFragmentManager.beginTransaction().apply {

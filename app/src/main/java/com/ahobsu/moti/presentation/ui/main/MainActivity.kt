@@ -1,7 +1,6 @@
 package com.ahobsu.moti.presentation.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,6 +16,7 @@ import com.ahobsu.moti.presentation.ui.diary.DiaryFragment
 import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
 import com.ahobsu.moti.presentation.ui.home.HomeBeforeFragment
 import com.ahobsu.moti.presentation.ui.mypage.MyPageFragment
+import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
@@ -91,8 +91,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         //프래그먼트 onBackPressedListener사용
         val fragmentList = supportFragmentManager.fragments
         for (fragment in fragmentList) {
-            if (fragment is onBackPressedListener) {
-                (fragment as onBackPressedListener).onBackPressed()
+            if (fragment is OnBackPressedListener) {
+                (fragment as OnBackPressedListener).onBackPressed()
                 return
             }
         }

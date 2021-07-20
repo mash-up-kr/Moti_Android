@@ -8,7 +8,7 @@
 
         <import type="com.ahobsu.moti.presentation.ui.login.LoginViewModel.SignUpFragment" />
 
-        <import type="com.ahobsu.moti.presentation.ui.login.LoginViewModel.Gender" />
+        <import type="com.ahobsu.moti.presentation.ui.util.EnumClass.Gender" />
 
         <variable
             name="viewModel"

@@ -13,6 +13,11 @@ class MissionAdapter :
 
     private val items = mutableListOf<MissionItemModel>()
 
+
+    interface OnClickItemListener {
+        fun onClickMission(data: MissionItemModel)
+    }
+
     private var onClickItemListener: OnClickItemListener? = null
 
     fun setOnClickItemListener(onClickItemListener: OnClickItemListener) {
@@ -56,7 +61,4 @@ class MissionAdapter :
         }
     }
 
-    interface OnClickItemListener {
-        fun onClickMission(data: MissionItemModel)
-    }
 }

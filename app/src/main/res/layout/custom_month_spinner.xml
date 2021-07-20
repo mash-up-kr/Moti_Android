@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 	<LinearLayout
-		android:id="@+id/date_picker_layout"
+		android:id="@+id/date_month_picker_layout"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"

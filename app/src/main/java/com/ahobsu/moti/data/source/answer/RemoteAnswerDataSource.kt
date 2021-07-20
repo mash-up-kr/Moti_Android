@@ -18,23 +18,28 @@ class RemoteAnswerDataSource(
 ) : AnswerDataSource {
 
     override fun postAnswer(answer: Answer): Single<BaseData<Unit>> {
-        val file = File(answer.file?.path)
-
-        var fileName = answer.file.toString().replace("@", "").replace(".", "")
-        fileName = "$fileName.png"
-
-        var requestBody: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
-        var imageBody: MultipartBody.Part = MultipartBody.Part.createFormData("uploaded_file", fileName, requestBody)
+        var imageBody: MultipartBody.Part? = null
+        answer.file?.let {
+            val file = File(it.path)
+            var fileName = answer.file.toString().replace("@", "").replace(".", "")
+            fileName = "$fileName.png"
+            var requestBody: RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), file)
+            imageBody = MultipartBody.Part.createFormData("uploaded_file", fileName, requestBody)
+        }
 
         val answerRequest = AnswerRequest(
             content = answer.content,
             missionId = answer.missionId,
-            file = imageBody
+            file = imageBody ?: null
         )
 
         //file=@logo_stacked 3.png;type=image/png'
         Log.e("postAnswer", answerRequest.toString())
-        return answerService.postAnswer(answerRequest.content, answerRequest.missionId, answerRequest.file)
+        return answerService.postAnswer(
+            answerRequest.content,
+            answerRequest.missionId,
+            answerRequest.file
+        )
     }
 
     override fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>> {

@@ -1,7 +1,6 @@
 package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
@@ -10,11 +9,11 @@ import com.ahobsu.moti.databinding.FragmentCalendarBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.CalendarAdapter
 import com.ahobsu.moti.presentation.ui.main.MainActivity
-import com.ahobsu.moti.presentation.ui.main.onBackPressedListener
+import com.ahobsu.moti.presentation.ui.main.OnBackPressedListener
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar), onBackPressedListener {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar), OnBackPressedListener {
 
     private val TAG = javaClass.simpleName
 

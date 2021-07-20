@@ -8,7 +8,6 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
-import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 
 class DiaryFragment :

@@ -2,10 +2,13 @@ package com.ahobsu.moti.presentation.ui.mypage
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentMypageBinding
 import com.ahobsu.moti.presentation.BaseFragment
+import com.ahobsu.moti.presentation.ui.main.MainActivity
+import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 
 class MyPageFragment :
@@ -21,11 +24,14 @@ class MyPageFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+
+        binding.btnMypageEdit.setOnClickListener {
+            (activity as MainActivity).changeFragment(MyPageEditFragment.newInstance())
+        }
     }
 
     companion object {
-        fun newInstance() =
-            MyPageFragment()
+        fun newInstance() = MyPageFragment()
     }
 
 }

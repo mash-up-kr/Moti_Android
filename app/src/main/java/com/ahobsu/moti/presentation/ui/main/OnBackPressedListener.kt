@@ -1,5 +1,5 @@
 package com.ahobsu.moti.presentation.ui.main
 
-interface onBackPressedListener {
+interface OnBackPressedListener {
     fun onBackPressed()
 }
