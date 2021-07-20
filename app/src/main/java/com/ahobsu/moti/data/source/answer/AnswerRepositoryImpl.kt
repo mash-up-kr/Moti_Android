@@ -32,6 +32,22 @@ class AnswerRepositoryImpl(
         }
     }
 
+    override fun getAnswersList(): Single<AnswersWeek> {
+        return answerDataSource.getAnswersList().map { res ->
+            res.data?.let {
+                AnswersWeek(
+                    it[0].map { answer ->
+                        MissionCard(
+                            answerId = answer.id,
+                            missionId = answer.missionId,
+                            cardPart = answer.file?.part,
+                            cardPngUrl = answer.file?.cardPngUrl
+                        )
+                    })
+            }
+        }
+    }
+
     override fun getAnswerToday(): Single<Boolean> {
         return answerDataSource.getAnswersWeek().map { res ->
             res.data?.let { it ->

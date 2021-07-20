@@ -16,6 +16,10 @@ class AnswerUseCase(
         return answerRepository.getAnswersWeek()
     }
 
+    fun getAnswersList(): Single<AnswersWeek> {
+        return answerRepository.getAnswersList()
+    }
+
     fun getAnswerToday(): Single<Boolean> {
         return answerRepository.getAnswerToday()
     }

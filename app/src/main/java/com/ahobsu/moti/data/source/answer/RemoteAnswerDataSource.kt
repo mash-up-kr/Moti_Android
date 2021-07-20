@@ -36,7 +36,11 @@ class RemoteAnswerDataSource(
     }
 
     override fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>> {
-        return  answerService.getAnswersWeek()
+        return answerService.getAnswersWeek()
+    }
+
+    override fun getAnswersList(): Single<BaseData<List<List<com.ahobsu.moti.data.dto.Answer>>?>> {
+        return answerService.getAnswersList()
     }
 
 }

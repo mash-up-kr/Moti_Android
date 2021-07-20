@@ -8,4 +8,5 @@ import io.reactivex.rxjava3.core.Single
 interface AnswerDataSource {
     fun postAnswer(answer: Answer): Single<BaseData<Unit>>
     fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>>
+    fun getAnswersList(): Single<BaseData<List<List<com.ahobsu.moti.data.dto.Answer>>?>>
 }

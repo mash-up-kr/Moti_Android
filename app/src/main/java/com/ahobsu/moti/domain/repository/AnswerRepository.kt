@@ -8,4 +8,5 @@ interface AnswerRepository {
     fun postAnswer(answer: Answer): Single<Boolean>
     fun getAnswersWeek(): Single<AnswersWeek>
     fun getAnswerToday(): Single<Boolean>
+    fun getAnswersList(): Single<AnswersWeek>
 }

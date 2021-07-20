@@ -1,6 +1,5 @@
 package com.ahobsu.moti.domain.entity
 
-
 data class AnswersWeek(
     val answers: List<MissionCard>?
 )

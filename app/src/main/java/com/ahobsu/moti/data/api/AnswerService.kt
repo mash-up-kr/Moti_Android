@@ -1,5 +1,6 @@
 package com.ahobsu.moti.data.api
 
+import com.ahobsu.moti.data.dto.Answer
 import com.ahobsu.moti.data.dto.AnswersWeekResponse
 import com.ahobsu.moti.data.dto.BaseData
 import io.reactivex.rxjava3.core.Single
@@ -23,5 +24,9 @@ interface AnswerService {
 
     @GET("answers/week")
     fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>>
+
+
+    @GET("answers/list")
+    fun getAnswersList(): Single<BaseData<List<List<Answer>>?>>
 
 }
