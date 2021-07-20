@@ -1,5 +1,8 @@
 package com.ahobsu.moti.presentation.ui.mypage
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -90,6 +93,15 @@ class MyPageViewModel(
 
     fun onSelectedBirthday() {
         _selectedBirthday.value = Unit
+    }
+
+    fun onClickUserAgreement(context: Context) {
+        context.startActivity(
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.notion.so/ahobsu/MOTI-35d01dd331bb4aa0915c33d28d60b63c")
+            )
+        )
     }
 
     fun onClickSavedMyPage() {
