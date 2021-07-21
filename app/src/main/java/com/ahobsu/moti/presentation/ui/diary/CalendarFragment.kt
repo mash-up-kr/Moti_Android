@@ -1,6 +1,7 @@
 package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
@@ -21,8 +22,10 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     private val calendarAdapter by lazy {
         CalendarAdapter().apply {
             setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
-                override fun onItemClick(id: Int) {
-                    //TODO("Not yet implemented")
+                override fun onItemClick(date: String) {
+                    Log.e("onItemClick",date)
+                    (activity as MainActivity).selectCalenderDate(date)
+                    closeFragment()
                 }
             })
         }
@@ -83,7 +86,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     fun initView() {
         val datetime = SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time)
         binding.tvMonth.text = datetime
-        calendarAdapter.replaceAll(date.time)
+        calendarAdapter.replaceAll(date)
     }
 
     private fun initRecyclerView() {
