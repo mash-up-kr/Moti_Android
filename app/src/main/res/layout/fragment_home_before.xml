@@ -34,7 +34,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -58,7 +57,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -82,7 +80,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -106,7 +103,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -130,7 +126,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"
@@ -154,7 +149,6 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:fontFamily="@font/sfprodisplay_m"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center"

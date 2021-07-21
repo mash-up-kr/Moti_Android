@@ -55,7 +55,6 @@
             android:background="@drawable/radius_22"
             android:gravity="center"
             android:text="SignIn"
-            android:fontFamily="@font/sfprodisplay_sb"
             app:layout_constraintBottom_toTopOf="@id/user_agreement_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
