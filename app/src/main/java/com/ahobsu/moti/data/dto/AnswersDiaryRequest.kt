@@ -8,7 +8,7 @@ data class AnswersDiaryRequest(
     @SerializedName("direction")
     val direction: Int?,
     @SerializedName("limit")
-    val limit: Int,
+    val limit: Int?,
     @SerializedName("date")
-    val date: String
+    val date: String?
 )

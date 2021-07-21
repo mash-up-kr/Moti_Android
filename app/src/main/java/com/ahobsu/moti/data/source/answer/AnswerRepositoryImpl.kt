@@ -80,6 +80,43 @@ class AnswerRepositoryImpl(
         }
     }
 
+    override fun getAnswersDiary2(direction: Int?, limit: Int?, date: String?): Single<List<AnswersDiary2>> {
+        return answerDataSource.getAnswersDiary(
+            AnswersDiaryRequest(direction = direction, limit = limit, date = date)).map { res ->
+            res.data?.let { data ->
+                data.answers?.map {
+                    val item = it.date?.split("-")
+                    AnswersDiary2(
+                        day = item?.get(2) ?: "1",
+                        month = item?.get(1) ?: "1",
+                        year = item?.get(0) ?: "1",
+                        answerId = it.id,
+                        missionId = it.missionId,
+                        imageUrl = it.imageUrl,
+                        title = it.mission?.title,
+                        content = it.content,
+                        isContent = it.mission?.isContent,
+                        isImage = it.mission?.isImage
+                    )
+                }
+
+            }
+        }
+    }
+
+    private fun getDiaryItem(it: com.ahobsu.moti.data.dto.Answer): DiaryItem {
+        return DiaryItem(
+            answerId = it.id,
+            missionId = it.missionId,
+            imageUrl = it.imageUrl,
+            title = it.mission?.title,
+            content = it.content,
+            date = it.date,
+            isContent = it.mission?.isContent,
+            isImage = it.mission?.isImage
+        )
+    }
+
     override fun getAnswersDays(): Single<List<String>> {
         return answerDataSource.getAnswersDays().map { res ->
             res.data?.let {
@@ -96,19 +133,6 @@ class AnswerRepositoryImpl(
                 }.isNullOrEmpty()
             }
         }
-    }
-
-    private fun getDiaryItem(it: com.ahobsu.moti.data.dto.Answer): DiaryItem {
-        return DiaryItem(
-            answerId = it.id,
-            missionId = it.missionId,
-            imageUrl = it.imageUrl,
-            title = it.mission?.title,
-            content = it.content,
-            date = it.date,
-            isContent = it.mission?.isContent,
-            isImage = it.mission?.isImage
-        )
     }
 
 

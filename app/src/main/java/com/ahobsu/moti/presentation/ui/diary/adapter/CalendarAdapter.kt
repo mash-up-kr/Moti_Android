@@ -18,7 +18,8 @@ import java.util.*
 class CalendarAdapter()
     : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
-    var dataList: ArrayList<Int> = arrayListOf()
+    private var dataList: ArrayList<Int> = arrayListOf()
+    private var writeDayList: List<String> = listOf()
     lateinit var furangCalendar: FurangCalendar
     lateinit var date: Calendar
 
@@ -51,39 +52,46 @@ class CalendarAdapter()
             // val dateString: String = SimpleDateFormat("d", Locale.KOREA).format(date.time)
 
             binding?.tvCalenderDays?.let {
-//                if (item == dateString) {
-//                    it.background= itemView.context.getDrawable(R.drawable.radius_borderline_12)
-//                    it.typeface.isBold
-//                }
+                var dateYear = SimpleDateFormat("yyyy", Locale.KOREA).format(date.time).toInt()
+                var dateMonth = SimpleDateFormat("MM", Locale.KOREA).format(date.time).toInt()
 
-                // 현재 월의 1일 이전, 현재 월의 마지막일 이후 값의 텍스트를 회색처리
-                if (position < firstDateIndex || position > lastDateIndex) {
-                    it.setTextColor(Color.GRAY)
-                    it.background = null
-                } else {
-                    it.setTextColor(it.context.getColor(R.color.rose_gold))
-                }
-
-                it.setOnClickListener { view ->
-                    if (position < firstDateIndex) {
-                        date.run {
-                            add(Calendar.MONTH, -1)
-                        }
-                    } else if (position > lastDateIndex) {
-                        date.run {
-                            add(Calendar.MONTH, +1)
-                        }
+                if (position < firstDateIndex) {
+                    if (dateMonth == 1) {
+                        dateYear -= 1
+                        dateMonth = 12
+                    } else {
+                        dateMonth -= 1
                     }
-
-                    val dateMonth = SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time)
-                    val dateDay = dateMonth + "." + it.text
-                    mListener?.onItemClick(dateDay)
+                } else if (position > lastDateIndex) {
+                    if (dateMonth == 12) {
+                        dateYear += 1
+                        dateMonth = 1
+                    } else {
+                        dateMonth += 1
+                    }
+                }
+                val dateString = String.format("%04d-%02d-%02d", dateYear, dateMonth, item.toInt())
+                Log.e("123", " " + dateString)
+                if (dateString in writeDayList) {
+                    it.setTextColor(it.context.getColor(R.color.rose_gold))
+                    it.setOnClickListener { view ->
+                        val dateString = String.format("%04d.%02d.%02d", dateYear, dateMonth, item.toInt())
+                        mListener?.onItemClick(dateString)
+                    }
+                } else {
+                    it.setTextColor(Color.GRAY)
                 }
             }
         }
     }
 
+    fun setWriteDayList(days: List<String>) {
+        writeDayList = days
+        notifyDataSetChanged()
+    }
+
     fun replaceAll(date: Calendar) {
+        Log.e("date", " " + SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time))
         this.date = date
         furangCalendar = FurangCalendar(this.date.time)
         furangCalendar.initBaseCalendar()

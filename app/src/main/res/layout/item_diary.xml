@@ -13,16 +13,51 @@
     </data>
 
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="1dp"
+        android:orientation="vertical"
         android:background="@drawable/radius_borderline_12">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:visibility="@{model.lastMonthItem? View.VISIBLE : View.GONE}"
+            android:weightSum="2">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/pinkish_tan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/iropke_batang_otfm"
+                android:gravity="center"
+                android:text="@{model.getYearMonth()}"
+                android:textColor="@color/rose_gold"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/pinkish_tan" />
+
+        </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="128dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp">
 
@@ -53,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="16dp"
                     android:layout_marginTop="2dp"
-                    android:text="@{model.month}"
+                    android:text="@{model.dayOfWeek}"
                     android:textColor="@color/rose_gold"
                     android:textSize="14dp"
                     app:layout_constraintStart_toStartOf="@id/tv_diary_item_days"
@@ -91,7 +126,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/test_bg"
+                    app:setImageUrl="@{model.imageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_diary_item_days"
@@ -101,7 +136,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
-                    android:src="#C8000000"
+                    android:src="#A6000000"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_diary_item_days"
@@ -110,7 +145,7 @@
                 <TextView
                     android:id="@+id/tv_diary_item_title"
                     android:fontFamily="@font/iropke_batang_otfm"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="20dp"
@@ -118,6 +153,7 @@
                     android:text="@{model.title}"
                     android:textColor="@color/rose_gold"
                     android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/tv_diary_item_content"
                     app:layout_constraintStart_toEndOf="@id/tv_diary_item_days"
                     tools:text="오늘 비가와요.비를 주제로 사진과 함께\n한줄 시를 써볼까요?" />
@@ -148,6 +184,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-    </FrameLayout>
+    </LinearLayout>
 
 </layout>

@@ -18,7 +18,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
     private val TAG = javaClass.simpleName
 
-    lateinit var date: Calendar
+    private lateinit var date: Calendar
     private val calendarAdapter by lazy {
         CalendarAdapter().apply {
             setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
@@ -46,14 +46,19 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
-        initRecyclerView()
         date = Calendar.getInstance()
+        initRecyclerView()
         initView()
+        viewModel.initCalender()
+
         viewModel.selectedCalenderMonth.observe(viewLifecycleOwner) {
+            Log.e("selectedCalenderMonth",SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time))
+            Log.e("selectedCalenderMonth",it.name)
+
             when (it) {
                 DiaryViewModel.CalenderMonth.NEXT -> {
                     date.run {
-                        add(Calendar.MONTH, +1)
+                        add(Calendar.MONTH, 1)
                     }
                     initView()
                 }
@@ -77,13 +82,17 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             initView()
         }
 
+        viewModel.writeDayList.observe(viewLifecycleOwner) {
+            calendarAdapter.setWriteDayList(it)
+        }
+
         binding.viewCalenderEmpty.setOnClickListener {
             closeFragment()
         }
 
     }
 
-    fun initView() {
+    private fun initView() {
         val datetime = SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time)
         binding.tvMonth.text = datetime
         calendarAdapter.replaceAll(date)

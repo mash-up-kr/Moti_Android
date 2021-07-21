@@ -27,9 +27,9 @@ interface AnswerService {
 
     @GET("answers/diary")
     fun getAnswersDiary(
-        @Header("direction") direction: Int,
-        @Header("limit") limit: Int,
-        @Header("date") date: String
+        @Header("direction") direction: Int?,
+        @Header("limit") limit: Int?,
+        @Header("date") date: String?
     ): Single<BaseData<AnswersDiaryResponse>>
 
     @GET("answers/days")
