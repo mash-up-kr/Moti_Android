@@ -42,6 +42,7 @@ class RemoteAnswerDataSource(
     }
 
     override fun getAnswersDiary(diaryRequest: AnswersDiaryRequest): Single<BaseData<AnswersDiaryResponse>> {
-        return answerService.getAnswersDiary(0, diaryRequest.limit,diaryRequest.date)
+        return answerService.getAnswersDiary(diaryRequest.direction?:0, diaryRequest.limit,
+        diaryRequest.date)
     }
 }
