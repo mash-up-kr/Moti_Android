@@ -85,7 +85,7 @@ class AlbumFragment :
         val deviceWidth: Int = displayMetrics.widthPixels
         val deco = SpaceDecoration(deviceWidth / 4)
 
-        with(binding.albumRecyclerView) {
+        binding.albumRecyclerView.apply {
             adapter = albumAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             addItemDecoration(deco)

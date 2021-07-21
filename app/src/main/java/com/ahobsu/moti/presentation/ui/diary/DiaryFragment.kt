@@ -1,9 +1,7 @@
 package com.ahobsu.moti.presentation.ui.diary
 
-import android.app.Activity
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -75,19 +73,19 @@ class DiaryFragment :
         }
     }
 
-
     fun onChangeCalenderDate(date: String) {
         viewModel.setDate(date)
     }
 
     private fun initRecyclerView() {
         val deco = SpaceDecoration(300)
-        binding.diaryRecyclerView.adapter = diaryAdapter
-        binding.diaryRecyclerView.addItemDecoration(deco)
+        binding.diaryRecyclerView.apply {
+            adapter = diaryAdapter
+            addItemDecoration(deco)
+        }
     }
 
     companion object {
-        fun newInstance() =
-            DiaryFragment()
+        fun newInstance() = DiaryFragment()
     }
 }
