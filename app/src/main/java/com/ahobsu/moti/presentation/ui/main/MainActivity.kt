@@ -16,7 +16,6 @@ import com.ahobsu.moti.presentation.ui.diary.DiaryFragment
 import com.ahobsu.moti.presentation.ui.home.HomeAfterFragment
 import com.ahobsu.moti.presentation.ui.home.HomeBeforeFragment
 import com.ahobsu.moti.presentation.ui.mypage.MyPageFragment
-import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {

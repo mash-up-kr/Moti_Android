@@ -25,16 +25,8 @@ class AlbumViewModel(
             .subscribe({ it ->
                 Log.e("getAnswersList ", it.toString())
                 var item = listOf<AlbumItemModel>()
-                it.answers?.let {
-                    val lastId = (it.size - 1) / 6
-                    for (i in 0..lastId) {
-                        item = if (i == lastId) {
-                            item + AlbumItemModel(i, it.subList(i * 6, it.size - 1))
-                        } else {
-                            item + AlbumItemModel(i, it.subList(i * 6, i * 6 + 5))
-                        }
-
-                    }
+                for (i in 1..it.size) {
+                    item += AlbumItemModel(i, it[it.size - i].answers)
                 }
                 _albumList.postValue(item)
             }, { e ->

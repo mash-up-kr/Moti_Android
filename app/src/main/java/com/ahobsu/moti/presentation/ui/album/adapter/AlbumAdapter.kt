@@ -1,14 +1,18 @@
 package com.ahobsu.moti.presentation.ui.album.adapter
 
+import android.app.Activity
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.databinding.ItemAlbumBinding
 import com.ahobsu.moti.presentation.ui.album.model.AlbumItemModel
+
 
 class AlbumAdapter :
     ListAdapter<AlbumItemModel, AlbumAdapter.AlbumViewHolder>(AlbumImageComparator) {
@@ -28,6 +32,19 @@ class AlbumAdapter :
 
         fun bind(item: AlbumItemModel) {
             binding?.model = item
+            binding?.frameCards?.marginLeft
+
+            val displayMetrics = DisplayMetrics()
+            (binding?.frameCards?.context as Activity).windowManager.defaultDisplay.getMetrics(
+                displayMetrics
+            )
+            var deviceWidth: Int = displayMetrics.widthPixels
+            deviceWidth /= 2
+            val deviceHeight = (deviceWidth * 1.75).toInt()
+            binding.frameCards.layoutParams.width = deviceWidth
+            binding.frameCards.layoutParams.height = deviceHeight
+            binding.frameCards.requestLayout()
+
         }
     }
 

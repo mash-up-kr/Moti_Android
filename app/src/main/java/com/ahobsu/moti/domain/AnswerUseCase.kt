@@ -18,7 +18,7 @@ class AnswerUseCase(
         return answerRepository.getAnswersWeek()
     }
 
-    fun getAnswersList(): Single<AnswersWeek> {
+    fun getAnswersList(): Single<List<AnswersWeek>> {
         return answerRepository.getAnswersList()
     }
 

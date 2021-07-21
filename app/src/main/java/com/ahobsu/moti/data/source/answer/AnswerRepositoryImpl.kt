@@ -31,18 +31,21 @@ class AnswerRepositoryImpl(
         }
     }
 
-    override fun getAnswersList(): Single<AnswersWeek> {
+    override fun getAnswersList(): Single<List<AnswersWeek>> {
         return answerDataSource.getAnswersList().map { res ->
+            val albumList = emptyList<AnswersWeek>().toMutableList()
             res.data?.let {
-                AnswersWeek(
-                    it[0].map { answer ->
-                        MissionCard(
-                            answerId = answer.id,
-                            missionId = answer.missionId,
-                            cardPart = answer.file?.part,
-                            cardPngUrl = answer.file?.cardPngUrl
-                        )
-                    })
+                for (i in it)
+                    albumList += AnswersWeek(
+                        i.map { answer ->
+                            MissionCard(
+                                answerId = answer.id,
+                                missionId = answer.missionId,
+                                cardPart = answer.file?.part,
+                                cardPngUrl = answer.file?.cardPngUrl
+                            )
+                        })
+                albumList
             }
         }
     }
@@ -134,3 +137,4 @@ class AnswerRepositoryImpl(
 
 
 }
+

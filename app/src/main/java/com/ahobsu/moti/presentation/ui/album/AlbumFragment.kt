@@ -1,10 +1,15 @@
 package com.ahobsu.moti.presentation.ui.album
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentAlbumBinding
@@ -14,6 +19,8 @@ import com.ahobsu.moti.presentation.ui.album.adapter.AlbumAdapter
 
 class AlbumFragment :
     BaseFragment<FragmentAlbumBinding>(R.layout.fragment_album) {
+
+    private var listSize = 0
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -49,14 +56,39 @@ class AlbumFragment :
 
         viewModel.albumList.observe(viewLifecycleOwner) { it ->
             albumAdapter.submitList(it)
+            listSize = it.size
         }
     }
 
 
+    inner class SpaceDecoration(private val size: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            super.getItemOffsets(outRect, view, parent, state)
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.left += size
+            } else if (parent.getChildAdapterPosition(view) == listSize-1){
+                outRect.right += size
+            }
+        }
+    }
+
     private fun initRecyclerView() {
+        val displayMetrics = DisplayMetrics()
+        (context as Activity).windowManager.defaultDisplay.getMetrics(
+            displayMetrics
+        )
+        val deviceWidth: Int = displayMetrics.widthPixels
+        val deco = SpaceDecoration(deviceWidth / 4)
+
         with(binding.albumRecyclerView) {
             adapter = albumAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            addItemDecoration(deco)
         }
     }
 
