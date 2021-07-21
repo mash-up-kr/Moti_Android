@@ -37,21 +37,6 @@ class DiaryViewModel(
     val selectedCalenderMonth: LiveData<CalenderMonth> = _clickCalenderMonth
     enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
 
-    init {
-//        val a = DiaryItemModel(
-//            id = 0,
-//            days = "12",
-//            month = "Sun",
-//            year = "Sun",
-//            title = "오늘 비가와요. 비를 주제로\n" + "한줄 시를 써볼까요?",
-//            content = "만수산 드렁칡이 얽혀진들 어떠하리 …",
-//            imageUrl = null,
-//            isContent = true,
-//            isImage = true
-//        )
-//        val aa = listOf<DiaryItemModel>() + a + a + a + a
-//        _diaryList.postValue(aa)
-    }
 
     private fun initDiary(date: String) {
         AnswerUseCase(answerRepository).getAnswersDiary2(null, 30, null)
@@ -61,13 +46,20 @@ class DiaryViewModel(
                 Log.e(" Success ", list.toString())
                 _diaryList.postValue(list.map {
                     val dateValue: Calendar = Calendar.getInstance()
-                    dateValue.set(it.year.toInt(), it.month.toInt() - 1, it.day.toInt())
+
+                    val item = it.date?.split("-")
+                    val day = item?.get(2) ?: "1"
+                    val month = item?.get(1) ?: "1"
+                    val year = item?.get(0) ?: "1"
+                    dateValue.set(year.toInt(), month.toInt() - 1, day.toInt())
+
                     DiaryItemModel(
                         id = it.answerId ?: 0,
                         dayOfWeek = SimpleDateFormat("EE").format(dateValue.time),
-                        days = it.day,
-                        month = it.month,
-                        year = it.year,
+                        date = it.date?:"",
+                        days = day,
+                        month = month,
+                        year = year,
                         title = it.title ?: "",
                         content = it.content ?: "",
                         imageUrl = it.imageUrl,
@@ -82,8 +74,8 @@ class DiaryViewModel(
             })
     }
 
-    fun initCalender() {
-        answerRepository.getAnswersDays()
+    fun initAnswersDays() {
+        AnswerUseCase(answerRepository).getAnswersDays()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

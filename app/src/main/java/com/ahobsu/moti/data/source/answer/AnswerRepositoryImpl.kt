@@ -85,11 +85,8 @@ class AnswerRepositoryImpl(
             AnswersDiaryRequest(direction = direction, limit = limit, date = date)).map { res ->
             res.data?.let { data ->
                 data.answers?.map {
-                    val item = it.date?.split("-")
                     AnswersDiary2(
-                        day = item?.get(2) ?: "1",
-                        month = item?.get(1) ?: "1",
-                        year = item?.get(0) ?: "1",
+                        date = it.date,
                         answerId = it.id,
                         missionId = it.missionId,
                         imageUrl = it.imageUrl,

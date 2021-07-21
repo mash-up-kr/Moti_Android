@@ -14,6 +14,7 @@ class DiaryAdapter :
     ListAdapter<DiaryItemModel, DiaryAdapter.DiaryViewHolder>(
         DiaryImageComparator
     ) {
+     private var LastDayList: List<String> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
         return DiaryViewHolder(
@@ -25,13 +26,32 @@ class DiaryAdapter :
         holder.bind(getItem(position))
     }
 
-    class DiaryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+    inner class DiaryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding: ItemDiaryBinding? = androidx.databinding.DataBindingUtil.bind(itemView)
-
         fun bind(item: DiaryItemModel) {
             binding?.model = item
+
+            if (item.date in LastDayList){
+                item.isLastMonthItem = true
+            } else false
+
         }
+    }
+
+    fun setWriteDayList(days: List<String>) {
+        val item = emptyList<String>().toMutableList()
+        val sortedList = days.sorted()
+        var dateString = sortedList[0]
+        for (i in 1 until sortedList.size) {
+            val dateString2 = sortedList[i]
+            if (dateString.substring(0, 7) != dateString2.substring(0, 7)) {
+                item += dateString
+            }
+            dateString = dateString2
+        }
+        item += sortedList[sortedList.size - 1]
+        LastDayList = item
+        notifyDataSetChanged()
     }
 
     interface OnItemClickListener {

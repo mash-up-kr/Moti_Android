@@ -49,7 +49,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         date = Calendar.getInstance()
         initRecyclerView()
         initView()
-        viewModel.initCalender()
+        viewModel.initAnswersDays()
 
         viewModel.selectedCalenderMonth.observe(viewLifecycleOwner) {
             Log.e("selectedCalenderMonth",SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time))

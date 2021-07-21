@@ -1,9 +1,7 @@
 package com.ahobsu.moti.domain.entity
 
 data class AnswersDiary2(
-    val day: String,
-    val month: String,
-    val year: String,
+    val date: String?,
     val answerId: Int?,
     val missionId: Int?,
     val imageUrl: String?,
