@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class DiaryViewModel(
     private val answerRepository: AnswerRepository
@@ -30,6 +32,7 @@ class DiaryViewModel(
     enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
 
     init {
+
         val a = DiaryItemModel(
             id = 0,
             days = "12",
@@ -44,12 +47,29 @@ class DiaryViewModel(
         _diaryList.postValue(aa)
     }
 
-    fun setDate(date:String){
-        val dateSplit= date.split(".")
-        _month.value = "${dateSplit[0]}.${dateSplit[1]}"
+    fun init(date: String) {
+        answerRepository.getAnswersDiary(30, date)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                Log.e(" Success ", it.toString())
+                val sortList = it.sortedBy { "${it.year}+${it.month}" }
+
+//                _user.postValue(it)
+//                userNickName.postValue(it.name)
+            }, { e ->
+                Log.e("postSignIn e", e.toString())
+            })
     }
 
-    fun selectMonth(){
+    fun setDate(date: String) {
+        val dateSplit = date.split(".")
+        _month.value = "${dateSplit[0]}.${dateSplit[1]}"
+        val date = "${dateSplit[0]}-${dateSplit[1]}-${dateSplit[2]}"
+        init(date)
+    }
+
+    fun selectMonth() {
         _selectMonthSpinner.value = true
     }
 
