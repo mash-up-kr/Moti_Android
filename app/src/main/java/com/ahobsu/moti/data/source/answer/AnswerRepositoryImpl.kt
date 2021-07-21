@@ -80,6 +80,24 @@ class AnswerRepositoryImpl(
         }
     }
 
+    override fun getAnswersDays(): Single<List<String>> {
+        return answerDataSource.getAnswersDays().map { res ->
+            res.data?.let {
+                it
+            }
+        }
+    }
+
+    override fun getAnswerToday(): Single<Boolean> {
+        return answerDataSource.getAnswersWeek().map { res ->
+            res.data?.let { it ->
+                !it.answers?.filter { answer ->
+                    answer.date == it.today
+                }.isNullOrEmpty()
+            }
+        }
+    }
+
     private fun getDiaryItem(it: com.ahobsu.moti.data.dto.Answer): DiaryItem {
         return DiaryItem(
             answerId = it.id,
@@ -93,13 +111,5 @@ class AnswerRepositoryImpl(
         )
     }
 
-    override fun getAnswerToday(): Single<Boolean> {
-        return answerDataSource.getAnswersWeek().map { res ->
-            res.data?.let { it ->
-                !it.answers?.filter { answer ->
-                    answer.date == it.today
-                }.isNullOrEmpty()
-            }
-        }
-    }
+
 }

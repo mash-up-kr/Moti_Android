@@ -31,4 +31,7 @@ interface AnswerService {
         @Header("limit") limit: Int,
         @Header("date") date: String
     ): Single<BaseData<AnswersDiaryResponse>>
+
+    @GET("answers/days")
+    fun getAnswersDays(): Single<BaseData<List<String>>>
 }

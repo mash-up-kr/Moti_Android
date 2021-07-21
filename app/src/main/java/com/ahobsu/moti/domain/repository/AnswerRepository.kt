@@ -12,4 +12,5 @@ interface AnswerRepository {
     fun getAnswerToday(): Single<Boolean>
     fun getAnswersList(): Single<AnswersWeek>
     fun getAnswersDiary(limit:Int,date:String): Single<List<AnswersDiary>>
+    fun getAnswersDays(): Single<List<String>>
 }

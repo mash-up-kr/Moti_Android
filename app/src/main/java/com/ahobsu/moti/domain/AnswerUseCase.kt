@@ -29,4 +29,8 @@ class AnswerUseCase(
         return answerRepository.getAnswersDiary(limit, date)
     }
 
+    fun getAnswersDays(): Single<List<String>> {
+        return answerRepository.getAnswersDays()
+    }
+
 }
