@@ -1,8 +1,13 @@
 package com.ahobsu.moti.presentation.ui.diary
 
+import android.app.Activity
+import android.graphics.Rect
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
@@ -14,6 +19,8 @@ import java.util.*
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
+
+    private var listSize = 0
 
     private val viewModel by lazy {
         ViewModelProvider(
@@ -50,14 +57,33 @@ class DiaryFragment :
         }
         viewModel.writeDayList.observe(viewLifecycleOwner) {
             diaryAdapter.setWriteDayList(it)
+            listSize = it.size
         }
     }
 
-    fun onChangeCalenderDate(date:String){
+    inner class SpaceDecoration(private val size: Int) : RecyclerView.ItemDecoration() {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State
+        ) {
+            super.getItemOffsets(outRect, view, parent, state)
+            if (parent.getChildAdapterPosition(view) == listSize - 1) {
+                outRect.bottom += size
+            }
+        }
+    }
+
+
+    fun onChangeCalenderDate(date: String) {
         viewModel.setDate(date)
     }
+
     private fun initRecyclerView() {
+        val deco = SpaceDecoration(300)
         binding.diaryRecyclerView.adapter = diaryAdapter
+        binding.diaryRecyclerView.addItemDecoration(deco)
     }
 
     companion object {
