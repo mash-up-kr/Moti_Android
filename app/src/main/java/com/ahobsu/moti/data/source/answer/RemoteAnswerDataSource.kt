@@ -2,9 +2,7 @@ package com.ahobsu.moti.data.source.answer
 
 import com.ahobsu.moti.data.FormDataUtil
 import com.ahobsu.moti.data.api.AnswerService
-import com.ahobsu.moti.data.dto.AnswerRequest
-import com.ahobsu.moti.data.dto.AnswersWeekResponse
-import com.ahobsu.moti.data.dto.BaseData
+import com.ahobsu.moti.data.dto.*
 import com.ahobsu.moti.domain.entity.Answer
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
@@ -43,4 +41,7 @@ class RemoteAnswerDataSource(
         return answerService.getAnswersList()
     }
 
+    override fun getAnswersDiary(diaryRequest: AnswersDiaryRequest): Single<BaseData<AnswersDiaryResponse>> {
+        return answerService.getAnswersDiary(0, diaryRequest.limit,diaryRequest.date)
+    }
 }

@@ -44,5 +44,7 @@ data class AnswerMission(
     @SerializedName("isContent")
     val isContent: Boolean?,
     @SerializedName("isImage")
-    val isImage: Boolean?
+    val isImage: Boolean?,
+    @SerializedName("title")
+    val title: String?
 )
