@@ -2,9 +2,11 @@ package com.ahobsu.moti.presentation.ui.diary
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
@@ -46,6 +48,21 @@ class DiaryFragment :
         val date = Calendar.getInstance()
         val datetime = SimpleDateFormat("yyyy.MM.DD", Locale.KOREA).format(date.time)
         onChangeCalenderDate(datetime)
+
+        binding.diaryRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lastVisibleItemPosition =
+                    (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+
+                if (lastVisibleItemPosition + 1 == listSize) {
+                    Log.e("test1", "바닥")
+                }
+                if (lastVisibleItemPosition == 3) {
+                    Log.e("test2", "천장")
+                }
+            }
+        })
 
         viewModel.diaryList.observe(viewLifecycleOwner) {
             diaryAdapter.submitList(it)
