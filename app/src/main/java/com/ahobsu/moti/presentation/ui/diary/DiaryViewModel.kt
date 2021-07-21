@@ -1,5 +1,6 @@
 package com.ahobsu.moti.presentation.ui.diary
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.repository.AnswerRepository
@@ -21,6 +22,9 @@ class DiaryViewModel(
     private val _selectedMonthBtn = MutableLiveData<Unit>()
     val selectedMonthBtn: LiveData<Unit> = _selectedMonthBtn
 
+    private val _month = MutableLiveData<String>()
+    val month: LiveData<String> = _month
+
     private val _clickCalenderMonth = MutableLiveData<CalenderMonth>()
     val selectedCalenderMonth: LiveData<CalenderMonth> = _clickCalenderMonth
     enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
@@ -39,6 +43,12 @@ class DiaryViewModel(
         val aa = listOf<DiaryItemModel>() + a + a + a + a
         _diaryList.postValue(aa)
     }
+
+    fun setDate(date:String){
+        val dateSplit= date.split(".")
+        _month.value = "${dateSplit[0]}.${dateSplit[1]}"
+    }
+
     fun selectMonth(){
         _selectMonthSpinner.value = true
     }

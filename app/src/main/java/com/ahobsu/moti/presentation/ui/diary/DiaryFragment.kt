@@ -1,6 +1,7 @@
 package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
@@ -9,6 +10,8 @@ import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
 import com.ahobsu.moti.presentation.ui.main.MainActivity
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
@@ -34,7 +37,9 @@ class DiaryFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         initRecyclerView()
-
+        val date = Calendar.getInstance()
+        val datetime = SimpleDateFormat("yyyy.MM.DD", Locale.KOREA).format(date.time)
+        onChangeCalenderDate(datetime)
 
         viewModel.diaryList.observe(viewLifecycleOwner){
             diaryAdapter.submitList(it)
@@ -44,6 +49,9 @@ class DiaryFragment :
         }
     }
 
+    fun onChangeCalenderDate(date:String){
+        viewModel.setDate(date)
+    }
     private fun initRecyclerView() {
         binding.diaryRecyclerView.adapter = diaryAdapter
     }

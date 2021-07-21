@@ -22,7 +22,7 @@
             android:layout_height="72dp"
             android:gravity="center"
             android:paddingTop="3dp"
-            android:text="2021.01"
+            android:text="@{viewModel.month}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"

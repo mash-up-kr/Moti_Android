@@ -107,6 +107,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     fun selectCalenderDate(date: String) {
-
+        val fragment = supportFragmentManager.findFragmentById(R.id.main_container) as
+            DiaryFragment?
+        fragment?.onChangeCalenderDate(date)
     }
 }
