@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.AnswerUseCase
+import com.ahobsu.moti.domain.entity.AnswersDiary2
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
@@ -30,49 +31,19 @@ class DiaryViewModel(
     private val _selectedMonthBtn = MutableLiveData<Unit>()
     val selectedMonthBtn: LiveData<Unit> = _selectedMonthBtn
 
+    private val _isRenewableTop = MutableLiveData<Unit>()
+    val isRenewableTop: LiveData<Unit> = _isRenewableTop
+
+    private val _isRenewableBottom = MutableLiveData<Unit>()
+    val isRenewableBottom: LiveData<Unit> = _isRenewableBottom
+
     private val _month = MutableLiveData<String>()
     val month: LiveData<String> = _month
 
     private val _clickCalenderMonth = MutableLiveData<CalenderMonth>()
     val selectedCalenderMonth: LiveData<CalenderMonth> = _clickCalenderMonth
+
     enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
-
-
-    private fun initDiary(date: String) {
-        AnswerUseCase(answerRepository).getAnswersDiary2(null, 30, null)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ list ->
-                Log.e(" Success ", list.toString())
-                _diaryList.postValue(list.map {
-                    val dateValue: Calendar = Calendar.getInstance()
-
-                    val item = it.date?.split("-")
-                    val day = item?.get(2) ?: "1"
-                    val month = item?.get(1) ?: "1"
-                    val year = item?.get(0) ?: "1"
-                    dateValue.set(year.toInt(), month.toInt() - 1, day.toInt())
-
-                    DiaryItemModel(
-                        id = it.answerId ?: 0,
-                        dayOfWeek = SimpleDateFormat("EE").format(dateValue.time),
-                        date = it.date?:"",
-                        days = day,
-                        month = month,
-                        year = year,
-                        title = it.title ?: "",
-                        content = it.content ?: "",
-                        imageUrl = it.imageUrl,
-                        isContent = it.isContent ?: false,
-                        isImage = it.isImage ?: false,
-                        isLastMonthItem = false
-                    )
-                })
-
-            }, { e ->
-                Log.e("postSignIn e", e.toString())
-            })
-    }
 
     fun initAnswersDays() {
         AnswerUseCase(answerRepository).getAnswersDays()
@@ -84,6 +55,74 @@ class DiaryViewModel(
             }, { e ->
                 Log.e("postSignIn e", e.toString())
             })
+    }
+
+    fun onScrollEvent(isTop: Boolean) {
+        val limit = 4
+        diaryList.value?.let {
+            val date = if (isTop) it[0].date else it[it.size - 1].date
+            val direction = if (isTop) 1 else 0
+            Log.e("date   ", "$date")
+            Log.e("direction   ", "$direction")
+
+            AnswerUseCase(answerRepository).getAnswersDiary2(direction, limit, date)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ list ->
+//                    Log.e(" Success ", list.toString())
+//                    Log.e(" Success ", list.toString())
+                    if (list.isEmpty()) {
+                        if (isTop) _isRenewableTop.postValue(Unit)
+                        else _isRenewableBottom.postValue(Unit)
+                    } else {
+                        val item =
+                            if (isTop) createDiaryList(list).reversed() + it
+                            else it + createDiaryList(list).reversed()
+                        _diaryList.postValue(item)
+                    }
+                }, { e ->
+                    Log.e("postSignIn e", e.toString())
+                })
+        }
+
+    }
+
+    private fun initDiary(date: String) {
+        AnswerUseCase(answerRepository).getAnswersDiary2(null, 2, null)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ list ->
+                Log.e(" Success ", list.toString())
+                _diaryList.postValue(createDiaryList(list))
+            }, { e ->
+                Log.e("postSignIn e", e.toString())
+            })
+    }
+
+    private fun createDiaryList(list: List<AnswersDiary2>): List<DiaryItemModel> {
+        return list.map {
+            val dateValue: Calendar = Calendar.getInstance()
+            val item = it.date?.split("-")
+            val day = item?.get(2) ?: "1"
+            val month = item?.get(1) ?: "1"
+            val year = item?.get(0) ?: "1"
+            dateValue.set(year.toInt(), month.toInt() - 1, day.toInt())
+
+            DiaryItemModel(
+                id = it.answerId ?: 0,
+                dayOfWeek = SimpleDateFormat("EE").format(dateValue.time),
+                date = it.date ?: "",
+                days = day,
+                month = month,
+                year = year,
+                title = it.title ?: "",
+                content = it.content ?: "",
+                imageUrl = it.imageUrl,
+                isContent = it.isContent ?: false,
+                isImage = it.isImage ?: false,
+                isLastMonthItem = false
+            )
+        }
     }
 
     fun setDate(date: String) {

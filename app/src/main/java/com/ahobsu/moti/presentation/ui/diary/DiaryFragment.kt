@@ -21,12 +21,23 @@ class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
 
     private var listSize = 0
+    private var isRenewable = false
+    private var isRenewableTop = true
+    private var isRenewableBottom = true
 
     private val viewModel by lazy {
         ViewModelProvider(
             viewModelStore,
             DiaryViewModelFactory(Injection.provideAnswerRepository())
         ).get(DiaryViewModel::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private val diaryAdapter by lazy {
@@ -52,27 +63,48 @@ class DiaryFragment :
         binding.diaryRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                val lastVisibleItemPosition =
-                    (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                if (isRenewable) {
+                    val lastVisibleItemPosition =
+                        (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
 
-                if (lastVisibleItemPosition + 1 == listSize) {
-                    Log.e("test1", "바닥")
-                }
-                if (lastVisibleItemPosition == 3) {
-                    Log.e("test2", "천장")
+                    if (isRenewableBottom && lastVisibleItemPosition + 1 == listSize) {
+                        viewModel.onScrollEvent(false)
+                        isRenewable = false
+                        Log.e("test1", "바닥 lastVisibleItemPosition $lastVisibleItemPosition")
+                    }
+                    if (isRenewableTop && lastVisibleItemPosition <= 3) {
+//                        viewModel.onScrollEvent(true)
+                        isRenewable = false
+                        Log.e("test2", "천장dd $lastVisibleItemPosition")
+                    }
                 }
             }
         })
 
         viewModel.diaryList.observe(viewLifecycleOwner) {
             diaryAdapter.submitList(it)
+            listSize = it.size
+            Log.e("listSize", " ::: ?  $listSize")
         }
         viewModel.selectedCalender.observe(viewLifecycleOwner) {
             (activity as MainActivity).addSelectedCalenderFragment()
         }
         viewModel.writeDayList.observe(viewLifecycleOwner) {
             diaryAdapter.setWriteDayList(it)
-            listSize = it.size
+            isRenewable = true
+        }
+
+        viewModel.isRenewableTop.observe(viewLifecycleOwner) {
+            isRenewableTop = false
+            Log.e("바닥 isRenewableTop", " $isRenewableTop")
+
+        }
+        viewModel.isRenewableBottom.observe(viewLifecycleOwner) {
+            isRenewableBottom = false
+            val deco = SpaceDecoration(300)
+            binding.diaryRecyclerView.addItemDecoration(deco)
+            Log.e("바닥 isRenewableBottom", " $isRenewableBottom")
+
         }
     }
 
@@ -98,7 +130,6 @@ class DiaryFragment :
         val deco = SpaceDecoration(300)
         binding.diaryRecyclerView.apply {
             adapter = diaryAdapter
-            addItemDecoration(deco)
         }
     }
 

@@ -85,23 +85,25 @@ class AnswerRepositoryImpl(
 
     override fun getAnswersDiary2(direction: Int?, limit: Int?, date: String?): Single<List<AnswersDiary2>> {
         return answerDataSource.getAnswersDiary(
-            AnswersDiaryRequest(direction = direction, limit = limit, date = date)).map { res ->
-            res.data?.let { data ->
-                data.answers?.map {
-                    AnswersDiary2(
-                        date = it.date,
-                        answerId = it.id,
-                        missionId = it.missionId,
-                        imageUrl = it.imageUrl,
-                        title = it.mission?.title,
-                        content = it.content,
-                        isContent = it.mission?.isContent,
-                        isImage = it.mission?.isImage
-                    )
-                }
+            AnswersDiaryRequest(direction = direction, limit = limit, date = date)
+        )
+            .map { res ->
+                res.data?.let { data ->
+                    data.answers?.map {
+                        AnswersDiary2(
+                            date = it.date,
+                            answerId = it.id,
+                            missionId = it.missionId,
+                            imageUrl = it.imageUrl,
+                            title = it.mission?.title,
+                            content = it.content,
+                            isContent = it.mission?.isContent,
+                            isImage = it.mission?.isImage
+                        )
+                    }
 
+                }
             }
-        }
     }
 
     private fun getDiaryItem(it: com.ahobsu.moti.data.dto.Answer): DiaryItem {
