@@ -3,7 +3,6 @@ package com.ahobsu.moti.presentation.ui.diary.adapter
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,7 @@ import com.ahobsu.moti.presentation.ui.diary.FurangCalendar
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarAdapter()
-    : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
+class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
     private var dataList: ArrayList<Int> = arrayListOf()
     private var writeDayList: List<String> = listOf()
@@ -44,12 +42,8 @@ class CalendarAdapter()
         fun bind(item: String) {
             binding?.model = item
 
-
             val firstDateIndex = furangCalendar.prevTail
             val lastDateIndex = dataList.size - furangCalendar.nextHead - 1
-
-            // 오늘 날짜 처리 - 오늘날짜 date long 받아서 이번달인지 보기
-            // val dateString: String = SimpleDateFormat("d", Locale.KOREA).format(date.time)
 
             binding?.tvCalenderDays?.let {
                 var dateYear = SimpleDateFormat("yyyy", Locale.KOREA).format(date.time).toInt()
@@ -71,10 +65,9 @@ class CalendarAdapter()
                     }
                 }
                 val dateString = String.format("%04d-%02d-%02d", dateYear, dateMonth, item.toInt())
-                Log.e("123", " " + dateString)
                 if (dateString in writeDayList) {
                     it.setTextColor(it.context.getColor(R.color.rose_gold))
-                    it.setOnClickListener { view ->
+                    it.setOnClickListener { _ ->
                         val dateString = String.format("%04d.%02d.%02d", dateYear, dateMonth, item.toInt())
                         mListener?.onItemClick(dateString)
                     }
@@ -91,7 +84,6 @@ class CalendarAdapter()
     }
 
     fun replaceAll(date: Calendar) {
-        Log.e("date", " " + SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time))
         this.date = date
         furangCalendar = FurangCalendar(this.date.time)
         furangCalendar.initBaseCalendar()

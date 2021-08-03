@@ -1,7 +1,6 @@
 package com.ahobsu.moti.presentation.ui.diary
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
@@ -23,7 +22,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         CalendarAdapter().apply {
             setOnItemClickListener(object : CalendarAdapter.OnItemClickListener {
                 override fun onItemClick(date: String) {
-                    Log.e("onItemClick",date)
                     (activity as MainActivity).selectCalenderDate(date)
                     closeFragment()
                 }
@@ -52,9 +50,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         viewModel.initAnswersDays()
 
         viewModel.selectedCalenderMonth.observe(viewLifecycleOwner) {
-            Log.e("selectedCalenderMonth",SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time))
-            Log.e("selectedCalenderMonth",it.name)
-
             when (it) {
                 DiaryViewModel.CalenderMonth.NEXT -> {
                     date.run {

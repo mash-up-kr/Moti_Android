@@ -13,6 +13,7 @@ import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
+import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +22,7 @@ class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
 
     private var listSize = 0
-    private var isRenewable = false
+    private var isRenewable = true
     private var isRenewableTop = true
     private var isRenewableBottom = true
 
@@ -32,19 +33,13 @@ class DiaryFragment :
         ).get(DiaryViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     private val diaryAdapter by lazy {
         DiaryAdapter().apply {
             setOnItemClickListener(object : DiaryAdapter.OnItemClickListener {
-                override fun onItemClick(id: Int) {
+                override fun onItemClick(item: DiaryItemModel) {
                     //TODO("Not yet implemented")
+                    if (item.isContent)
+                        Log.e("onItemClick", "id  $id")
                 }
             })
         }
@@ -58,7 +53,7 @@ class DiaryFragment :
 
         val date = Calendar.getInstance()
         val datetime = SimpleDateFormat("yyyy.MM.DD", Locale.KOREA).format(date.time)
-        onChangeCalenderDate(datetime)
+        onChangeCalenderDate(datetime, isToday = true)
 
         binding.diaryRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -66,16 +61,14 @@ class DiaryFragment :
                 if (isRenewable) {
                     val lastVisibleItemPosition =
                         (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
-
                     if (isRenewableBottom && lastVisibleItemPosition + 1 == listSize) {
                         viewModel.onScrollEvent(false)
                         isRenewable = false
-                        Log.e("test1", "바닥 lastVisibleItemPosition $lastVisibleItemPosition")
+
                     }
                     if (isRenewableTop && lastVisibleItemPosition <= 3) {
-//                        viewModel.onScrollEvent(true)
+                        viewModel.onScrollEvent(true)
                         isRenewable = false
-                        Log.e("test2", "천장dd $lastVisibleItemPosition")
                     }
                 }
             }
@@ -84,26 +77,24 @@ class DiaryFragment :
         viewModel.diaryList.observe(viewLifecycleOwner) {
             diaryAdapter.submitList(it)
             listSize = it.size
-            Log.e("listSize", " ::: ?  $listSize")
+            isRenewable = true
         }
         viewModel.selectedCalender.observe(viewLifecycleOwner) {
             (activity as MainActivity).addSelectedCalenderFragment()
         }
         viewModel.writeDayList.observe(viewLifecycleOwner) {
             diaryAdapter.setWriteDayList(it)
-            isRenewable = true
         }
 
         viewModel.isRenewableTop.observe(viewLifecycleOwner) {
-            isRenewableTop = false
-            Log.e("바닥 isRenewableTop", " $isRenewableTop")
-
+            isRenewableTop = it
+            isRenewable = true
         }
         viewModel.isRenewableBottom.observe(viewLifecycleOwner) {
-            isRenewableBottom = false
-            val deco = SpaceDecoration(300)
+            isRenewableBottom = it
+            isRenewable = true
+            val deco = SpaceDecoration(200)
             binding.diaryRecyclerView.addItemDecoration(deco)
-            Log.e("바닥 isRenewableBottom", " $isRenewableBottom")
 
         }
     }
@@ -117,17 +108,18 @@ class DiaryFragment :
         ) {
             super.getItemOffsets(outRect, view, parent, state)
             if (parent.getChildAdapterPosition(view) == listSize - 1) {
-                outRect.bottom += size
+                outRect.bottom = size
+            } else {
+                outRect.bottom = 0
             }
         }
     }
 
-    fun onChangeCalenderDate(date: String) {
-        viewModel.setDate(date)
+    fun onChangeCalenderDate(date: String, isToday: Boolean) {
+        viewModel.setDate(date, isToday)
     }
 
     private fun initRecyclerView() {
-        val deco = SpaceDecoration(300)
         binding.diaryRecyclerView.apply {
             adapter = diaryAdapter
         }

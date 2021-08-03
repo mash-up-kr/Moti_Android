@@ -31,11 +31,11 @@ class DiaryViewModel(
     private val _selectedMonthBtn = MutableLiveData<Unit>()
     val selectedMonthBtn: LiveData<Unit> = _selectedMonthBtn
 
-    private val _isRenewableTop = MutableLiveData<Unit>()
-    val isRenewableTop: LiveData<Unit> = _isRenewableTop
+    private val _isRenewableTop = MutableLiveData<Boolean>()
+    val isRenewableTop: LiveData<Boolean> = _isRenewableTop
 
-    private val _isRenewableBottom = MutableLiveData<Unit>()
-    val isRenewableBottom: LiveData<Unit> = _isRenewableBottom
+    private val _isRenewableBottom = MutableLiveData<Boolean>()
+    val isRenewableBottom: LiveData<Boolean> = _isRenewableBottom
 
     private val _month = MutableLiveData<String>()
     val month: LiveData<String> = _month
@@ -57,23 +57,36 @@ class DiaryViewModel(
             })
     }
 
+    private fun initDiary(date: String?) {
+        AnswerUseCase(answerRepository).getAnswersDiary2(null, 4, date)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ list ->
+                Log.e(" Success ", list.toString())
+                if (date.isNullOrEmpty()) {
+                    _diaryList.postValue(createDiaryList(list))
+                } else {
+                    _diaryList.postValue(createDiaryList(list.reversed()))
+                }
+            }, { e ->
+                Log.e("postSignIn e", e.toString())
+            })
+    }
+
     fun onScrollEvent(isTop: Boolean) {
         val limit = 4
         diaryList.value?.let {
             val date = if (isTop) it[0].date else it[it.size - 1].date
             val direction = if (isTop) 1 else 0
-            Log.e("date   ", "$date")
-            Log.e("direction   ", "$direction")
 
             AnswerUseCase(answerRepository).getAnswersDiary2(direction, limit, date)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ list ->
-//                    Log.e(" Success ", list.toString())
-//                    Log.e(" Success ", list.toString())
+                    Log.e(" Success ", list.toString())
                     if (list.isEmpty()) {
-                        if (isTop) _isRenewableTop.postValue(Unit)
-                        else _isRenewableBottom.postValue(Unit)
+                        if (isTop) _isRenewableTop.postValue(false)
+                        else _isRenewableBottom.postValue(false)
                     } else {
                         val item =
                             if (isTop) createDiaryList(list).reversed() + it
@@ -85,18 +98,6 @@ class DiaryViewModel(
                 })
         }
 
-    }
-
-    private fun initDiary(date: String) {
-        AnswerUseCase(answerRepository).getAnswersDiary2(null, 2, null)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ list ->
-                Log.e(" Success ", list.toString())
-                _diaryList.postValue(createDiaryList(list))
-            }, { e ->
-                Log.e("postSignIn e", e.toString())
-            })
     }
 
     private fun createDiaryList(list: List<AnswersDiary2>): List<DiaryItemModel> {
@@ -125,11 +126,23 @@ class DiaryViewModel(
         }
     }
 
-    fun setDate(date: String) {
+    fun setDate(date: String, isToday: Boolean) {
+        _isRenewableTop.value = (true)
+        _isRenewableBottom.value = (true)
         val dateSplit = date.split(".")
+        Log.e("setDate date", date.toString())
+
+        if (!isToday) {
+            val dateValue: Calendar = Calendar.getInstance()
+            dateValue.set(dateSplit[0].toInt(), dateSplit[1].toInt() - 1, dateSplit[2].toInt())
+            dateValue.run {
+                add(Calendar.DATE, +1)
+            }
+            initDiary(SimpleDateFormat("YYYY-MM-dd").format(dateValue.time))
+        } else {
+            initDiary(null)
+        }
         _month.value = "${dateSplit[0]}.${dateSplit[1]}"
-        val date = "${dateSplit[0]}-${dateSplit[1]}-${dateSplit[2]}"
-        initDiary(date)
     }
 
     fun selectMonth() {

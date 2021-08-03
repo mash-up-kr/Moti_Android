@@ -1,7 +1,5 @@
 package com.ahobsu.moti.presentation.ui.diary.model
 
-import java.time.DayOfWeek
-
 data class DiaryItemModel(
     val id: Int,
     val dayOfWeek: String,
