@@ -1,14 +1,13 @@
 package com.ahobsu.moti.presentation.ui.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentMypageBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.main.MainActivity
-import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 
 class MyPageFragment :
@@ -24,7 +23,18 @@ class MyPageFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
+        //TODO Version 설정
+        val version="1.0.0"
 
+        binding.tvMypageQa.setOnClickListener {
+            val email = Intent(Intent.ACTION_SEND)
+            email.type = "plain/text"
+            val address = arrayOf("heesoo0203@gmail.com")
+            email.putExtra(Intent.EXTRA_EMAIL, address)
+            email.putExtra(Intent.EXTRA_SUBJECT, "MOTI 문의하기")
+            email.putExtra(Intent.EXTRA_TEXT, "version: $version")
+            startActivity(email)
+        }
         binding.btnMypageEdit.setOnClickListener {
             (activity as MainActivity).changeFragment(MyPageEditFragment.newInstance())
         }
