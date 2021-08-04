@@ -2,12 +2,14 @@ package com.ahobsu.moti.presentation.ui.mypage
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentMypageBinding
 import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.main.MainActivity
+import gun0912.tedbottompicker.TedBottomPicker
 
 
 class MyPageFragment :
@@ -24,7 +26,14 @@ class MyPageFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         //TODO Version 설정
-        val version="1.0.0"
+        val version = "1.0.0"
+
+        binding.ivMypageImage.setOnClickListener { view ->
+            TedBottomPicker.with(mContext as FragmentActivity?)
+                .show {
+                    viewModel.setUserProfile(it)
+                }
+        }
 
         binding.tvMypageQa.setOnClickListener {
             val email = Intent(Intent.ACTION_SEND)

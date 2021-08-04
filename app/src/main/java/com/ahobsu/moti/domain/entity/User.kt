@@ -11,6 +11,7 @@ data class User(
     val mission: String?,
     val snsId: String?,
     val snsType: String?,
+    val profileUrl: String?,
     val createdAt: String?,
     val updatedAt: String?
 )

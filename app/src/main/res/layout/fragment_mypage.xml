@@ -39,6 +39,15 @@
             app:layout_constraintTop_toTopOf="@id/tv_mypage_title" />
 
         <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_camera_normal"
+            app:layout_constraintBottom_toBottomOf="@id/iv_mypage_image"
+            app:layout_constraintEnd_toEndOf="@id/iv_mypage_image"
+            app:layout_constraintStart_toStartOf="@id/iv_mypage_image"
+            app:layout_constraintTop_toTopOf="@id/iv_mypage_image" />
+
+        <ImageView
             android:id="@+id/iv_mypage_image"
             android:layout_width="110dp"
             android:layout_height="110dp"

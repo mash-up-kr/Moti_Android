@@ -1,5 +1,6 @@
 package com.ahobsu.moti.data.source.user
 
+import android.net.Uri
 import com.ahobsu.moti.domain.entity.SignIn
 import com.ahobsu.moti.domain.entity.User
 import com.ahobsu.moti.domain.repository.UserRepository
@@ -47,6 +48,7 @@ class UserRepositoryImpl(
                     mission = it.mission,
                     snsId = it.snsId,
                     snsType = it.snsType,
+                    profileUrl = it.profileUrl,
                     createdAt = it.createdAt,
                     updatedAt = it.updatedAt
                 )
@@ -69,6 +71,7 @@ class UserRepositoryImpl(
                     mission = it.mission,
                     snsId = it.snsId,
                     snsType = it.snsType,
+                    profileUrl = it.profileUrl,
                     createdAt = it.createdAt,
                     updatedAt = it.updatedAt
                 )
@@ -76,4 +79,13 @@ class UserRepositoryImpl(
 
         }
     }
+
+    override fun putUserProfile(userProfile: Uri): Single<String> {
+        return userDataSource.putUserInfo(userProfile).map { it ->
+            it.data?.let {
+                "Success"
+            }
+        }
+    }
+
 }

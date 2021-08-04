@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ahobsu.moti.domain.UserUseCase
 import com.ahobsu.moti.domain.entity.User
 import com.ahobsu.moti.domain.repository.UserRepository
 import com.ahobsu.moti.presentation.BaseViewModel
@@ -17,8 +18,8 @@ class MyPageViewModel(
     private val userRepository: UserRepository
 ) : BaseViewModel() {
 
-    val profileUrl: LiveData<String> =
-        MutableLiveData<String>("https://avatars.githubusercontent.com/u/18034145?v=4")
+    private val _profileUrl = MutableLiveData<String>()
+    val profileUrl: LiveData<String> = _profileUrl
 
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
@@ -36,12 +37,13 @@ class MyPageViewModel(
 
 
     init {
-        userRepository.getUser()
+        UserUseCase(userRepository).getUser()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _user.postValue(it)
-                userNickName.postValue(it.name)
+                _profileUrl.postValue(it.profileUrl ?: "")
+                userNickName.postValue(it.name ?: "")
                 Log.e(" Success ", it.toString())
             }, { e ->
                 Log.e("postSignIn e", e.toString())
@@ -61,6 +63,7 @@ class MyPageViewModel(
                 mission = it.mission,
                 snsId = it.snsId,
                 snsType = it.snsType,
+                profileUrl = it.profileUrl,
                 createdAt = it.createdAt,
                 updatedAt = it.updatedAt
             )
@@ -81,11 +84,25 @@ class MyPageViewModel(
                 mission = it.mission,
                 snsId = it.snsId,
                 snsType = it.snsType,
+                profileUrl = it.profileUrl,
                 createdAt = it.createdAt,
                 updatedAt = it.updatedAt
             )
         }
     }
+
+    fun setUserProfile(uri: Uri) {
+        UserUseCase(userRepository).putUserProfile(uri)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _profileUrl.postValue(uri.toString())
+                Log.e(" Success ", it.toString())
+            }, { e ->
+                Log.e("postSignIn e", e.toString())
+            })
+    }
+
 
     fun onSelectedGender() {
         _selectedGender.value = Unit
@@ -118,6 +135,7 @@ class MyPageViewModel(
                     mission = it.mission,
                     snsId = it.snsId,
                     snsType = it.snsType,
+                    profileUrl = it.profileUrl,
                     createdAt = it.createdAt,
                     updatedAt = it.updatedAt
                 )

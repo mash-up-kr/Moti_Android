@@ -1,12 +1,15 @@
 package com.ahobsu.moti.data.source.user
 
+import android.net.Uri
+import com.ahobsu.moti.data.FormDataUtil
 import com.ahobsu.moti.data.api.UserService
 import com.ahobsu.moti.data.dto.*
 import com.ahobsu.moti.domain.entity.User
-import com.google.firebase.auth.UserInfo
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.MultipartBody
+import java.io.File
 
 class RemoteUserDataSource(
     private val userApi: UserService
@@ -30,4 +33,13 @@ class RemoteUserDataSource(
     override fun putUserInfo(user: User): Single<BaseData<UserMyResponse>> {
         return userApi.putUserInfo(UserInfoResquset(user.name, user.birthday, user.gender))
     }
+
+    override fun putUserInfo(userProfileImage: Uri): Single<BaseData<Unit>> {
+        var formFile: MultipartBody.Part? = null
+        userProfileImage?.let {
+            formFile = FormDataUtil.getImageBody("file", File(it.path))
+        }
+        return userApi.putUserProfileImage(formFile)
+    }
+
 }

@@ -23,6 +23,8 @@ data class UserMyResponse(
     val snsId: String?,
     @SerializedName("snsType")
     val snsType: String?,
+    @SerializedName("profileUrl")
+    val profileUrl: String?,
     @SerializedName("createdAt")
     val createdAt: String?,
     @SerializedName("updatedAt")

@@ -40,6 +40,7 @@ class LoginViewModel : BaseViewModel() {
             null,
             null,
             null,
+            null,
             null
         )
     )
@@ -86,6 +87,7 @@ class LoginViewModel : BaseViewModel() {
                 it.mission,
                 it.snsId,
                 it.snsType,
+                it.profileUrl,
                 it.createdAt,
                 it.updatedAt
             )
