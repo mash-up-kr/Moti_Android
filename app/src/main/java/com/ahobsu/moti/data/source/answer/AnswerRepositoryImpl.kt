@@ -51,8 +51,8 @@ class AnswerRepositoryImpl(private val answerDataSource: AnswerDataSource) : Ans
         }
     }
 
-    override fun getAnswersItemList(id: Int): Single<List<AnswersDiary>> {
-        return answerDataSource.getAnswersItemList(id).map { res ->
+    override fun getAnswersAlbumItemList(id: Int): Single<List<AnswersDiary>> {
+        return answerDataSource.getAnswersAlbumItemList(id).map { res ->
             res.data?.let { data ->
                 data.map {
                     AnswersDiary(

@@ -41,8 +41,8 @@ class RemoteAnswerDataSource(
         return answerService.getAnswersList()
     }
 
-    override fun getAnswersItemList(id: Int): Single<BaseData<List<com.ahobsu.moti.data.dto.Answer>>> {
-        return answerService.getAnswersItemList(id)
+    override fun getAnswersAlbumItemList(id: Int): Single<BaseData<List<com.ahobsu.moti.data.dto.Answer>>> {
+        return answerService.getAnswersAlbumItemList(id)
     }
 
 

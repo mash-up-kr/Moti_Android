@@ -21,10 +21,9 @@ class AnswerUseCase(
         return answerRepository.getAnswersList()
     }
 
-    fun getAnswersItemList(id:Int): Single<List<AnswersDiary>>  {
-        return answerRepository.getAnswersItemList(id)
+    fun getAnswersAlbumItemList(id:Int): Single<List<AnswersDiary>>  {
+        return answerRepository.getAnswersAlbumItemList(id)
     }
-
 
     fun getAnswerToday(): Single<Boolean> {
         return answerRepository.getAnswerToday()

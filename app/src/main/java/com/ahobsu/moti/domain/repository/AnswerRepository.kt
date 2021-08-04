@@ -10,7 +10,7 @@ interface AnswerRepository {
     fun getAnswersWeek(): Single<AnswersWeek>
     fun getAnswerToday(): Single<Boolean>
     fun getAnswersList(): Single<List<AnswersWeek>>
-    fun getAnswersItemList(id:Int): Single<List<AnswersDiary>>
+    fun getAnswersAlbumItemList(id:Int): Single<List<AnswersDiary>>
     fun getAnswersDiary(direction:Int?, limit:Int?, date:String?): Single<List<AnswersDiary>>
     fun getAnswersDays(): Single<List<String>>
 }

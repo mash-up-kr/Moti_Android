@@ -11,7 +11,7 @@ interface AnswerDataSource {
     fun postAnswer(answer: Answer): Single<BaseData<Unit>>
     fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>>
     fun getAnswersList(): Single<BaseData<List<List<com.ahobsu.moti.data.dto.Answer>>?>>
-    fun getAnswersItemList(id: Int): Single<BaseData<List<com.ahobsu.moti.data.dto.Answer>>>
+    fun getAnswersAlbumItemList(id: Int): Single<BaseData<List<com.ahobsu.moti.data.dto.Answer>>>
     fun getAnswersDiary(diaryRequest: AnswersDiaryRequest): Single<BaseData<AnswersDiaryResponse>>
     fun getAnswersDays(): Single<BaseData<List<String>>>
 }

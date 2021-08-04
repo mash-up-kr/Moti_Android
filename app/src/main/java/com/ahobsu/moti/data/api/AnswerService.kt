@@ -23,7 +23,7 @@ interface AnswerService {
     fun getAnswersList(): Single<BaseData<List<List<Answer>>?>>
 
     @GET("answers/list/{id}")
-    fun getAnswersItemList(
+    fun getAnswersAlbumItemList(
         @Path("id") id: Int
     ): Single<BaseData<List<Answer>>>
 

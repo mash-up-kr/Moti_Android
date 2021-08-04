@@ -27,7 +27,7 @@ class AnswersViewModel(
     fun initItemList(id: Int) {
         Log.e("id", id.toString())
 
-        AnswerUseCase(answerRepository).getAnswersItemList(id)
+        AnswerUseCase(answerRepository).getAnswersAlbumItemList(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
