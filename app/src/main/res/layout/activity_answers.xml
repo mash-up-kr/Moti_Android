@@ -17,7 +17,7 @@
 		android:clickable="true">
 
 		<androidx.viewpager2.widget.ViewPager2
-			android:id="@+id/viewPager"
+			android:id="@+id/answers_view_pager"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:clipChildren="false"
@@ -25,6 +25,7 @@
 			android:orientation="horizontal"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
 
 		<LinearLayout
 			android:id="@+id/layout_title"
@@ -45,7 +46,7 @@
 				android:src="@drawable/ic_arrow_left" />
 
 			<TextView
-				android:id="@+id/tv_question_title"
+				android:id="@+id/tv_date"
 				android:layout_width="match_parent"
 				android:layout_height="72dp"
 				android:layout_weight="1"
@@ -56,16 +57,28 @@
 				android:textSize="16sp" />
 
 			<ImageView
-				android:id="@+id/btn_question_rewrite"
+				android:id="@+id/btn_answer_rewrite"
 				android:layout_width="wrap_content"
 				android:layout_height="48dp"
 				android:layout_gravity="center_vertical"
 				android:focusable="true"
 				android:gravity="center"
+				android:visibility="invisible"
 				android:onClick="@{() -> viewModel.onClickRewrite()}"
 				android:paddingEnd="20dp"
 				android:src="@drawable/ic_rewrite" />
 		</LinearLayout>
+
+		<com.ahobsu.moti.presentation.ui.album.CircleIndicator
+			android:id="@+id/ci_answer"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="20dp"
+			android:background="@drawable/radius_12_opacity80"
+			android:padding="9dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
 
 
 	</androidx.constraintlayout.widget.ConstraintLayout>

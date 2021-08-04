@@ -13,71 +13,66 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_gradient">
+        android:background="@drawable/bg_gradient"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_answer_camera"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/album_top_long"
-            android:visibility="@{viewModel.isImage ? View.VISIBLE : View.GONE}"
-            app:setImageUrl="@{viewModel.imageUrl}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view1_answer_camera"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/gold_brown"
-            app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
-            app:layout_constraintTop_toBottomOf="@id/iv_answer_camera" />
-
-        <LinearLayout
-            android:id="@+id/layout_text"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_answer_camera">
-
-            <TextView
-                android:id="@+id/tv_answer_title"
-                android:fontFamily="@font/iropke_batang_otfm"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/mypage_title"
-                android:text="@{viewModel.title}"
-                android:textColor="@color/rose_gold"
-                android:textSize="20dp"
-                tools:text="오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?" />
-
-            <ImageView
-                android:id="@+id/iv_answer"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_answer_decobar" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/et_answer"
-                android:fontFamily="@font/iropke_batang_otfm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:text="@{viewModel.content}"
-                android:textColor="@color/rose_gold"
-                android:textSize="16dp" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_answer_camera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_main_frame_autumn"
+                    android:visibility="@{viewModel.isImage ? View.VISIBLE : View.GONE}"
+                    app:setImageUrl="@{viewModel.imageUrl}" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/layout_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_answer_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iropke_batang_otfm"
+                        android:text="@{viewModel.title}"
+                        android:textColor="@color/rose_gold"
+                        android:textSize="20dp"
+                        tools:text="오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?" />
+
+                    <ImageView
+                        android:id="@+id/iv_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_answer_decobar"
+                        android:visibility="@{viewModel.isContent ? View.VISIBLE : View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/et_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iropke_batang_otfm"
+                        android:gravity="top"
+                        android:text="@{viewModel.content}"
+                        android:textColor="@color/rose_gold"
+                        android:textSize="16dp"
+                        android:visibility="@{viewModel.isContent ? View.VISIBLE : View.GONE}"
+                        tools:text="오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 </layout>
