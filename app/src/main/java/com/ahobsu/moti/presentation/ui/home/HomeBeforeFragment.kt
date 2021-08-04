@@ -29,9 +29,13 @@ class HomeBeforeFragment :
         }
     }
 
+    override fun onResume() {
+        viewModel.checkToday()
+        super.onResume()
+    }
+
     companion object {
-        fun newInstance() =
-            HomeBeforeFragment()
+        fun newInstance() = HomeBeforeFragment()
     }
 
 }

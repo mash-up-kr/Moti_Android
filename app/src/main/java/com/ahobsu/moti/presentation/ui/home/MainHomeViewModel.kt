@@ -36,6 +36,18 @@ class MainHomeViewModel(
             })
     }
 
+    fun checkToday(){
+        AnswerUseCase(answerRepository).getAnswerToday()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ it ->
+                if (it) {
+                    _todayAnswer.postValue(it)
+                }
+            }, { e ->
+                Log.e("e", e.toString())
+            })
+    }
     fun startQuestionActivity(context: Context) {
         AnswerUseCase(answerRepository).getAnswerToday()
             .subscribeOn(Schedulers.io())

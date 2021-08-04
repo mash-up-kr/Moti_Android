@@ -21,12 +21,10 @@ class HomeAfterFragment :
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
         viewModel.getHomeAnswer()
-
     }
 
     companion object {
-        fun newInstance() =
-            HomeAfterFragment()
+        fun newInstance() = HomeAfterFragment()
     }
 
 }
