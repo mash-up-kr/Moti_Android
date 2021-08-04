@@ -24,16 +24,34 @@ class AnswersViewModel(
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
 
-    fun initItemList(id: Int) {
-        Log.e("id", id.toString())
+    fun initItem(id: Int) {
+        AnswerUseCase(answerRepository).getAnswerItem(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ it ->
+                _diaryAnswerList.postValue(
+                    listOf(
+                        AnswerItemModel(
+                            id = it.answerId ?: 0,
+                            date = it.date ?: "",
+                            title = it.title ?: "",
+                            content = it.content ?: "",
+                            imageUrl = it.imageUrl,
+                            isContent = it.isContent ?: true,
+                            isImage = it.isImage ?: false
+                        )
+                    )
+                )
+            }, { e ->
+                Log.e("e", e.toString())
+            })
+    }
 
+    fun initItemList(id: Int) {
         AnswerUseCase(answerRepository).getAnswersAlbumItemList(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ it ->
-                Log.e("it", it.toString())
-                Log.e("initItemList","fffffff")
-
                 _diaryAnswerList.postValue(
                     it.map {
                         AnswerItemModel(
@@ -48,10 +66,12 @@ class AnswersViewModel(
                     }
                 )
             }, { e ->
-                Log.e("initItemList","eeeeee")
-
                 Log.e("e", e.toString())
             })
+    }
+
+    fun selectPosition(position: Int) {
+        _date.value = diaryAnswerList.value?.get(position)?.date?.replace("-", ".")
     }
 
     fun onClickBack() {

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -34,9 +33,10 @@ class AlbumFragment :
     private val albumAdapter by lazy {
         AlbumAdapter().apply {
             setOnItemClickListener(object : AlbumAdapter.OnItemClickListener {
-                override fun onItemClick(id: Int) {
+                override fun onItemClick(id: Int, size: Int) {
                     val intent = Intent(activity, AnswersActivity::class.java)
-                    intent.putExtra("answerListId",id)
+                    intent.putExtra("answerListId", id)
+                    intent.putExtra("answerListSize", size)
                     startActivity(intent)
                 }
             })

@@ -46,14 +46,14 @@ class AlbumAdapter :
             binding.frameCards.requestLayout()
 
             binding.frameCards.setOnClickListener {
-                mListener?.onItemClick(item.answers?.get(0)?.answerId?:0)
+                mListener?.onItemClick(item.answers?.get(0)?.answerId ?: 0, item.answers?.size ?: 0)
             }
 
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(id: Int)
+        fun onItemClick(id: Int, size: Int)
     }
 
     private var mListener: OnItemClickListener? = null
