@@ -5,13 +5,13 @@
         android:icon="@drawable/ic_main_selected"
         android:title="home" />
     <item
-        android:id="@+id/album"
-        android:icon="@drawable/ic_album_selected"
-        android:title="album" />
-    <item
         android:id="@+id/diary"
         android:icon="@drawable/ic_diary_selected"
         android:title="diary" />
+    <item
+        android:id="@+id/album"
+        android:icon="@drawable/ic_album_selected"
+        android:title="album" />
     <item
         android:id="@+id/mypage"
         android:icon="@drawable/ic_profile_selected"
