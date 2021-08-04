@@ -33,6 +33,10 @@ class RemoteAnswerDataSource(
         )
     }
 
+    override fun getAnswerItem(id: Int): Single<BaseData<com.ahobsu.moti.data.dto.Answer>> {
+        return answerService.getAnswerItem(id)
+    }
+
     override fun getAnswersWeek(): Single<BaseData<AnswersWeekResponse>> {
         return answerService.getAnswersWeek()
     }
@@ -44,7 +48,6 @@ class RemoteAnswerDataSource(
     override fun getAnswersAlbumItemList(id: Int): Single<BaseData<List<com.ahobsu.moti.data.dto.Answer>>> {
         return answerService.getAnswersAlbumItemList(id)
     }
-
 
     override fun getAnswersDiary(diaryRequest: AnswersDiaryRequest): Single<BaseData<AnswersDiaryResponse>> {
         return answerService.getAnswersDiary(diaryRequest.direction, diaryRequest.limit,

@@ -16,6 +16,23 @@ class AnswerRepositoryImpl(private val answerDataSource: AnswerDataSource) : Ans
         }
     }
 
+    override fun getAnswerItem(id: Int): Single<AnswersDiary> {
+        return answerDataSource.getAnswerItem(id).map { res ->
+            res.data?.let { it ->
+                AnswersDiary(
+                    date = it.date,
+                    answerId = it.id,
+                    missionId = it.missionId,
+                    imageUrl = it.imageUrl,
+                    title = it.mission?.title,
+                    content = it.content,
+                    isContent = it.mission?.isContent,
+                    isImage = it.mission?.isImage
+                )
+            }
+        }
+    }
+
     override fun getAnswersWeek(): Single<AnswersWeek> {
         return answerDataSource.getAnswersWeek().map { res ->
             res.data?.let {

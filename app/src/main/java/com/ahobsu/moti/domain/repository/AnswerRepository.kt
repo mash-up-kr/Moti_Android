@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.core.Single
 
 interface AnswerRepository {
     fun postAnswer(answer: Answer): Single<Boolean>
+    fun getAnswerItem(id: Int): Single<AnswersDiary>
     fun getAnswersWeek(): Single<AnswersWeek>
     fun getAnswerToday(): Single<Boolean>
     fun getAnswersList(): Single<List<AnswersWeek>>

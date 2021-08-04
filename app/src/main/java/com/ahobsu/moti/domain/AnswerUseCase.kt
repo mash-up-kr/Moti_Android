@@ -13,6 +13,10 @@ class AnswerUseCase(
         return answerRepository.postAnswer(answer)
     }
 
+    fun getAnswerItem(id: Int): Single<AnswersDiary> {
+        return answerRepository.getAnswerItem(id)
+    }
+
     fun getAnswersWeek(): Single<AnswersWeek> {
         return answerRepository.getAnswersWeek()
     }
