@@ -1,5 +1,6 @@
 package com.ahobsu.moti.presentation.ui.diary
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +13,13 @@ import com.ahobsu.moti.R
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.FragmentDiaryBinding
 import com.ahobsu.moti.presentation.BaseFragment
+import com.ahobsu.moti.presentation.ui.album.AnswersActivity
 import com.ahobsu.moti.presentation.ui.diary.adapter.DiaryAdapter
 import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
@@ -37,7 +40,10 @@ class DiaryFragment :
         DiaryAdapter().apply {
             setOnItemClickListener(object : DiaryAdapter.OnItemClickListener {
                 override fun onItemClick(item: DiaryItemModel) {
-                    //TODO("Not yet implemented")
+                    val intent = Intent(activity, AnswersActivity::class.java)
+                    intent.putExtra("answerId", item.answerId)
+                    startActivity(intent)
+
                     if (item.isContent)
                         Log.e("onItemClick", "id  $id")
                 }

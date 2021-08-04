@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.AnswerUseCase
-import com.ahobsu.moti.domain.entity.AnswersDiary2
+import com.ahobsu.moti.domain.entity.AnswersDiary
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.presentation.BaseViewModel
 import com.ahobsu.moti.presentation.ui.diary.model.DiaryItemModel
@@ -58,7 +58,7 @@ class DiaryViewModel(
     }
 
     private fun initDiary(date: String?) {
-        AnswerUseCase(answerRepository).getAnswersDiary2(null, 4, date)
+        AnswerUseCase(answerRepository).getAnswersDiary(null, 4, date)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
@@ -79,7 +79,7 @@ class DiaryViewModel(
             val date = if (isTop) it[0].date else it[it.size - 1].date
             val direction = if (isTop) 1 else 0
 
-            AnswerUseCase(answerRepository).getAnswersDiary2(direction, limit, date)
+            AnswerUseCase(answerRepository).getAnswersDiary(direction, limit, date)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ list ->
@@ -100,7 +100,7 @@ class DiaryViewModel(
 
     }
 
-    private fun createDiaryList(list: List<AnswersDiary2>): List<DiaryItemModel> {
+    private fun createDiaryList(list: List<AnswersDiary>): List<DiaryItemModel> {
         return list.map {
             val dateValue: Calendar = Calendar.getInstance()
             val item = it.date?.split("-")
@@ -110,7 +110,7 @@ class DiaryViewModel(
             dateValue.set(year.toInt(), month.toInt() - 1, day.toInt())
 
             DiaryItemModel(
-                id = it.answerId ?: 0,
+                answerId = it.answerId ?: 0,
                 dayOfWeek = SimpleDateFormat("EE").format(dateValue.time),
                 date = it.date ?: "",
                 days = day,

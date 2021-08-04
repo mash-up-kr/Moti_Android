@@ -11,6 +11,7 @@ import com.ahobsu.moti.domain.entity.Mission
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import com.ahobsu.moti.domain.repository.MissionRepository
 import com.ahobsu.moti.presentation.BaseViewModel
+import com.ahobsu.moti.presentation.ui.question.model.AnswerModel
 import com.ahobsu.moti.presentation.ui.question.model.MissionItemModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single

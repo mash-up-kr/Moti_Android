@@ -1,13 +1,14 @@
 package com.ahobsu.moti.data.source.answer
 
 import com.ahobsu.moti.data.dto.AnswersDiaryRequest
-import com.ahobsu.moti.domain.entity.*
+import com.ahobsu.moti.domain.entity.Answer
+import com.ahobsu.moti.domain.entity.AnswersDiary
+import com.ahobsu.moti.domain.entity.AnswersWeek
+import com.ahobsu.moti.domain.entity.MissionCard
 import com.ahobsu.moti.domain.repository.AnswerRepository
 import io.reactivex.rxjava3.core.Single
 
-class AnswerRepositoryImpl(
-    private val answerDataSource: AnswerDataSource
-) : AnswerRepository {
+class AnswerRepositoryImpl(private val answerDataSource: AnswerDataSource) : AnswerRepository {
 
     override fun postAnswer(answer: Answer): Single<Boolean> {
         return answerDataSource.postAnswer(answer).map { res ->
@@ -50,73 +51,45 @@ class AnswerRepositoryImpl(
         }
     }
 
-    override fun getAnswersDiary(limit: Int, date: String): Single<List<AnswersDiary>> {
-        return answerDataSource.getAnswersDiary(
-            AnswersDiaryRequest(direction = 0, limit = limit, date = date)).map { res ->
+    override fun getAnswersItemList(id: Int): Single<List<AnswersDiary>> {
+        return answerDataSource.getAnswersItemList(id).map { res ->
             res.data?.let { data ->
-                var diaryList: List<AnswersDiary> = emptyList()
-                data.answers?.forEach {
-                    val dateSplit = it.date?.split("-")
-                    val year = dateSplit?.get(0)?.toInt()
-                    val month = dateSplit?.get(1)?.toInt()
-
-                    if (diaryList.isEmpty()) {
-                        diaryList = diaryList + AnswersDiary(year, month, arrayListOf(getDiaryItem(it)))
-                    } else {
-                        var saved = false
-                        for (i in diaryList.indices) {
-                            if (diaryList[i].year == year && diaryList[i].month == month) {
-                                diaryList[i].diaryItems?.add(
-                                    getDiaryItem(it)
-                                )
-                                saved = true
-                                break
-                            }
-                        }
-                        if (!saved) {
-                            diaryList = diaryList + AnswersDiary(year, month, arrayListOf(getDiaryItem(it)))
-                        }
-                    }
+                data.map {
+                    AnswersDiary(
+                        date = it.date,
+                        answerId = it.id,
+                        missionId = it.missionId,
+                        imageUrl = it.imageUrl,
+                        title = it.mission?.title,
+                        content = it.content,
+                        isContent = it.mission?.isContent,
+                        isImage = it.mission?.isImage
+                    )
                 }
-                diaryList
+
             }
         }
     }
 
-    override fun getAnswersDiary2(direction: Int?, limit: Int?, date: String?): Single<List<AnswersDiary2>> {
+    override fun getAnswersDiary(direction: Int?, limit: Int?, date: String?): Single<List<AnswersDiary>> {
         return answerDataSource.getAnswersDiary(
             AnswersDiaryRequest(direction = direction, limit = limit, date = date)
-        )
-            .map { res ->
-                res.data?.let { data ->
-                    data.answers?.map {
-                        AnswersDiary2(
-                            date = it.date,
-                            answerId = it.id,
-                            missionId = it.missionId,
-                            imageUrl = it.imageUrl,
-                            title = it.mission?.title,
-                            content = it.content,
-                            isContent = it.mission?.isContent,
-                            isImage = it.mission?.isImage
-                        )
-                    }
-
+        ).map { res ->
+            res.data?.let { data ->
+                data.answers?.map {
+                    AnswersDiary(
+                        date = it.date,
+                        answerId = it.id,
+                        missionId = it.missionId,
+                        imageUrl = it.imageUrl,
+                        title = it.mission?.title,
+                        content = it.content,
+                        isContent = it.mission?.isContent,
+                        isImage = it.mission?.isImage
+                    )
                 }
             }
-    }
-
-    private fun getDiaryItem(it: com.ahobsu.moti.data.dto.Answer): DiaryItem {
-        return DiaryItem(
-            answerId = it.id,
-            missionId = it.missionId,
-            imageUrl = it.imageUrl,
-            title = it.mission?.title,
-            content = it.content,
-            date = it.date,
-            isContent = it.mission?.isContent,
-            isImage = it.mission?.isImage
-        )
+        }
     }
 
     override fun getAnswersDays(): Single<List<String>> {

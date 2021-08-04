@@ -1,7 +1,7 @@
 package com.ahobsu.moti.presentation.ui.diary.model
 
 data class DiaryItemModel(
-    val id: Int,
+    val answerId: Int,
     val dayOfWeek: String,
     val date: String,
     val days: String,

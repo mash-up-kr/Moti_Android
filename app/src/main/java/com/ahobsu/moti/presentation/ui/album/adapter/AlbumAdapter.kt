@@ -27,7 +27,7 @@ class AlbumAdapter :
         holder.bind(getItem(position))
     }
 
-    class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding: ItemAlbumBinding? = androidx.databinding.DataBindingUtil.bind(itemView)
 
         fun bind(item: AlbumItemModel) {
@@ -44,6 +44,10 @@ class AlbumAdapter :
             binding.frameCards.layoutParams.width = deviceWidth
             binding.frameCards.layoutParams.height = deviceHeight
             binding.frameCards.requestLayout()
+
+            binding.frameCards.setOnClickListener {
+                mListener?.onItemClick(item.answers?.get(0)?.answerId?:0)
+            }
 
         }
     }

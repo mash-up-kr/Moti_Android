@@ -2,9 +2,11 @@ package com.ahobsu.moti.presentation.ui.album
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -33,7 +35,9 @@ class AlbumFragment :
         AlbumAdapter().apply {
             setOnItemClickListener(object : AlbumAdapter.OnItemClickListener {
                 override fun onItemClick(id: Int) {
-                    //TODO("앨범화면_답변완료화면_페이지인디케이터 .. 뷰페이저...로 이동.... wow")
+                    val intent = Intent(activity, AnswersActivity::class.java)
+                    intent.putExtra("answerListId",id)
+                    startActivity(intent)
                 }
             })
         }

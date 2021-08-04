@@ -1,4 +1,4 @@
-package com.ahobsu.moti.presentation.ui.question
+package com.ahobsu.moti.presentation.ui.question.model
 
 import android.net.Uri
 

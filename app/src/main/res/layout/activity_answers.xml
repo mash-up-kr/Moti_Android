@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<variable
+			name="viewModel"
+			type="com.ahobsu.moti.presentation.ui.album.AnswersViewModel" />
+	</data>
+
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/bg_gradient"
+		android:clickable="true">
+
+		<androidx.viewpager2.widget.ViewPager2
+			android:id="@+id/viewPager"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:clipChildren="false"
+			android:clipToPadding="false"
+			android:orientation="horizontal"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/layout_title" />
+
+		<LinearLayout
+			android:id="@+id/layout_title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:weightSum="1"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<ImageView
+				android:layout_width="48dp"
+				android:layout_height="48dp"
+				android:layout_gravity="center_vertical"
+				android:layout_marginStart="12dp"
+				android:foregroundGravity="left"
+				android:onClick="@{() -> viewModel.onClickBack()}"
+				android:padding="12dp"
+				android:src="@drawable/ic_arrow_left" />
+
+			<TextView
+				android:id="@+id/tv_question_title"
+				android:layout_width="match_parent"
+				android:layout_height="72dp"
+				android:layout_weight="1"
+				android:fontFamily="@font/apple_sd_r"
+				android:gravity="center"
+				android:text="@{viewModel.date}"
+				android:textColor="@color/rose_gold"
+				android:textSize="16sp" />
+
+			<ImageView
+				android:id="@+id/btn_question_rewrite"
+				android:layout_width="wrap_content"
+				android:layout_height="48dp"
+				android:layout_gravity="center_vertical"
+				android:focusable="true"
+				android:gravity="center"
+				android:onClick="@{() -> viewModel.onClickRewrite()}"
+				android:paddingEnd="20dp"
+				android:src="@drawable/ic_rewrite" />
+		</LinearLayout>
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

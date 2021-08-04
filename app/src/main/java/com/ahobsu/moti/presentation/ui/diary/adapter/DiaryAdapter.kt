@@ -72,7 +72,7 @@ object DiaryImageComparator : DiffUtil.ItemCallback<DiaryItemModel>() {
         oldItem: DiaryItemModel,
         newItem: DiaryItemModel
     ): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.answerId == newItem.answerId
     }
 
     override fun areContentsTheSame(

@@ -1,9 +1,6 @@
 package com.ahobsu.moti.data.api
 
-import com.ahobsu.moti.data.dto.Answer
-import com.ahobsu.moti.data.dto.AnswersDiaryResponse
-import com.ahobsu.moti.data.dto.AnswersWeekResponse
-import com.ahobsu.moti.data.dto.BaseData
+import com.ahobsu.moti.data.dto.*
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -24,6 +21,12 @@ interface AnswerService {
 
     @GET("answers/list")
     fun getAnswersList(): Single<BaseData<List<List<Answer>>?>>
+
+    @GET("answers/list/{id}")
+    fun getAnswersItemList(
+        @Path("id") id: Int
+    ): Single<BaseData<List<Answer>>>
+
 
     @GET("answers/diary")
     fun getAnswersDiary(
