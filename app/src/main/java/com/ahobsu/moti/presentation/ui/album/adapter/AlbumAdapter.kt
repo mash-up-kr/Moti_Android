@@ -40,7 +40,7 @@ class AlbumAdapter :
             )
             var deviceWidth: Int = displayMetrics.widthPixels
             deviceWidth /= 2
-            val deviceHeight = (deviceWidth * 1.75).toInt()
+            val deviceHeight = (deviceWidth * 1.65).toInt()
             binding.frameCards.layoutParams.width = deviceWidth
             binding.frameCards.layoutParams.height = deviceHeight
             binding.frameCards.requestLayout()

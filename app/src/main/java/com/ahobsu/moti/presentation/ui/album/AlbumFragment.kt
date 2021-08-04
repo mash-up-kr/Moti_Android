@@ -73,10 +73,18 @@ class AlbumFragment :
             state: RecyclerView.State
         ) {
             super.getItemOffsets(outRect, view, parent, state)
-            if (parent.getChildAdapterPosition(view) == 0) {
-                outRect.left += size
-            } else if (parent.getChildAdapterPosition(view) == listSize-1){
-                outRect.right += size
+
+            when {
+                parent.getChildAdapterPosition(view) == 0 -> {
+                    outRect.left = size
+                }
+                parent.getChildAdapterPosition(view) == listSize - 1 -> {
+                    outRect.right = size
+                }
+                else -> {
+                    outRect.right = size / 3
+
+                }
             }
         }
     }
