@@ -24,6 +24,7 @@ import java.util.*
 class DiaryFragment :
     BaseFragment<FragmentDiaryBinding>(R.layout.fragment_diary) {
 
+    private var dateList = listOf<String>()
     private var listSize = 0
     private var isRenewable = true
     private var isRenewableTop = true
@@ -43,7 +44,7 @@ class DiaryFragment :
                     val intent = Intent(activity, AnswersActivity::class.java)
                     intent.putExtra("answerId", item.answerId)
                     startActivity(intent)
-
+                    //dateString.substring(0, 7)
                     if (item.isContent)
                         Log.e("onItemClick", "id  $id")
                 }
@@ -64,15 +65,24 @@ class DiaryFragment :
         binding.diaryRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
+
                 if (isRenewable) {
+                    val firstVisibleItemPosition =
+                        (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                     val lastVisibleItemPosition =
                         (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                    val date = dateList[firstVisibleItemPosition].substring(0, 7)
+
                     if (isRenewableBottom && lastVisibleItemPosition + 1 == listSize) {
                         viewModel.onScrollEvent(false)
                         isRenewable = false
-
                     }
-                    if (isRenewableTop && lastVisibleItemPosition <= 3) {
+
+                    if (viewModel.month.value != date) {
+                        viewModel.setMonthDate(date)
+                    }
+
+                    if (isRenewableTop && firstVisibleItemPosition == 0) {
                         viewModel.onScrollEvent(true)
                         isRenewable = false
                     }
@@ -82,6 +92,7 @@ class DiaryFragment :
 
         viewModel.diaryList.observe(viewLifecycleOwner) {
             diaryAdapter.submitList(it)
+            dateList = it.map { model -> model.date }
             listSize = it.size
             isRenewable = true
         }

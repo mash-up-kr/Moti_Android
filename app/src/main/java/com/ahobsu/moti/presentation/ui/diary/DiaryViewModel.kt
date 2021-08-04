@@ -145,6 +145,9 @@ class DiaryViewModel(
         _month.value = "${dateSplit[0]}.${dateSplit[1]}"
     }
 
+    fun setMonthDate(date: String) {
+        _month.value = date
+    }
     fun selectMonth() {
         _selectMonthSpinner.value = true
     }
