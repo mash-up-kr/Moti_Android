@@ -19,26 +19,20 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        Log.e("accessToken", "  ${Unit.accessToken}")
-        Log.e("refreshToken", "  ${Unit.refreshToken}")
-
         if (Unit.accessToken.isNullOrEmpty()) {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         } else {
             login()
         }
-
-        //TODO:: 1. accessToken 조회,, 없으면 로그인화면, 있으면 그대로 유저정보 조회   0
-        //TODO:: 2. 1에서 유저정보 조회 실패할 경우 refreshToken있는지 조회 없으면 로그인화 있으면 accessToken 값을
-        // refreshToken로 바꿔서 재시
-        //TODO::도 3. 실패시 로그인 화면
     }
 
     private fun login() {
         UserUseCase(Injection.provideUserRepository()).getUser()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ it ->
+            .subscribe({
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }, { _ ->
                 refreshLogin()
             })
@@ -51,8 +45,10 @@ class SplashActivity : AppCompatActivity() {
                 Unit.putAccessToken(it.accessToken)
                 Unit.putRefreshToken(it.refreshToken)
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }, { _ ->
                 startActivity(Intent(this, LoginActivity::class.java))
+                finish()
             })
     }
 }
