@@ -58,7 +58,7 @@ class DiaryViewModel(
     }
 
     private fun initDiary(date: String?) {
-        AnswerUseCase(answerRepository).getAnswersDiary(null, 4, date)
+        AnswerUseCase(answerRepository).getAnswersDiary(null, 10, date)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
@@ -74,7 +74,7 @@ class DiaryViewModel(
     }
 
     fun onScrollEvent(isTop: Boolean) {
-        val limit = 4
+        val limit = 10
         diaryList.value?.let {
             val date = if (isTop) it[0].date else it[it.size - 1].date
             val direction = if (isTop) 1 else 0
