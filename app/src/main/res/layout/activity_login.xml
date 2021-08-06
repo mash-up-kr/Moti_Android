@@ -45,7 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
+        <View
             android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="44dp"
@@ -53,12 +53,33 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="23dp"
             android:background="@drawable/radius_22"
-            android:gravity="center"
-            android:text="SignIn"
             app:layout_constraintBottom_toTopOf="@id/user_agreement_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_login"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_google"
+            app:layout_constraintBottom_toBottomOf="@id/btn_login"
+            app:layout_constraintEnd_toStartOf="@id/tv_login"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/btn_login"
+            app:layout_constraintTop_toTopOf="@id/btn_login" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:gravity="center"
+            android:fontFamily="@font/font_apple_sd_fothic_neo_b"
+            android:text="Sign in with Google"
+            app:layout_constraintBottom_toBottomOf="@id/btn_login"
+            app:layout_constraintEnd_toEndOf="@id/btn_login"
+            app:layout_constraintStart_toEndOf="@id/iv_login"
+            app:layout_constraintTop_toTopOf="@id/btn_login" />
 
         <TextView
             android:id="@+id/user_agreement_content"
