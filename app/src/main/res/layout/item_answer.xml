@@ -32,7 +32,6 @@
                     android:id="@+id/iv_answer_camera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/img_main_frame_autumn"
                     android:visibility="@{viewModel.isImage ? View.VISIBLE : View.GONE}"
                     app:setImageUrl="@{viewModel.imageUrl}" />
 
