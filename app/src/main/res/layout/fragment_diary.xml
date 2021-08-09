@@ -4,53 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.ahobsu.moti.presentation.ui.diary.DiaryViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
-        android:clickable="true">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_diary_date"
-            android:fontFamily="@font/apple_sd_r"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:gravity="center"
-            android:paddingTop="3dp"
-            android:text="@{viewModel.month}"
-            android:textColor="@color/rose_gold"
-            android:textSize="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isEmpty ? View.VISIBLE : View.GONE}">
 
-        <ImageView
-            android:id="@+id/btn_calender"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="12dp"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/ic_calender_selected"
-            android:onClick="@{() -> viewModel.onSelectCalender()}"
-            app:layout_constraintBottom_toBottomOf="@id/tv_diary_date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_empty" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/diary_recycler_view"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/iropke_batang_otfm"
+                android:text="@string/diary_empty"
+                android:textColor="@color/rose_gold"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_diary_date"
-            tools:listitem="@layout/item_diary" />
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_gradient"
+            android:visibility="@{viewModel.isEmpty ? View.GONE : View.VISIBLE}">
+            android:clickable="true">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_diary_date"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:fontFamily="@font/apple_sd_r"
+                android:gravity="center"
+                android:paddingTop="3dp"
+                android:text="@{viewModel.month}"
+                android:textColor="@color/rose_gold"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_calender"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:onClick="@{() -> viewModel.onSelectCalender()}"
+                android:padding="12dp"
+                android:src="@drawable/ic_calender_selected"
+                app:layout_constraintBottom_toBottomOf="@id/tv_diary_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/diary_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_diary_date"
+                tools:listitem="@layout/item_diary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

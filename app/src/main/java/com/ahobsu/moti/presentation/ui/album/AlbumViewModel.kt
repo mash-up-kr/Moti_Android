@@ -18,7 +18,7 @@ class AlbumViewModel(
     private val _albumList = MutableLiveData<List<AlbumItemModel>>()
     val albumList: LiveData<List<AlbumItemModel>> = _albumList
 
-    private val _isEmpty = MutableLiveData<Boolean>()
+    private val _isEmpty = MutableLiveData<Boolean>(true)
     val isEmpty: LiveData<Boolean> = _isEmpty
 
     init {

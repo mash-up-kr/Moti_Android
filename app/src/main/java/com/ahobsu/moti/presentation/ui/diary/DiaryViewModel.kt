@@ -43,6 +43,9 @@ class DiaryViewModel(
     private val _clickCalenderMonth = MutableLiveData<CalenderMonth>()
     val selectedCalenderMonth: LiveData<CalenderMonth> = _clickCalenderMonth
 
+    private val _isEmpty = MutableLiveData<Boolean>(true)
+    val isEmpty: LiveData<Boolean> = _isEmpty
+
     enum class CalenderMonth { PREVIOUS, NEXT, SELECT }
 
     fun initAnswersDays() {
@@ -51,7 +54,12 @@ class DiaryViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.e(" Success ", it.toString())
-                _writeDayList.postValue(it)
+                if (it.isEmpty()) {
+                    _isEmpty.postValue(true)
+                } else {
+                    _isEmpty.postValue(false)
+                    _writeDayList.postValue(it)
+                }
             }, { e ->
                 Log.e("postSignIn e", e.toString())
             })
@@ -63,10 +71,15 @@ class DiaryViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
                 Log.e(" Success ", list.toString())
-                if (date.isNullOrEmpty()) {
-                    _diaryList.postValue(createDiaryList(list))
+                if (list.isEmpty()) {
+                    _isEmpty.postValue(true)
                 } else {
-                    _diaryList.postValue(createDiaryList(list.reversed()))
+                    if (date.isNullOrEmpty()) {
+                        _diaryList.postValue(createDiaryList(list))
+                    } else {
+                        _diaryList.postValue(createDiaryList(list.reversed()))
+                    }
+                    _isEmpty.postValue(false)
                 }
             }, { e ->
                 Log.e("postSignIn e", e.toString())

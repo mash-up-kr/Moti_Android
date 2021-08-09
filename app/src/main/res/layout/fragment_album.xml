@@ -28,6 +28,7 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:layout_marginBottom="16dp"
                 android:src="@drawable/ic_empty" />
 
             <TextView
