@@ -24,13 +24,13 @@ class SignUpCompleteFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.setUserInfo(NAME, null, null)
+        viewModel.setUserInfo(arguments?.getString(NAME), null, null)
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
-                if (it == LoginViewModel.SignUpFragment.EXIT) {
-                    (activity as LoginActivity?)?.putUserInfo()
-                }
-            })
+            if (it == LoginViewModel.SignUpFragment.EXIT) {
+                (activity as LoginActivity?)?.putUserInfo()
+            }
+        })
 
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
             (activity as LoginActivity?)?.popFragment()

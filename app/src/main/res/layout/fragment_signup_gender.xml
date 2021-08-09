@@ -186,7 +186,7 @@
             android:layout_marginTop="33dp"
             android:text="@string/jump"
             android:textColor="@color/rose_gold"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Birthday,true)}"
+            android:onClick="@{() -> viewModel.onClickPassFragment(SignUpFragment.Birthday)}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/btn_sign_up_next"
             app:layout_constraintStart_toStartOf="@id/btn_sign_up_next"

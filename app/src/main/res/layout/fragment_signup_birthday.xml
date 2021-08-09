@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
-            android:onClick="@{() -> viewModel.onClickNextFragment(SignUpFragment.Complete,true)}"
+            android:onClick="@{() -> viewModel.onClickPassFragment(SignUpFragment.Complete)}"
             android:text="@string/jump"
             android:textColor="@color/rose_gold"
             android:textSize="16sp"

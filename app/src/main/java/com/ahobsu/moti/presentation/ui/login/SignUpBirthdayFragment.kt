@@ -1,6 +1,7 @@
 package com.ahobsu.moti.presentation.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ahobsu.moti.R
@@ -17,17 +18,18 @@ class SignUpBirthdayFragment :
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
-                if (it == LoginViewModel.SignUpFragment.Complete) {
+            if (it == LoginViewModel.SignUpFragment.Complete) {
+                (activity as LoginActivity?)?.setUserInfo(
+                    name = null,
+                    gender = null,
+                    birthday =
+                    if(viewModel.signUpPass.value == true){""}
+                    else binding.datePicker.getDatePicker()
+                )
+                (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Complete)
+            }
+        })
 
-                    (activity as LoginActivity?)?.setUserInfo(
-                        name = null,
-                        gender = null,
-                        birthday = binding.datePicker.getDatePicker()
-                    )
-
-                    (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Complete)
-                }
-            })
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
             (activity as LoginActivity?)?.popFragment()
         })

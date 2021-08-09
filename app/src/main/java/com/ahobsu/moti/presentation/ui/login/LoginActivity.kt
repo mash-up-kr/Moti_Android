@@ -80,27 +80,42 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 firebaseAuthWithGoogle(account!!)
                 Unit.putJWT(account.idToken)
 
-                SignInUseCase(Injection.provideSignUpRepository())("apple")
+                SignInUseCase(Injection.provideSignUpRepository())("google")
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ it ->
                         Log.e("accessToken Success ", it.toString())
                         Unit.putAccessToken(it.accessToken)
                         Unit.putRefreshToken(it.refreshToken)
-                        startMainActivity()
+                        checkUserInfo()
                     }, { e ->
-                        loginViewModel.onClickNextFragment(
-                            LoginViewModel.SignUpFragment.NickName,
-                            true
-                        )
+                        signUpInfoFragment()
                         Log.e("postSignIn e", e.toString())
                     })
-                startActivity(intent)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
             }
         }
+    }
+
+    private fun signUpInfoFragment() {
+        loginViewModel.onClickNextFragment(LoginViewModel.SignUpFragment.NickName, true)
+
+    }
+
+    private fun checkUserInfo() {
+        UserUseCase(Injection.provideUserRepository()).getUser()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                if (it.name.isNullOrEmpty()) {
+                    signUpInfoFragment()
+                } else {
+                    startMainActivity()
+                }
+            }, { _ ->
+                signUpInfoFragment()
+            })
     }
 
     private fun startMainActivity() {

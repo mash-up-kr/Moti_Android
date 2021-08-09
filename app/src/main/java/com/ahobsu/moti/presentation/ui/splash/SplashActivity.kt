@@ -2,7 +2,6 @@ package com.ahobsu.moti.presentation.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ahobsu.moti.R
 import com.ahobsu.moti.Unit
@@ -31,7 +30,11 @@ class SplashActivity : AppCompatActivity() {
         UserUseCase(Injection.provideUserRepository()).getUser()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                startActivity(Intent(this, MainActivity::class.java))
+                if (it.name.isNullOrEmpty()) {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
                 finish()
             }, { _ ->
                 refreshLogin()

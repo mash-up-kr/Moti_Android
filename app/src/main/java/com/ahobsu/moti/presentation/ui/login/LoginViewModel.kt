@@ -3,6 +3,7 @@ package com.ahobsu.moti.presentation.ui.login
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ahobsu.moti.domain.entity.User
@@ -15,6 +16,9 @@ class LoginViewModel : BaseViewModel() {
 
     private val _signUpFragment: MutableLiveData<SignUpFragment> = MutableLiveData()
     val signUpFragment: LiveData<SignUpFragment> = _signUpFragment
+
+    private var _signUpPass = MutableLiveData<Boolean>()
+    val signUpPass: LiveData<Boolean> = _signUpPass
 
     private val _popFragment = MutableLiveData<Unit>()
     val popFragment: LiveData<Unit> = _popFragment
@@ -57,8 +61,14 @@ class LoginViewModel : BaseViewModel() {
 
     fun onClickNextFragment(fragment: SignUpFragment, next: Boolean) {
         if (next) {
+            _signUpPass.value = false
             _signUpFragment.value = fragment
         }
+    }
+
+    fun onClickPassFragment(fragment: SignUpFragment) {
+        _signUpPass.value = true
+        _signUpFragment.value = fragment
     }
 
     fun onClickPopFragment() {

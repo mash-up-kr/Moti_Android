@@ -18,15 +18,18 @@ class SignUpGenderFragment : BaseFragment<FragmentSignupGenderBinding>(R.layout
         binding.viewModel = viewModel
         viewModel.signUpFragment.observe(
             viewLifecycleOwner, Observer<LoginViewModel.SignUpFragment> {
-                if (it == LoginViewModel.SignUpFragment.Birthday) {
-                    (activity as LoginActivity?)?.setUserInfo(
-                        name = null,
-                        gender = if (viewModel.userGender.value == EnumClass.Gender.MAN) "남" else "여",
-                        birthday = null
-                    )
-                    (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Birthday)
-                }
-            })
+            if (it == LoginViewModel.SignUpFragment.Birthday) {
+                (activity as LoginActivity?)?.setUserInfo(
+                    name = null,
+                    gender = if (viewModel.signUpPass.value == true) ""
+                    else {
+                        if (viewModel.userGender.value == EnumClass.Gender.MAN) "남" else "여"
+                    },
+                    birthday = null
+                )
+                (activity as LoginActivity?)?.changeFragment(LoginViewModel.SignUpFragment.Birthday)
+            }
+        })
         viewModel.popFragment.observe(viewLifecycleOwner, Observer<Unit> {
             (activity as LoginActivity?)?.popFragment()
         })
