@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -13,35 +14,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient"
-        android:orientation="vertical"
-        android:clickable="true">
+        android:orientation="horizontal">
 
-        <HorizontalScrollView
-            android:id="@+id/scroll_view_album_top"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:visibility="@{viewModel.isEmpty ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/linearLayout1"
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_empty" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/iropke_batang_otfm"
+                android:text="@string/album_empty"
+                android:textColor="@color/rose_gold"
+                android:textSize="14dp" />
+        </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/iv_album_shelf"
-                    android:layout_width="1026dp"
-                    android:layout_height="135dp"
-                    android:src="@drawable/img_album_shelf" />
-            </LinearLayout>
-        </HorizontalScrollView>
+        <LinearLayout
+            android:visibility="@{viewModel.isEmpty ? View.GONE : View.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/album_recycler_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_album"
-            tools:itemCount="10"/>
+            <HorizontalScrollView
+                android:id="@+id/scroll_view_album_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
 
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_album_shelf"
+                        android:layout_width="1026dp"
+                        android:layout_height="135dp"
+                        android:src="@drawable/img_album_shelf" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/album_recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_album" />
+        </LinearLayout>
     </LinearLayout>
+
 </layout>
