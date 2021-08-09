@@ -24,7 +24,7 @@ class MyPageViewModel(
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
-    val userNickName = MutableLiveData<String>()
+    val userNickName = MutableLiveData<String>("닉네임을입력해주세요")
 
     private val _selectedBirthday = MutableLiveData<Unit>()
     val selectedBirthday: LiveData<Unit> = _selectedBirthday
@@ -43,7 +43,7 @@ class MyPageViewModel(
             .subscribe({
                 _user.postValue(it)
                 _profileUrl.postValue(it.profileUrl ?: "")
-                userNickName.postValue(it.name ?: "")
+                userNickName.postValue(it.name ?: "닉네임을입력해주세요")
                 Log.e(" Success ", it.toString())
             }, { e ->
                 Log.e("postSignIn e", e.toString())
