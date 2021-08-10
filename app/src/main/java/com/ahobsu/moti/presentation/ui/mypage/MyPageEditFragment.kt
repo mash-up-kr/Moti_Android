@@ -10,6 +10,8 @@ import com.ahobsu.moti.presentation.BaseFragment
 import com.ahobsu.moti.presentation.ui.main.MainActivity
 import com.ahobsu.moti.presentation.ui.mypage.bottomsheet.BottomSheetBirthday
 import com.ahobsu.moti.presentation.ui.mypage.bottomsheet.BottomSheetGender
+import com.ahobsu.moti.presentation.ui.mypage.dialog.MyPageSignOutDialogFragment
+import com.ahobsu.moti.presentation.ui.mypage.dialog.MyPageWithdrawalDialogFragment
 import com.ahobsu.moti.presentation.ui.util.EnumClass
 
 
@@ -24,10 +26,25 @@ class MyPageEditFragment : BaseFragment<FragmentMypageEditBinding>(R.layout.frag
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         binding.viewModel = viewModel
 
         viewModel.btnSaveMyPage.observe(viewLifecycleOwner) {
             (activity as MainActivity).changeFragment(MyPageFragment.newInstance())
+        }
+
+        viewModel.btnWithdrawal.observe(viewLifecycleOwner) {
+            val withdrawalDialog = MyPageWithdrawalDialogFragment()
+            activity?.supportFragmentManager?.let { it ->
+                withdrawalDialog.show(it, "withdrawal")
+            }
+        }
+
+        viewModel.btnSignOut.observe(viewLifecycleOwner) {
+            val signOutDialogFragment = MyPageSignOutDialogFragment()
+            activity?.supportFragmentManager?.let { it ->
+                signOutDialogFragment.show(it, "sign out")
+            }
         }
 
         viewModel.selectedBirthday.observe(viewLifecycleOwner) {

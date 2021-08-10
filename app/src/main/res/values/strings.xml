@@ -38,6 +38,10 @@
 	<string name="saved">저장하기</string>
 	<string name="album_empty">아직 수집된 드림캐처가 없습니다.</string>
 	<string name="diary_empty">기록된 다이어리가 없습니다.</string>
+	<string name="dialog_sign_out">로그아웃 하시겠습니까?</string>
+	<string name="yes">확인</string>
+	<string name="cancel">취소</string>
+	<string name="dialog_withdrawal">탈퇴하시겠습니까?</string>
 
 
 	출처: https://gogorchg.tistory.com/entry/AndroidDataBinding-String-Format-적용하기 [항상 초심으로]

@@ -35,6 +35,12 @@ class MyPageViewModel(
     private val _btnSaveMyPage = MutableLiveData<Unit>()
     val btnSaveMyPage: LiveData<Unit> = _btnSaveMyPage
 
+    private val _btnWithdrawal = MutableLiveData<Unit>()
+    val btnWithdrawal: LiveData<Unit> = _btnWithdrawal
+
+    private val _btnSignOut = MutableLiveData<Unit>()
+    val btnSignOut: LiveData<Unit> = _btnSignOut
+
 
     init {
         UserUseCase(userRepository).getUser()
@@ -149,5 +155,15 @@ class MyPageViewModel(
                     Log.e("postSignIn e", e.toString())
                 })
         }
+    }
+
+    fun onClickWithdrawal() {
+        _btnWithdrawal.value = Unit
+    }
+
+    fun onClickSignOut() {
+        _btnSignOut.value = Unit
+
+
     }
 }

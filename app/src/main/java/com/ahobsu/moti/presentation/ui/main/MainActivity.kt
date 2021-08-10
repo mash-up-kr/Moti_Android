@@ -3,10 +3,12 @@ package com.ahobsu.moti.presentation.ui.main
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.ahobsu.moti.R
+import com.ahobsu.moti.Unit
 import com.ahobsu.moti.data.injection.Injection
 import com.ahobsu.moti.databinding.ActivityMainBinding
 import com.ahobsu.moti.presentation.BaseActivity
@@ -30,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Unit.mPreferences = getSharedPreferences(Unit.sharedPrefFile, MODE_PRIVATE)
         initMainDataBinding()
 
         mainViewModel.getHomeAnswer()

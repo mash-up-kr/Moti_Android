@@ -3,6 +3,7 @@ package com.ahobsu.moti
 import android.content.SharedPreferences
 
 object Unit {
+    val sharedPrefFile = "app_preferences"
     private val access_token = "accessToken"
     private val refresh_token = "refreshToken"
     private val jwt_token = "jwt"
@@ -21,13 +22,26 @@ object Unit {
             jwt_token, null)
 
 
+    fun removeToken() {
+        val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
+        accessToken?.let {
+            preferencesEditor.putString(access_token, null)
+        }
+        refreshToken?.let {
+            preferencesEditor.putString(refresh_token, null)
+        }
+        jwt?.let {
+            preferencesEditor.putString(jwt_token, null)
+        }
+        preferencesEditor.apply()
+    }
+
     fun putAccessToken(accessToken: String?) {
         accessToken?.let {
             val preferencesEditor: SharedPreferences.Editor = mPreferences.edit()
             preferencesEditor.putString(access_token, it)
             preferencesEditor.apply()
         }
-
     }
 
     fun putRefreshToken(refreshToken: String?) {
