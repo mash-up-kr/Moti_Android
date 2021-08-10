@@ -62,81 +62,91 @@
                 android:focusable="true" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_answer_camera"
-            android:layout_width="0dp"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/black"
-            android:visibility="@{viewModel.selectMission.image ? View.VISIBLE : View.GONE}"
-            app:setImageUrl="@{viewModel.missionAnswer.file.toString()}"
-            app:layout_constraintDimensionRatio="2:1.6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_title" />
-
-        <ImageView
-            android:id="@+id/btn_answer_camera"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:visibility="@{viewModel.selectMission.image ? View.VISIBLE : View.GONE}"
-            android:src="@drawable/ic_camera_circle"
-            android:onClick="@{() -> viewModel.onClickAnswerImage()}"
-            app:layout_constraintBottom_toBottomOf="@id/iv_answer_camera"
-            app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
-            app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
-            app:layout_constraintTop_toTopOf="@id/iv_answer_camera" />
-
-        <View
-            android:id="@+id/view1_answer_camera"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="2dp"
-            android:background="@color/gold_brown"
-            app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
-            app:layout_constraintTop_toBottomOf="@id/iv_answer_camera" />
-
-        <LinearLayout
-            android:id="@+id/layout_text"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_answer_camera">
+            app:layout_constraintTop_toBottomOf="@id/layout_title">
 
-            <TextView
-                android:id="@+id/tv_answer_title"
-                android:fontFamily="@font/iropke_batang_otfm"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/mypage_title"
-                android:text="@{viewModel.selectMission.title}"
-                android:textColor="@color/rose_gold"
-                android:textSize="20dp"
-                tools:text="오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/iv_answer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_answer_decobar" />
+                <ImageView
+                    android:id="@+id/iv_answer_camera"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/black"
+                    android:visibility="@{viewModel.selectMission.image ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintDimensionRatio="2:1.6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImageUrl="@{viewModel.missionAnswer.file.toString()}" />
 
-            <EditText
-                android:id="@+id/et_answer"
-                android:fontFamily="@font/iropke_batang_otfm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:text="@={viewModel.answerContent}"
-                android:hint="@string/answer_text"
-                android:textColor="@color/rose_gold"
-                android:textColorHint="@color/place_holder_black"
-                android:textSize="16dp" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/btn_answer_camera"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:onClick="@{() -> viewModel.onClickAnswerImage()}"
+                    android:src="@drawable/ic_camera_circle"
+                    android:visibility="@{viewModel.selectMission.image ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_answer_camera"
+                    app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
+                    app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
+                    app:layout_constraintTop_toTopOf="@id/iv_answer_camera" />
 
+                <View
+                    android:id="@+id/view1_answer_camera"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/gold_brown"
+                    app:layout_constraintEnd_toEndOf="@id/iv_answer_camera"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/iv_answer_camera"
+                    app:layout_constraintTop_toBottomOf="@id/iv_answer_camera" />
+
+                <LinearLayout
+                    android:id="@+id/layout_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_answer_camera">
+
+                    <TextView
+                        android:id="@+id/tv_answer_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/mypage_title"
+                        android:fontFamily="@font/iropke_batang_otfm"
+                        android:text="@{viewModel.selectMission.title}"
+                        android:textColor="@color/rose_gold"
+                        android:textSize="20dp"
+                        tools:text="오늘 비가와요.\n비가 내리는 풍경을 찍어볼까요?" />
+
+                    <ImageView
+                        android:id="@+id/iv_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_answer_decobar" />
+
+                    <EditText
+                        android:id="@+id/et_answer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/iropke_batang_otfm"
+                        android:gravity="top"
+                        android:hint="@string/answer_text"
+                        android:text="@={viewModel.answerContent}"
+                        android:textColor="@color/rose_gold"
+                        android:textColorHint="@color/place_holder_black"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
