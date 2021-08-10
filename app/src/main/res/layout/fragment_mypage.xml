@@ -184,7 +184,6 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/mypage_text_h"
             android:gravity="center"
-            android:text="현재 0.0.0"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@id/view_tv_mypage"

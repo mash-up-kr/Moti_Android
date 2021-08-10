@@ -54,12 +54,13 @@
         <EditText
             android:id="@+id/tv_mypage_nickname"
             android:fontFamily="@font/apple_sd_r"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
+            android:gravity="center|start"
             android:text="@={viewModel.userNickName}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/viewmypage_birth"
             app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
             app:layout_constraintTop_toBottomOf="@id/view_tv_mypage" />
 
@@ -75,27 +76,29 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:fontFamily="@font/apple_sd_r"
             android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
+            android:gravity="center|start"
             android:text="@string/birth"
             android:onClick="@{() -> viewModel.onSelectedBirthday()}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_mypage_birth"
             app:layout_constraintStart_toStartOf="@id/view_tv_mypage"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
 
         <TextView
             android:id="@+id/tv_mypage_birth"
             android:fontFamily="@font/apple_sd_r"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
+            android:gravity="center|start"
             android:onClick="@{() -> viewModel.onSelectedBirthday()}"
             android:text="@{viewModel.user.birthday}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@id/viewmypage_birth"
             app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
 
@@ -113,27 +116,29 @@
 
         <TextView
             android:fontFamily="@font/apple_sd_r"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
+            android:gravity="center|start"
             android:text="@string/gender"
             android:onClick="@{() -> viewModel.onSelectedGender()}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_mypage_gender"
             app:layout_constraintStart_toStartOf="@id/view_tv_mypage"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
 
         <TextView
             android:id="@+id/tv_mypage_gender"
             android:fontFamily="@font/apple_sd_r"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/mypage_text_h"
-            android:gravity="center"
+            android:gravity="center|start"
             android:onClick="@{() -> viewModel.onSelectedGender()}"
             android:text="@{viewModel.user.gender}"
             android:textColor="@color/rose_gold"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/tv_mypage_title"
+            app:layout_constraintEnd_toEndOf="@id/viewmypage_birth"
             app:layout_constraintTop_toBottomOf="@id/tv_mypage_birth" />
 
 
