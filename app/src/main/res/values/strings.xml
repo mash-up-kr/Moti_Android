@@ -43,7 +43,4 @@
 	<string name="cancel">취소</string>
 	<string name="dialog_withdrawal">탈퇴하시겠습니까?</string>
 
-
-	출처: https://gogorchg.tistory.com/entry/AndroidDataBinding-String-Format-적용하기 [항상 초심으로]
-
 </resources>

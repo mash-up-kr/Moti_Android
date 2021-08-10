@@ -19,4 +19,8 @@ class UserUseCase (
     fun putUserProfile(userProfile: Uri): Single<String> {
         return userRepository.putUserProfile(userProfile)
     }
+
+    fun deleteUser(): Single<String> {
+        return userRepository.deleteUser()
+    }
 }

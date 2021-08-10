@@ -8,9 +8,10 @@ import com.ahobsu.moti.domain.entity.User
 import io.reactivex.rxjava3.core.Single
 
 interface UserDataSource {
+    fun getUserMy(): Single<BaseData<UserMyResponse>>
     fun postSignIn(snsType: String): Single<BaseData<SignInResponse>>
     fun postSignInRefresh(): Single<BaseData<SignInResponse>>
-    fun getUserMy(): Single<BaseData<UserMyResponse>>
     fun putUserInfo(userInfo: User): Single<BaseData<UserMyResponse>>
-    fun putUserInfo(userProfileImage: Uri): Single<BaseData<Unit>>
+    fun putUserProfileImage(userProfileImage: Uri): Single<BaseData<Unit>>
+    fun deleteUser(): Single<BaseData<Unit?>>
 }

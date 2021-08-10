@@ -81,10 +81,18 @@ class UserRepositoryImpl(
     }
 
     override fun putUserProfile(userProfile: Uri): Single<String> {
-        return userDataSource.putUserInfo(userProfile).map { it ->
+        return userDataSource.putUserProfileImage(userProfile).map {
             it.data?.let {
                 "Success"
             }
+        }
+    }
+
+    override fun deleteUser(): Single<String> {
+        return userDataSource.deleteUser().map {
+            if (it.status == 200) {
+                "Success"
+            } else "error"
         }
     }
 

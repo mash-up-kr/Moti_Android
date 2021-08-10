@@ -15,6 +15,10 @@ class RemoteUserDataSource(
     private val userApi: UserService
 ) : UserDataSource {
 
+    override fun getUserMy(): Single<BaseData<UserMyResponse>> {
+        return userApi.getUserMy()
+    }
+
     override fun postSignIn(snsType: String): Single<BaseData<SignInResponse>> {
         val signInRequest = SignInRequset(snsType = snsType)
         return userApi.postSignIn(signInRequest)
@@ -26,15 +30,11 @@ class RemoteUserDataSource(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getUserMy(): Single<BaseData<UserMyResponse>> {
-        return userApi.getUserMy()
-    }
-
     override fun putUserInfo(user: User): Single<BaseData<UserMyResponse>> {
         return userApi.putUserInfo(UserInfoResquset(user.name, user.birthday, user.gender))
     }
 
-    override fun putUserInfo(userProfileImage: Uri): Single<BaseData<Unit>> {
+    override fun putUserProfileImage(userProfileImage: Uri): Single<BaseData<Unit>> {
         var formFile: MultipartBody.Part? = null
         userProfileImage?.let {
             formFile = FormDataUtil.getImageBody("file", File(it.path))
@@ -42,4 +42,7 @@ class RemoteUserDataSource(
         return userApi.putUserProfileImage(formFile)
     }
 
+    override fun deleteUser(): Single<BaseData<Unit?>> {
+        return userApi.deleteUser()
+    }
 }

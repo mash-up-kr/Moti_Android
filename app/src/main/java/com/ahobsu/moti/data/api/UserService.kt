@@ -23,4 +23,8 @@ interface UserService {
     fun putUserProfileImage(
         @Part file: MultipartBody.Part?
     ): Single<BaseData<Unit>>
+
+    @DELETE("users")
+    fun deleteUser(): Single<BaseData<Unit?>>
+
 }

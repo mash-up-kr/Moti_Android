@@ -11,4 +11,5 @@ interface UserRepository {
      fun getUser(): Single<User>
      fun putUserInfo(user: User): Single<User>
      fun putUserProfile(userProfile: Uri): Single<String>
+     fun deleteUser(): Single<String>
 }
