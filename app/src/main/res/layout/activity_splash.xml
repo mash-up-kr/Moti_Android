@@ -12,10 +12,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:clickable="true"
-		android:text="M O T I"
+		android:layout_marginTop="108dp"
 		android:textColor="@color/rose_gold"
 		android:textSize="44sp"
-		app:layout_constraintBottom_toTopOf="@+id/tv_sub_title"
+		android:text="M  O  T  I"
+		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
 
@@ -26,11 +27,23 @@
 		android:fontFamily="@font/ttnorms_r_"
 		android:text="@string/sub_title"
 		android:textColor="@color/rose_gold"
+		android:layout_marginTop="24dp"
 		android:textSize="16sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+	<VideoView
+		android:id="@+id/video_view_splash"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_marginStart="60dp"
+		android:layout_marginTop="10dp"
+		android:layout_marginEnd="60dp"
+		android:layout_marginBottom="70dp"
+		android:background="@drawable/radius_borderline"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="0.405" />
-
+		app:layout_constraintTop_toBottomOf="@id/tv_sub_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
