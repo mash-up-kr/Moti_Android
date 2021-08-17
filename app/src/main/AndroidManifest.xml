@@ -13,11 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moti">
-        <activity android:name=".presentation.ui.album.AnswersActivity" />
-        <activity android:name=".presentation.ui.login.LoginActivity" />
-        <activity android:name=".presentation.ui.main.MainActivity" />
-        <activity android:name=".presentation.ui.question.MissionActivity" />
-        <activity android:name=".presentation.ui.splash.SplashActivity">
+        <activity
+            android:name=".presentation.ui.album.AnswersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.ui.main.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.ui.question.MissionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.ui.splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
