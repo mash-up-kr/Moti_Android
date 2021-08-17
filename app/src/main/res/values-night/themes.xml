@@ -1,16 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 	<!-- Base application theme. -->
-	<style name="Theme.Moti" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+	<style name="Theme.Moti" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 		<!-- Primary brand color. -->
-		<item name="colorPrimary">@color/purple_200</item>
-		<item name="colorPrimaryVariant">@color/purple_700</item>
-		<item name="colorOnPrimary">@color/black</item>
+		<item name="colorPrimary">@color/black_right</item>
+		<item name="colorPrimaryVariant">@color/black</item>
+		<item name="colorOnPrimary">@color/light_gold</item>
 		<!-- Secondary brand color. -->
-		<item name="colorSecondary">@color/teal_200</item>
-		<item name="colorSecondaryVariant">@color/teal_200</item>
+		<item name="colorSecondary">@color/rose_gold</item>
+		<item name="colorSecondaryVariant">@color/light_gold</item>
 		<item name="colorOnSecondary">@color/black</item>
-		<!-- Status bar color. -->
-		<item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 		<!-- Customize your theme here. -->
+		<!--Status Bar 배경색-->
+		<item name="android:statusBarColor">@color/black</item>
 	</style>
 </resources>

@@ -76,6 +76,7 @@
             android:gravity="center"
             android:fontFamily="@font/font_apple_sd_fothic_neo_b"
             android:text="Sign in with Google"
+            android:textColor="@color/grayish_brown"
             app:layout_constraintBottom_toBottomOf="@id/btn_login"
             app:layout_constraintEnd_toEndOf="@id/btn_login"
             app:layout_constraintStart_toEndOf="@id/iv_login"
