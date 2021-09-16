@@ -5,7 +5,7 @@
 ### 💻 [API](https://moti.company/apiDocs/)
 
 ### [iOS APP](https://apps.apple.com/kr/app/moti/id1496912171)
-### [AOS APP](https://github.com/mash-up-kr/Moti_AOS/edit/main/README.md)
+### [Android APP](https://play.google.com/store/apps/details?id=com.ahobsu.moti)
 
 [![moti](https://img.youtube.com/vi/m91rLvwMmXo/0.jpg)](https://www.youtube.com/watch?v=m91rLvwMmXo)
 
